@@ -24,3 +24,7 @@
     <header>
         <?php if(function_exists('the_custom_logo')) the_custom_logo(); ?>
     header</header>
+
+<?php
+$the_post_id = get_the_ID();
+$hide_title = get_post_meta($the_post_id, '_hide_page_title', true);

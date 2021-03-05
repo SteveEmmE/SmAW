@@ -20,6 +20,8 @@ class SMAW_THEME {
 
         Assets::get_instance();
         Menus::get_instance();
+        Meta_Boxes::get_instance();
+        Sidebars::get_instance();
 
         $this->setup_hooks();
     }
@@ -33,6 +35,7 @@ class SMAW_THEME {
      */
     protected function setup_hooks(){
         add_action('after_setup_theme', [$this, 'setup_theme_functionalities']);
+        add_action('after_setup_theme', [$this, 'image_sizing']);
     }
 
 
@@ -61,7 +64,7 @@ class SMAW_THEME {
         ]);
 
         //Permits to manage the post-thumbnails inside the gutenberg editor
-        add_theme_support('post-thumbnail');
+        add_theme_support('post-thumbnails');
 
         //Improve the user experience og the customizer
         add_theme_support('customize-selective-refresh-widgets');
@@ -75,7 +78,32 @@ class SMAW_THEME {
         //Add the possibility to align wide a block in guteneberg
         add_theme_support('align-wide');
 
+        add_theme_support( 'editor-styles' );
 
+        add_theme_support(
+			'html5',
+			[
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+				'script',
+				'style',
+			]
+		);
+
+
+    }
+
+
+
+
+    /**
+     * Add different image sizes
+     */
+    public function image_sizing(){
+        add_image_size('gallery', 353, 233, true);
     }
 
 
