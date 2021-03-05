@@ -1,9 +1,12 @@
 const path = require('path');
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const JS_DIR = path.resolve(__dirname, '/src/js');
-const IMG_DIR = path.resolve(__dirname, '/src/img');
-const BUILD_DIR = path.resolve(__dirname, '/build');
+const JS_DIR = path.resolve(__dirname, 'src/js');
+const IMG_DIR = path.resolve(__dirname, 'src/img');
+const BUILD_DIR = path.resolve(__dirname, 'build');
 const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
+const OptimizeCssAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
+const cssnano = require( 'cssnano' );
+const UglifyJsPlugin = require( 'uglifyjs-webpack-plugin' );
 const entry = {
     main: JS_DIR + '/main.js',
     single: JS_DIR + '/single.js'
@@ -49,13 +52,28 @@ const plugins = (argv) => [
 
 ]
 
-getMatchedCSSRules.exports = (env, argv) => ({
+module.exports = (env, argv) => ({
     entry: entry,
     output: output,
     devtool: 'source-map',
     module: {
         rules: rules
     },
-    plugins: plugins(argv)
+    optimization:{
+        minimizer: [
+            new OptimizeCssAssetsPlugin({
+                cssProcessor: cssnano
+            }),
+            new UglifyJsPlugin( {
+				cache: false,
+				parallel: true,
+				sourceMap: false
+			} )
+        ]
+    },
+    plugins: plugins(argv),
+    externals: {
+        jquery: 'jQuery'
+    }
 
 });
