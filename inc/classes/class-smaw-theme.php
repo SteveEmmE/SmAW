@@ -22,6 +22,7 @@ class SMAW_THEME {
         Menus::get_instance();
         Meta_Boxes::get_instance();
         Sidebars::get_instance();
+        Gutenberg::get_instance();
 
         $this->setup_hooks();
     }
@@ -36,7 +37,7 @@ class SMAW_THEME {
     protected function setup_hooks(){
         add_action('after_setup_theme', [$this, 'setup_theme_functionalities']);
         add_action('after_setup_theme', [$this, 'image_sizing']);
-        add_action('wp_enqueue_scripts', [$this, 'remove_default_gutenberg_styles']);
+        
     }
 
 
@@ -70,16 +71,7 @@ class SMAW_THEME {
         //Improve the user experience og the customizer
         add_theme_support('customize-selective-refresh-widgets');
 
-        //Insert custom styles in gutenberg
-        add_editor_style('assets/build/css/editor.css');
-
-        //Add the gutenberg block styles in the frontend
-        add_theme_support('wp-block-styles');
-
-        //Add the possibility to align wide a block in guteneberg
-        add_theme_support('align-wide');
-
-        add_theme_support( 'editor-styles' );
+        
 
         add_theme_support(
 			'html5',
@@ -96,7 +88,6 @@ class SMAW_THEME {
 
 
         //Remove the core block patterns
-
         remove_theme_support('core-block-patterns');
 
 
@@ -114,12 +105,6 @@ class SMAW_THEME {
 
 
 
-
-    public function remove_default_gutenberg_styles(){
-        wp_dequeue_style('wp-block-library');
-        wp_dequeue_style('wp-block-library-theme');
-        wp_dequeue_style('wc-block-style');
-    }
 
 
 

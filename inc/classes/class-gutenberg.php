@@ -16,18 +16,93 @@ class Gutenberg{
 
     protected function __construct(){
         //load class
-        
         $this->set_hooks();
+        
     }
 
     protected function set_hooks(){
         //action and filters
-        add_action('init', [$this, 'gutenberg_default_colors']);
+       /*  add_action('init', [$this, 'gutenberg_default_colors']);
         add_action('after_setup_theme', [$this, 'gutenberg_editor_font_sizes']);
-        add_filter( 'block_categories', [$this, 'blocks_category'], 10, 2);
         add_action('init', [$this, 'gutenberg_blocks']);
-        add_action( 'enqueue_block_editor_assets', [$this, 'load_editor_css'] );
+        add_action( 'enqueue_block_editor_assets', [$this, 'load_editor_css'] ); */
+
+        add_action('wp_enqueue_scripts', [$this, 'remove_default_gutenberg_styles']);
+        add_action('after_setup_theme', [$this, 'gutenberg_theme_supports']);
+        add_action('enqueue_block_assets', [$this, 'enqueue_editor_assets']);
+        add_filter( 'block_categories', [$this, 'add_blocks_category'], 10, 2);
+
     }
+
+
+
+
+
+    public function remove_default_gutenberg_styles(){
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        wp_dequeue_style('wc-block-style');
+    }
+
+
+    public function enqueue_editor_assets(){
+        $assets_config_file = sprintf('%s/assets.php', SMAW_BUILD_PATH);
+
+
+        if(! file_exists($assets_config_file)) return;
+
+        $assets_config = require_once $assets_config_file;
+
+        if(empty($assets_config['js/editor.js'])) return;
+
+        $editor_asset = $assets_config['js/editor.js'];
+
+        $js_dependencies = (!empty($editor_asset['dependencies'])) ? $editor_asset['dependencies'] : [];
+        $js_version = (!empty($editor_asset['version'])) ? $editor_asset['version'] : filemtime($assets_config_file);
+
+        // Theme Gutenberg blobk JS
+        if(is_admin())
+            wp_enqueue_script(
+                'smaw-block-js',
+                SMAW_BUILD_JS_URI . '/blocks.js',
+                $js_dependencies,
+                $js_version,
+                true
+            );
+
+        $css_dependencies = [
+            'wp-block-library-theme',
+            'wp-block-library'
+        ];
+
+        wp_enqueue_style(
+            'smaw-block-css',
+            SMAW_BUILD_CSS_URI . '/blocks.css',
+            $css_dependencies,
+            filemtime(SMAW_BUILD_CSS_PATH . '/blocks.css'),
+            'all'
+        );
+
+    }
+
+    public function gutenberg_theme_supports(){
+
+        //Insert custom styles in gutenberg
+        add_theme_support( 'editor-styles' );
+        add_editor_style('assets/build/css/editor.css'); //file relative to the theme root
+
+        //Add the gutenberg block styles in the frontend
+        add_theme_support('wp-block-styles');
+
+        //Add the possibility to align wide a block in guteneberg
+        add_theme_support('align-wide');
+
+        
+    }
+
+    
+
+
 
     function pdp_gutenberg_default_colors(){
         add_theme_support(
@@ -91,13 +166,13 @@ class Gutenberg{
     }
 
 
-    function pdp_blocks_category( $categories, $post ) {
+    function add_blocks_category( $categories, $post ) {
         return array_merge(
             $categories,
             array(
                 array(
-                    'slug' => 'pdp-blocks',
-                    'title' => __( 'Ppd Blocks', 'pdp' ),
+                    'slug' => 'smaw-blocks',
+                    'title' => __( 'SmAW Blocks', 'smaw' ),
                 ),
             )
         );
