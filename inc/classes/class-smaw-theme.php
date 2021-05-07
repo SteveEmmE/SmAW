@@ -36,6 +36,7 @@ class SMAW_THEME {
     protected function setup_hooks(){
         add_action('after_setup_theme', [$this, 'setup_theme_functionalities']);
         add_action('after_setup_theme', [$this, 'image_sizing']);
+        add_action('wp_enqueue_scripts', [$this, 'remove_default_gutenberg_styles']);
     }
 
 
@@ -70,7 +71,7 @@ class SMAW_THEME {
         add_theme_support('customize-selective-refresh-widgets');
 
         //Insert custom styles in gutenberg
-        add_editor_style();
+        add_editor_style('assets/build/css/editor.css');
 
         //Add the gutenberg block styles in the frontend
         add_theme_support('wp-block-styles');
@@ -94,6 +95,11 @@ class SMAW_THEME {
 		);
 
 
+        //Remove the core block patterns
+
+        remove_theme_support('core-block-patterns');
+
+
     }
 
 
@@ -106,6 +112,14 @@ class SMAW_THEME {
         add_image_size('gallery', 353, 233, true);
     }
 
+
+
+
+    public function remove_default_gutenberg_styles(){
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        wp_dequeue_style('wc-block-style');
+    }
 
 
 

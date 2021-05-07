@@ -47,7 +47,8 @@ blockquote.wp-block-quote {
 	quotes: "" "";
 	border-left: 4px solid $gray-150;
 	font-style: italic;
-	margin: 0 0 $font__base-line-height $font__base-line-height;
+	margin-left: auto;
+	margin-right: auto;
 	padding-left: 16px;
 	background: transparent;
 	text-align: left;
