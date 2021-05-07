@@ -30,7 +30,7 @@ class Gutenberg{
         add_action('wp_enqueue_scripts', [$this, 'remove_default_gutenberg_styles']);
         add_action('after_setup_theme', [$this, 'gutenberg_theme_supports']);
         add_action('enqueue_block_assets', [$this, 'enqueue_editor_assets']);
-        add_filter( 'block_categories', [$this, 'add_blocks_category'], 10, 2);
+        add_filter( 'block_categories', [$this, 'add_blocks_categories']);
 
     }
 
@@ -78,7 +78,7 @@ class Gutenberg{
         wp_enqueue_style(
             'smaw-block-css',
             SMAW_BUILD_CSS_URI . '/blocks.css',
-            $css_dependencies,
+            [],
             filemtime(SMAW_BUILD_CSS_PATH . '/blocks.css'),
             'all'
         );
@@ -101,6 +101,30 @@ class Gutenberg{
     }
 
     
+
+
+
+ 
+
+
+
+    function add_blocks_categories( $categories ) {
+        return array_merge(
+            $categories,
+            array(
+                array(
+                    'slug' => 'smaw-blocks',
+                    'title' => __( 'SmAW Blocks', 'smaw' ),
+                ),
+            )
+        );
+    }
+
+
+
+
+
+
 
 
 
@@ -139,6 +163,8 @@ class Gutenberg{
         add_theme_support('disable-custom-font-sizes');
     }
 
+
+
     function pdp_gutenberg_editor_font_sizes(){
         add_theme_support('editor-font-sizes', array(
             array(
@@ -165,18 +191,6 @@ class Gutenberg{
 
     }
 
-
-    function add_blocks_category( $categories, $post ) {
-        return array_merge(
-            $categories,
-            array(
-                array(
-                    'slug' => 'smaw-blocks',
-                    'title' => __( 'SmAW Blocks', 'smaw' ),
-                ),
-            )
-        );
-    }
     
     function pdp_gutenberg_blocks(){
 
