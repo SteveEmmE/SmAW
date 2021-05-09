@@ -60,7 +60,7 @@ class Gutenberg{
         $js_dependencies = (!empty($editor_asset['dependencies'])) ? $editor_asset['dependencies'] : [];
         $js_version = (!empty($editor_asset['version'])) ? $editor_asset['version'] : filemtime($assets_config_file);
 
-        // Theme Gutenberg blobk JS
+        // Theme Gutenberg block JS
         if(is_admin())
             wp_enqueue_script(
                 'smaw-block-js',

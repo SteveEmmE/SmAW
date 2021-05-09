@@ -2,6 +2,27 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/gutenberg/blocks/background/edit.js":
+/*!****************************************************!*\
+  !*** ./src/js/gutenberg/blocks/background/edit.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var Edit = function Edit(_ref) {
+  var className = _ref.className,
+      attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  return /*#__PURE__*/React.createElement("div", null);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
+
+/***/ }),
+
 /***/ "./src/js/gutenberg/blocks/background/index.js":
 /*!*****************************************************!*\
   !*** ./src/js/gutenberg/blocks/background/index.js ***!
@@ -13,6 +34,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/js/gutenberg/blocks/background/edit.js");
+
 
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('smaw-blocks/background', {
@@ -20,9 +43,7 @@ __webpack_require__.r(__webpack_exports__);
   description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background image', 'smaw'),
   icon: 'format-image',
   category: 'smaw-blocks',
-  edit: function edit() {
-    return /*#__PURE__*/React.createElement("div", null, "Hello World, step 1 (from the editor).");
-  },
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__.default,
   save: function save() {
     return /*#__PURE__*/React.createElement("div", null, "Hello World, step 1 (from the frontend).");
   }

@@ -1,5 +1,6 @@
 import {registerBlockType} from '@wordpress/blocks';
 import {__} from '@wordpress/i18n';
+import Edit from './edit';
 
 registerBlockType('smaw-blocks/background', {
 
@@ -8,18 +9,58 @@ registerBlockType('smaw-blocks/background', {
     icon: 'format-image',
     category: 'smaw-blocks',
 
-    edit() {
+    attributes:{
+        imgUrl:{type: 'string', default: ''},
+        backgroundColor:{type: 'string', default: ''},
+        padding:{type: 'object',
+            default: {
+                top: '0em',
+                left: '0em',
+                right: '0em',
+                bottom: '0em'
+            }
+        },
+        sectionAlignment:{type: 'string', default: ''},
+        maxWidthActive:{type: 'boolean', default: false},
+        maxWidth:{type: 'number', default: 600}
 
- 
-        return (
-            <div >Hello World, step 1 (from the editor).</div>
-        );
     },
-    save() {
+
+    edit: Edit,
+    
+    save: ({attributes}) => {
+        const{
+            imgUrl,
+            backgroundColor,
+            padding,
+            sectionAlignment,
+            sectionAlignmentLabel,
+            maxWidthActive,
+            maxWidth
+        } = attributes;
+
         return (
-            <div>
-                Hello World, step 1 (from the frontend).
+            <div className='tc-background-img'
+                style={{
+                    backgroundImage: imgUrl!=''? `url(${imgUrl})`: '',
+                    backgroundColor: backgroundColor,
+                    paddingTop: padding.top,
+                    paddingBottom: padding.bottom,
+                    paddingLeft: padding.left,
+                    paddingRight: padding.right,
+                    
+                }}
+            >
+                <div 
+                    className= {sectionAlignment}
+                    style={{
+                        maxWidth: maxWidthActive? maxWidth+'px' : '100%',
+                    }}
+                >
+                    <InnerBlocks.Content/>
+                </div>
             </div>
-        );
+        )
+
     }
 })
