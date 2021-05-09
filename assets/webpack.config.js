@@ -20,7 +20,8 @@
      main: JS_DIR + '/main.js',
      single: JS_DIR + '/single.js',
      editor: JS_DIR + '/editor.js',
-     blocks: JS_DIR + '/blocks.js'
+     blocks: JS_DIR + '/blocks.js',
+     reset: JS_DIR + '/reset.js'
  };
  
  const output = {
@@ -62,6 +63,14 @@
              'css-loader',
              'sass-loader',
          ]
+     },
+     {
+        test: /\.css$/i,
+        include: /node_modules/,
+        use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader'
+        ]
      },
      {
          test: /\.(png|jpg|svg|jpeg|gif|ico)$/,

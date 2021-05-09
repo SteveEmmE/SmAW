@@ -1,5 +1,5 @@
 import {InspectorControls, MediaPlaceholder, InnerBlocks} from '@wordpress/block-editor';
-import {PanelBody, ColorPicker} from '@wordpress/components';
+import {PanelBody, ColorPicker, FocalPointPicker} from '@wordpress/components';
 import get from 'lodash/get';
 
 
@@ -8,6 +8,7 @@ const Edit = ({attributes, setAttributes}) => {
     const{
         imgUrl,
         backgroundColor,
+        focalPoints
     } = attributes;
 
     function onChangeImgUrl(media){
@@ -18,12 +19,15 @@ const Edit = ({attributes, setAttributes}) => {
         let rgbaColor = `rgba(${newColor.rgb.r},${newColor.rgb.g},${newColor.rgb.b},${newColor.rgb.a})`
         setAttributes({backgroundColor: rgbaColor});
     }
+    function onChangeFocalPoints(newFocalPoints){
+        setAttributes({focalPoints: newFocalPoints});
+    }
 
  
 
     return ([
         <InspectorControls style={{marginBottom: '40px'}}>
-            <PanelBody title={"Set Background Image"}>
+            <PanelBody title={"Background Image"}>
                 <MediaPlaceholder
                     key={0}
                     style={{
@@ -46,11 +50,20 @@ const Edit = ({attributes, setAttributes}) => {
                     onChangeComplete={onChangeBackgroundColor }
                 />
             </PanelBody>
+            <PanelBody>
+                <FocalPointPicker
+                    value={ focalPoints }
+                    onChange={ onChangeFocalPoints }
+                />
+            </PanelBody>
+            
+
         </InspectorControls>,
         <div className='tc-background-img'
             style={{
                 backgroundImage: imgUrl!=''? `url(${imgUrl})`: '',
                 backgroundColor: backgroundColor,
+                backgroundPosition: `${ focalPoints.x * 100 }% ${ focalPoints.y * 100 }%`
             }}
         >
             <InnerBlocks/>

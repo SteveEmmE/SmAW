@@ -26,7 +26,8 @@ var Edit = function Edit(_ref) {
   var attributes = _ref.attributes,
       setAttributes = _ref.setAttributes;
   var imgUrl = attributes.imgUrl,
-      backgroundColor = attributes.backgroundColor;
+      backgroundColor = attributes.backgroundColor,
+      focalPoints = attributes.focalPoints;
 
   function onChangeImgUrl(media) {
     var photo = lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(media, ['sizes', 'full', 'url']) || lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(media, ['media_details', 'sizes', 'full', 'source_url']);
@@ -42,12 +43,18 @@ var Edit = function Edit(_ref) {
     });
   }
 
+  function onChangeFocalPoints(newFocalPoints) {
+    setAttributes({
+      focalPoints: newFocalPoints
+    });
+  }
+
   return [/*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InspectorControls, {
     style: {
       marginBottom: '40px'
     }
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-    title: "Set Background Image"
+    title: "Background Image"
   }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.MediaPlaceholder, {
     key: 0,
     style: {
@@ -67,11 +74,15 @@ var Edit = function Edit(_ref) {
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPicker, {
     color: backgroundColor,
     onChangeComplete: onChangeBackgroundColor
+  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FocalPointPicker, {
+    value: focalPoints,
+    onChange: onChangeFocalPoints
   }))), /*#__PURE__*/React.createElement("div", {
     className: "tc-background-img",
     style: {
       backgroundImage: imgUrl != '' ? "url(".concat(imgUrl, ")") : '',
-      backgroundColor: backgroundColor
+      backgroundColor: backgroundColor,
+      backgroundPosition: "".concat(focalPoints.x * 100, "% ").concat(focalPoints.y * 100, "%")
     }
   }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks, null))];
 };
@@ -93,8 +104,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/js/gutenberg/blocks/background/edit.js");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/js/gutenberg/blocks/background/save.js");
 
 
 
@@ -112,22 +122,52 @@ __webpack_require__.r(__webpack_exports__);
     backgroundColor: {
       type: 'string',
       default: ''
+    },
+    focalPoints: {
+      type: 'object',
+      default: {
+        x: 0.5,
+        y: 0.5
+      }
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__.default,
-  save: function save(_ref) {
-    var attributes = _ref.attributes;
-    var imgUrl = attributes.imgUrl,
-        backgroundColor = attributes.backgroundColor;
-    return /*#__PURE__*/React.createElement("div", {
-      className: "tc-background-img",
-      style: {
-        backgroundImage: imgUrl != '' ? "url(".concat(imgUrl, ")") : '',
-        backgroundColor: backgroundColor
-      }
-    }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks.Content, null));
-  }
+  save: _save__WEBPACK_IMPORTED_MODULE_3__.default
 });
+
+/***/ }),
+
+/***/ "./src/js/gutenberg/blocks/background/save.js":
+/*!****************************************************!*\
+  !*** ./src/js/gutenberg/blocks/background/save.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Save = function Save(_ref) {
+  var attributes = _ref.attributes;
+  var imgUrl = attributes.imgUrl,
+      backgroundColor = attributes.backgroundColor,
+      focalPoints = attributes.focalPoints;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "tc-background-img",
+    style: {
+      backgroundImage: imgUrl != '' ? "url(".concat(imgUrl, ")") : '',
+      backgroundColor: backgroundColor,
+      backgroundPosition: "".concat(focalPoints.x * 100, "% ").concat(focalPoints.y * 100, "%")
+    }
+  }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks.Content, null));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Save);
 
 /***/ }),
 

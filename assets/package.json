@@ -44,7 +44,8 @@
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^5.24.3",
     "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "reset-css": "^5.0.1"
   }
 }
-
-

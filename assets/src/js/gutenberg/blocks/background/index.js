@@ -1,7 +1,8 @@
 import {registerBlockType} from '@wordpress/blocks';
 import {__} from '@wordpress/i18n';
 import Edit from './edit';
-import {InnerBlocks} from '@wordpress/block-editor';
+import Save from './save';
+
 
 
 
@@ -16,27 +17,15 @@ registerBlockType('smaw-blocks/background', {
     attributes:{
         imgUrl:{type: 'string', default: ''},
         backgroundColor:{type: 'string', default: ''},
+        focalPoints: {
+            type: 'object',
+            default: {
+                x: 0.5,
+                y: 0.5
+            }
+        }
     },
-   
 
-    edit: Edit,
-    
-    save: ({attributes}) => {
-        const{
-            imgUrl,
-            backgroundColor,
-        } = attributes;
-
-        return (
-            <div className='tc-background-img'
-                style={{
-                    backgroundImage: imgUrl!=''? `url(${imgUrl})`: '',
-                    backgroundColor: backgroundColor,
-                }}
-            >
-                <InnerBlocks.Content/>
-            </div>
-        )
-
-    }
+    edit: Edit,    
+    save: Save
 })
