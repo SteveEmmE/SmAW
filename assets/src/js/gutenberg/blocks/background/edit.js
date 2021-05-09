@@ -1,26 +1,18 @@
+import {InspectorControls, MediaPlaceholder, InnerBlocks} from '@wordpress/block-editor';
+import {PanelBody, ColorPicker} from '@wordpress/components';
+import get from 'lodash/get';
+
+
 const Edit = ({attributes, setAttributes}) => {
         
     const{
         imgUrl,
         backgroundColor,
-        padding,
-        sectionAlignment,
-        maxWidthActive,
-        maxWidth
     } = attributes;
 
     function onChangeImgUrl(media){
-
         let photo = get( media, [ 'sizes', 'full', 'url' ] ) || get( media, [ 'media_details', 'sizes', 'full', 'source_url' ] );
-
-        console.log(photo);
         setAttributes({imgUrl: photo});
-    }
-    function onChangePadding(newPadding){ setAttributes({padding: newPadding});}
-    function onChangeMaxWidthActive(){ setAttributes({maxWidthActive: !maxWidthActive});}
-    function onChangeMaxWidth(newValue){ setAttributes({maxWidth: newValue});}
-    function onChangeSectionAlignment(newAlignment){
-        setAttributes({ sectionAlignment: newAlignment})
     }
     function onChangeBackgroundColor(newColor){
         let rgbaColor = `rgba(${newColor.rgb.r},${newColor.rgb.g},${newColor.rgb.b},${newColor.rgb.a})`
@@ -54,66 +46,14 @@ const Edit = ({attributes, setAttributes}) => {
                     onChangeComplete={onChangeBackgroundColor }
                 />
             </PanelBody>
-            <PanelBody title="Padding Control">
-                <BoxControl
-                    values={ padding}
-                    onChange={ onChangePadding}
-                />
-            </PanelBody>
-            <PanelBody title="Max Width">
-                <ToggleControl
-                    label="size"
-                    checked={ maxWidthActive }
-                    onChange={ onChangeMaxWidthActive }
-                />
-            </PanelBody>
-            {
-                maxWidthActive?
-                    [
-                        <PanelBody title="Max Width">
-                            <RangeControl
-                                label="width"
-                                value={maxWidth}
-                                onChange={onChangeMaxWidth}
-                                min={ 0 }
-                                max={ 2000 }
-                            />
-                        </PanelBody>,
-                        <SelectControl
-                            label={ 'Select the separator width:' }
-                            value={ sectionAlignment }
-                            onChange={  onChangeSectionAlignment }
-                            options={ [
-                                { value: null, label: 'Select an Alignment', disabled: true },
-                                { value: 'mr-a', label: 'left' },
-                                { value: 'mx-a', label: 'center' },
-                                { value: 'ml-a', label: 'right' },
-                            ] }
-                        />
-                    ]
-                :
-                ''
-            }
         </InspectorControls>,
         <div className='tc-background-img'
             style={{
                 backgroundImage: imgUrl!=''? `url(${imgUrl})`: '',
                 backgroundColor: backgroundColor,
-                paddingTop: padding.top,
-                paddingBottom: padding.bottom,
-                paddingLeft: padding.left,
-                paddingRight: padding.right,
             }}
         >
-            <div 
-                className= {sectionAlignment}
-                style={{
-                    maxWidth: maxWidthActive? maxWidth+'px' : '100%',
-                }}
-            >
-                <InnerBlocks/>
-            </div>
-            
+            <InnerBlocks/>
         </div>
     ]);
 }

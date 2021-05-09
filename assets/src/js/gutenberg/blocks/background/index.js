@@ -1,6 +1,10 @@
 import {registerBlockType} from '@wordpress/blocks';
 import {__} from '@wordpress/i18n';
 import Edit from './edit';
+import {InnerBlocks} from '@wordpress/block-editor';
+
+
+
 
 registerBlockType('smaw-blocks/background', {
 
@@ -12,19 +16,8 @@ registerBlockType('smaw-blocks/background', {
     attributes:{
         imgUrl:{type: 'string', default: ''},
         backgroundColor:{type: 'string', default: ''},
-        padding:{type: 'object',
-            default: {
-                top: '0em',
-                left: '0em',
-                right: '0em',
-                bottom: '0em'
-            }
-        },
-        sectionAlignment:{type: 'string', default: ''},
-        maxWidthActive:{type: 'boolean', default: false},
-        maxWidth:{type: 'number', default: 600}
-
     },
+   
 
     edit: Edit,
     
@@ -32,11 +25,6 @@ registerBlockType('smaw-blocks/background', {
         const{
             imgUrl,
             backgroundColor,
-            padding,
-            sectionAlignment,
-            sectionAlignmentLabel,
-            maxWidthActive,
-            maxWidth
         } = attributes;
 
         return (
@@ -44,21 +32,9 @@ registerBlockType('smaw-blocks/background', {
                 style={{
                     backgroundImage: imgUrl!=''? `url(${imgUrl})`: '',
                     backgroundColor: backgroundColor,
-                    paddingTop: padding.top,
-                    paddingBottom: padding.bottom,
-                    paddingLeft: padding.left,
-                    paddingRight: padding.right,
-                    
                 }}
             >
-                <div 
-                    className= {sectionAlignment}
-                    style={{
-                        maxWidth: maxWidthActive? maxWidth+'px' : '100%',
-                    }}
-                >
-                    <InnerBlocks.Content/>
-                </div>
+                <InnerBlocks.Content/>
             </div>
         )
 
