@@ -14,29 +14,6 @@
 		Border Colors
 -----------------------------------*/
 /* stylelint-disable */
-.aquila-icon-heading {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
-  .aquila-icon-heading .aquila-icon-heading__heading {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin-right: 16px; }
-
-/* stylelint-enable */
-/* stylelint-disable */
-.aquila-dos-and-donts .aquila-dos-and-donts__list {
-  margin-left: 20px; }
-
-/* stylelint-enable */
-/* stylelint-disable */
 .editor-styles-wrapper .wp-block-quote.is-style-layout-dark-background,
 .wp-block-quote.is-style-layout-dark-background {
   background-color: #38affd;
@@ -68,19 +45,15 @@
     background-color: #0673a9; }
 
 /* stylelint-enable */
-.ciao {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap; }
+.sizes-control {
+  width: 100%; }
+  .sizes-control.ml-a {
+    margin-left: auto; }
+  .sizes-control.mr-a {
+    margin-right: auto; }
+  .sizes-control.mx-a {
+    margin-left: auto;
+    margin-right: auto; }
 
 
 /*# sourceMappingURL=blocks.css.map*/

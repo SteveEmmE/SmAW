@@ -5,8 +5,6 @@ import Save from './save';
 
 
 
-
-
 registerBlockType('smaw-blocks/background', {
 
     title: 'Smaw Background',
@@ -23,7 +21,10 @@ registerBlockType('smaw-blocks/background', {
                 x: 0.5,
                 y: 0.5
             }
-        }
+        },
+        repeat:{type: 'boolean', default: false},
+        sizeX: {type: 'number', default: '100'},
+        sizeY: {type: 'number', default: '0'}
     },
 
     edit: Edit,    

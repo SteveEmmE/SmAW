@@ -1,5 +1,5 @@
 import {InspectorControls, MediaPlaceholder, InnerBlocks} from '@wordpress/block-editor';
-import {PanelBody, ColorPicker, FocalPointPicker} from '@wordpress/components';
+import {PanelBody, ColorPicker, FocalPointPicker, RangeControl, ToggleControl} from '@wordpress/components';
 import get from 'lodash/get';
 
 
@@ -8,7 +8,10 @@ const Edit = ({attributes, setAttributes}) => {
     const{
         imgUrl,
         backgroundColor,
-        focalPoints
+        focalPoints,
+        repeat,
+        sizeX,
+        sizeY
     } = attributes;
 
     function onChangeImgUrl(media){
@@ -21,6 +24,15 @@ const Edit = ({attributes, setAttributes}) => {
     }
     function onChangeFocalPoints(newFocalPoints){
         setAttributes({focalPoints: newFocalPoints});
+    }
+    function onChangeRepeat(newValue){
+        setAttributes({repeat: newValue});
+    }
+    function onChangeSizeX(newValue){
+        setAttributes({sizeX: newValue});
+    }
+    function onChangeSizeY(newValue){
+        setAttributes({sizeY: newValue});
     }
 
  
@@ -56,14 +68,43 @@ const Edit = ({attributes, setAttributes}) => {
                     onChange={ onChangeFocalPoints }
                 />
             </PanelBody>
+            <PanelBody>
+                <RangeControl
+                    label="X background size"
+                    value={ sizeX }
+                    onChange={ onChangeSizeX }
+                    min={ 0 }
+                    max={ 100 }
+                    initialPosition={100}
+                />
+            </PanelBody>
+            <PanelBody>
+                <RangeControl
+                    label="Y background size"
+                    value={ sizeY }
+                    onChange={ onChangeSizeY }
+                    min={ 0 }
+                    max={ 100 }
+                    initialPosition={0}
+                />
+            </PanelBody>
+            <PanelBody>
+                <ToggleControl
+                    label="repeat"
+                    checked={ repeat }
+                    onChange={ onChangeRepeat }
+                />
+            </PanelBody>
             
 
         </InspectorControls>,
-        <div className='tc-background-img'
+        <div
             style={{
                 backgroundImage: imgUrl!=''? `url(${imgUrl})`: '',
                 backgroundColor: backgroundColor,
-                backgroundPosition: `${ focalPoints.x * 100 }% ${ focalPoints.y * 100 }%`
+                backgroundPosition: `${ (1 - focalPoints.x) * 100 }% ${ focalPoints.y * 100 }%`,
+                backgroundSize: `${ sizeX!=0 ? sizeX+'%' : 'auto' } ${ sizeY!=0 ? sizeY+'%' : 'auto'  }`,
+                backgroundRepeat: repeat ? 'repeat' : 'no-repeat'
             }}
         >
             <InnerBlocks/>

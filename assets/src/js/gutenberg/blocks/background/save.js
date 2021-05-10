@@ -5,15 +5,20 @@ const Save = ({attributes}) => {
     const{
         imgUrl,
         backgroundColor,
-        focalPoints
+        focalPoints,
+        repeat,
+        sizeX,
+        sizeY
     } = attributes;
 
     return (
-        <div className='tc-background-img'
+        <div
             style={{
                 backgroundImage: imgUrl!=''? `url(${imgUrl})`: '',
                 backgroundColor: backgroundColor,
-                backgroundPosition: `${ focalPoints.x * 100 }% ${ focalPoints.y * 100 }%`
+                backgroundPosition: `${ (1 - focalPoints.x) * 100 }% ${ focalPoints.y * 100 }%`,
+                backgroundSize: `${ sizeX!=0 ? sizeX+'%' : 'auto' } ${ sizeY!=0 ? sizeY+'%' : 'auto'  }`,
+                backgroundRepeat: repeat ? 'repeat' : 'no-repeat'
             }}
         >
             <InnerBlocks.Content/>
