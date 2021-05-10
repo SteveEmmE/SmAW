@@ -4,3 +4,10 @@
 @import "7-blocks/dos-and-donts";
 @import "7-blocks/quote";
 @import "7-blocks/button";
+
+
+.ciao{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}

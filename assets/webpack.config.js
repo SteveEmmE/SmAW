@@ -61,6 +61,7 @@
          use: [
              MiniCssExtractPlugin.loader,
              'css-loader',
+             'postcss-loader',
              'sass-loader',
          ]
      },
@@ -69,7 +70,8 @@
         include: /node_modules/,
         use: [
             MiniCssExtractPlugin.loader,
-            'css-loader'
+            'css-loader',
+            'postcss-loader',
         ]
      },
      {

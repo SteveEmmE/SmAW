@@ -15,10 +15,19 @@
 -----------------------------------*/
 /* stylelint-disable */
 .aquila-icon-heading {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex; }
   .aquila-icon-heading .aquila-icon-heading__heading {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-right: 16px; }
 
 /* stylelint-enable */
@@ -59,6 +68,19 @@
     background-color: #0673a9; }
 
 /* stylelint-enable */
+.ciao {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap; }
 
 
 /*# sourceMappingURL=blocks.css.map*/

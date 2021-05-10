@@ -77,7 +77,8 @@
  * This will add font-size and line-height with different breakpoints.
  */
 html {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
 
@@ -86,7 +87,8 @@ html {
 *:before,
 *:after {
   /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 /* stylelint-enable */
@@ -191,6 +193,7 @@ a {
   cursor: pointer;
   color: #0192cc;
   text-decoration: none;
+  -webkit-transition: 0.3s;
   transition: 0.3s; }
   a:focus {
     outline: 5px auto -webkit-focus-ring-color;
@@ -355,8 +358,12 @@ input[type="color"],
   border-radius: 4px;
   background-color: #fff;
   border: 1px solid #ccc;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  transition: border linear 0.2s, box-shadow linear 0.2s; }
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, -webkit-box-shadow linear 0.2s;
+  transition: border linear 0.2s, -webkit-box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s, -webkit-box-shadow linear 0.2s; }
 
 textarea {
   height: auto;
@@ -366,7 +373,9 @@ textarea {
   overflow: auto; }
 
 select {
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: none;
   transition: none;
   width: 220px;
   padding: 0 6px; }
@@ -453,7 +462,8 @@ hr {
   border: 0;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #fff;
-  box-sizing: content-box; }
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box; }
   .wp-block-separator:not(.is-style-dots),
   hr:not(.is-style-dots) {
     background-color: #eff3f6;
