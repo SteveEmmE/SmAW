@@ -1,0 +1,11 @@
+/* Page Width */
+.wp-block {
+    max-width: 1600px;
+}
+
+
+/* no margin on top and bottom of text */
+.block-editor-block-list__block{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}

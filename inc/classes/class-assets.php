@@ -40,7 +40,10 @@ class Assets{
     /**
      * Register the global styles
      */
-    public function register_styles(){}
+    public function register_styles(){
+        wp_enqueue_style('smaw-reset-css', SMAW_BUILD_CSS_URI . '/reset.css', [], filemtime(SMAW_BUILD_CSS_PATH . '/reset.css'), 'all');
+
+    }
 
 
 

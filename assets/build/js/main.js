@@ -1,21 +1,29 @@
-/******/ (() => { // webpackBootstrap
+/******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/js/clock/index.js":
 /*!*******************************!*\
   !*** ./src/js/clock/index.js ***!
   \*******************************/
-/***/ (() => {
+/***/ (function() {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 (function ($) {
   /**
    * Clock Class.
    */
-  class Clock {
+  var Clock = /*#__PURE__*/function () {
     /**
      * Constructor
      */
-    constructor() {
+    function Clock() {
+      _classCallCheck(this, Clock);
+
       this.initializeClock();
     }
     /**
@@ -23,54 +31,64 @@
      */
 
 
-    initializeClock() {
-      setInterval(() => this.time(), 1000);
-    }
-    /**
-     * Numpad
-     *
-     * @param {String} str String
-     *
-     * @return {string} String
-     */
+    _createClass(Clock, [{
+      key: "initializeClock",
+      value: function initializeClock() {
+        var _this = this;
 
-
-    numPad(str) {
-      const cStr = str.toString();
-
-      if (2 > cStr.length) {
-        str = 0 + cStr;
+        setInterval(function () {
+          return _this.time();
+        }, 1000);
       }
+      /**
+       * Numpad
+       *
+       * @param {String} str String
+       *
+       * @return {string} String
+       */
 
-      return str;
-    }
-    /**
-     * Time
-     */
+    }, {
+      key: "numPad",
+      value: function numPad(str) {
+        var cStr = str.toString();
 
+        if (2 > cStr.length) {
+          str = 0 + cStr;
+        }
 
-    time() {
-      const currDate = new Date();
-      const currSec = currDate.getSeconds();
-      const currMin = currDate.getMinutes();
-      const curr24Hr = currDate.getHours();
-      const ampm = 12 <= curr24Hr ? 'pm' : 'am';
-      let currHr = curr24Hr % 12;
-      currHr = currHr ? currHr : 12;
-      const stringTime = currHr + ':' + this.numPad(currMin) + ':' + this.numPad(currSec);
-      const timeEmojiEl = $('#time-emoji');
-
-      if (5 <= curr24Hr && 17 >= curr24Hr) {
-        timeEmojiEl.text('🌞');
-      } else {
-        timeEmojiEl.text('🌜');
+        return str;
       }
+      /**
+       * Time
+       */
 
-      $('#time').text(stringTime);
-      $('#ampm').text(ampm);
-    }
+    }, {
+      key: "time",
+      value: function time() {
+        var currDate = new Date();
+        var currSec = currDate.getSeconds();
+        var currMin = currDate.getMinutes();
+        var curr24Hr = currDate.getHours();
+        var ampm = 12 <= curr24Hr ? 'pm' : 'am';
+        var currHr = curr24Hr % 12;
+        currHr = currHr ? currHr : 12;
+        var stringTime = currHr + ':' + this.numPad(currMin) + ':' + this.numPad(currSec);
+        var timeEmojiEl = $('#time-emoji');
 
-  }
+        if (5 <= curr24Hr && 17 >= curr24Hr) {
+          timeEmojiEl.text('🌞');
+        } else {
+          timeEmojiEl.text('🌜');
+        }
+
+        $('#time').text(stringTime);
+        $('#ampm').text(ampm);
+      }
+    }]);
+
+    return Clock;
+  }();
 
   new Clock();
 })(jQuery);
@@ -81,14 +99,11 @@
 /*!*************************!*\
   !*** ./src/img/cat.jpg ***!
   \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("../../src/img/cat.jpg");
+/* harmony default export */ __webpack_exports__["default"] = ("../../src/img/cat.jpg");
 
 /***/ })
 
@@ -119,49 +134,49 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
+/******/ 	!function() {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
+/******/ 		__webpack_require__.n = function(module) {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	})();
+/******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
+/******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 		__webpack_require__.d = function(exports, definition) {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	})();
+/******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
+/******/ 	!function() {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
+/******/ 		__webpack_require__.r = function(exports) {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	})();
+/******/ 	}();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
+!function() {
 "use strict";
 /*!************************!*\
   !*** ./src/js/main.js ***!
@@ -173,8 +188,7 @@ __webpack_require__.r(__webpack_exports__);
  //Images
 
 
-})();
-
+}();
 /******/ })()
 ;
 //# sourceMappingURL=main.js.map
