@@ -4,3 +4,6 @@ import './gutenberg/blocks/background';
 import './gutenberg/blocks/mp-control';
 import './gutenberg/blocks/sizes-control';
 import './gutenberg/blocks/positioning-control';
+import './gutenberg/blocks/aos-control';
+
+

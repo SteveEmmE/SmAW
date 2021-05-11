@@ -42,6 +42,7 @@ class Assets{
      */
     public function register_styles(){
         wp_enqueue_style('smaw-reset-css', SMAW_BUILD_CSS_URI . '/reset.css', [], filemtime(SMAW_BUILD_CSS_PATH . '/reset.css'), 'all');
+        wp_enqueue_style('smaw-main-css', SMAW_BUILD_CSS_URI . '/main.css', [], filemtime(SMAW_BUILD_CSS_PATH . '/main.css'), 'all');
 
     }
 
@@ -52,6 +53,9 @@ class Assets{
     /**
      * Register the global scripts
      */
-    public function register_scripts(){}
+    public function register_scripts(){
+        wp_enqueue_script('smaw-main-js', SMAW_BUILD_JS_URI . '/main.js', [], filemtime(SMAW_BUILD_JS_PATH . '/main.js'), true);
+
+    }
 
 }

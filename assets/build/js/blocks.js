@@ -1,6 +1,459 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/gutenberg/blocks/aos-control/edit.js":
+/*!*****************************************************!*\
+  !*** ./src/js/gutenberg/blocks/aos-control/edit.js ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var Edit = function Edit(_ref) {
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  var fade = attributes.fade,
+      flip = attributes.flip,
+      slide = attributes.slide,
+      zoom = attributes.zoom,
+      offset = attributes.offset,
+      delay = attributes.delay,
+      duration = attributes.duration,
+      easing = attributes.easing,
+      anchorPlacement = attributes.anchorPlacement;
+
+  var onChangeFade = function onChangeFade(newValue) {
+    return setAttributes({
+      fade: newValue
+    });
+  };
+
+  var onChangeFlip = function onChangeFlip(newValue) {
+    return setAttributes({
+      flip: newValue
+    });
+  };
+
+  var onChangeSlide = function onChangeSlide(newValue) {
+    return setAttributes({
+      slide: newValue
+    });
+  };
+
+  var onChangeZoom = function onChangeZoom(newValue) {
+    return setAttributes({
+      zoom: newValue
+    });
+  };
+
+  var onChangeAnchorPlacement = function onChangeAnchorPlacement(newValue) {
+    return setAttributes({
+      anchorPlacement: newValue
+    });
+  };
+
+  var onChangeEasing = function onChangeEasing(newValue) {
+    return setAttributes({
+      easing: newValue
+    });
+  };
+
+  var onChangeOffset = function onChangeOffset(newValue) {
+    return setAttributes({
+      offset: newValue
+    });
+  };
+
+  var onChangeDelay = function onChangeDelay(newValue) {
+    return setAttributes({
+      delay: newValue
+    });
+  };
+
+  var onChangeDuration = function onChangeDuration(newValue) {
+    return setAttributes({
+      duration: newValue
+    });
+  };
+
+  return [/*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InspectorControls, {
+    style: {
+      marginBottom: '40px'
+    }
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Fade Animation"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    label: 'Select the direction:',
+    value: fade,
+    onChange: onChangeFade,
+    options: [{
+      value: '',
+      label: 'none'
+    }, {
+      value: 'fade-up',
+      label: 'up'
+    }, {
+      value: 'fade-down',
+      label: 'down'
+    }, {
+      value: 'fade-left',
+      label: 'left'
+    }, {
+      value: 'fade-right',
+      label: 'right'
+    }, {
+      value: 'fade-up-right',
+      label: 'up-right'
+    }, {
+      value: 'fade-up-left',
+      label: 'up-left'
+    }, {
+      value: 'fade-down-right',
+      label: 'down-right'
+    }, {
+      value: 'fade-down-left',
+      label: 'down-left'
+    }]
+  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Flip Animation"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    label: 'Select the direction:',
+    value: flip,
+    onChange: onChangeFlip,
+    options: [{
+      value: '',
+      label: 'none'
+    }, {
+      value: 'flip-up',
+      label: 'up'
+    }, {
+      value: 'flip-down',
+      label: 'down'
+    }, {
+      value: 'flip-left',
+      label: 'left'
+    }, {
+      value: 'flip-right',
+      label: 'right'
+    }]
+  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Slide Animation"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    label: 'Select the direction:',
+    value: slide,
+    onChange: onChangeSlide,
+    options: [{
+      value: '',
+      label: 'none'
+    }, {
+      value: 'slide-up',
+      label: 'up'
+    }, {
+      value: 'slide-down',
+      label: 'down'
+    }, {
+      value: 'slide-left',
+      label: 'left'
+    }, {
+      value: 'slide-right',
+      label: 'right'
+    }]
+  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Zoom Animation"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    label: 'Select the direction:',
+    value: zoom,
+    onChange: onChangeZoom,
+    options: [{
+      value: '',
+      label: 'none'
+    }, {
+      value: 'zoom-in',
+      label: 'in'
+    }, {
+      value: 'zoom-in-up',
+      label: 'in-up'
+    }, {
+      value: 'zoom-in-down',
+      label: 'in-down'
+    }, {
+      value: 'zoom-in-left',
+      label: 'in-left'
+    }, {
+      value: 'zoom-in-right',
+      label: 'in-right'
+    }, {
+      value: 'zoom-out',
+      label: 'out'
+    }, {
+      value: 'zoom-out-up',
+      label: 'out-up'
+    }, {
+      value: 'zoom-out-down',
+      label: 'out-down'
+    }, {
+      value: 'zoom-out-left',
+      label: 'out-left'
+    }, {
+      value: 'zoom-out-right',
+      label: 'out-right'
+    }]
+  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Anchor Placement"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    label: 'Select the option:',
+    value: anchorPlacement,
+    onChange: onChangeAnchorPlacement,
+    options: [{
+      value: '',
+      label: 'none'
+    }, {
+      value: 'top-bottom',
+      label: 'top-bottom'
+    }, {
+      value: 'top-center',
+      label: 'top-center'
+    }, {
+      value: 'top-top',
+      label: 'top-top'
+    }, {
+      value: 'center-bottom',
+      label: 'center-bottom'
+    }, {
+      value: 'center-center',
+      label: 'center-center'
+    }, {
+      value: 'center-top',
+      label: 'center-top'
+    }, {
+      value: 'bottom-bottom',
+      label: 'bottom-bottom'
+    }, {
+      value: 'bottom-center',
+      label: 'bottom-center'
+    }, {
+      value: 'bottom-top',
+      label: 'bottom-top'
+    }]
+  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Easing"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    label: 'Select the option:',
+    value: easing,
+    onChange: onChangeEasing,
+    options: [{
+      value: '',
+      label: 'none'
+    }, {
+      value: 'linear',
+      label: 'linear'
+    }, {
+      value: 'ease',
+      label: 'ease'
+    }, {
+      value: 'ease-in',
+      label: 'ease-in'
+    }, {
+      value: 'ease-out',
+      label: 'ease-out'
+    }, {
+      value: 'ease-in-out',
+      label: 'ease-in-out'
+    }, {
+      value: 'ease-in-back',
+      label: 'ease-in-back'
+    }, {
+      value: 'ease-out-back',
+      label: 'ease-out-back'
+    }, {
+      value: 'ease-in-out-back',
+      label: 'ease-in-out-back'
+    }, {
+      value: 'ease-in-sine',
+      label: 'ease-in-sine'
+    }, {
+      value: 'ease-out-sine',
+      label: 'ease-out-sine'
+    }, {
+      value: 'ease-in-out-sine',
+      label: 'ease-in-out-sine'
+    }, {
+      value: 'ease-in-quad',
+      label: 'ease-in-quad'
+    }, {
+      value: 'ease-out-quad',
+      label: 'ease-out-quad'
+    }, {
+      value: 'ease-in-out-quad',
+      label: 'ease-in-out-quad'
+    }, {
+      value: 'ease-in-cubic',
+      label: 'ease-in-cubic'
+    }, {
+      value: 'ease-out-cubic',
+      label: 'ease-out-cubic'
+    }, {
+      value: 'ease-in-out-cubic',
+      label: 'ease-in-out-cubic'
+    }, {
+      value: 'ease-in-quart',
+      label: 'ease-in-quart'
+    }, {
+      value: 'ease-out-quart',
+      label: 'ease-out-quart'
+    }, {
+      value: 'ease-in-out-quart',
+      label: 'ease-in-out-quart'
+    }]
+  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Offset"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+    label: "Unit Width",
+    value: offset,
+    onChange: onChangeOffset,
+    step: 50,
+    min: 0,
+    max: 4000
+  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Delay"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+    label: "Unit Width",
+    value: delay,
+    onChange: onChangeDelay,
+    step: 50,
+    min: 0,
+    max: 4000
+  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: "Duration"
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+    label: "Unit Width",
+    value: duration,
+    onChange: onChangeDuration,
+    step: 50,
+    min: 0,
+    max: 4000
+  }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks, null))];
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Edit);
+
+/***/ }),
+
+/***/ "./src/js/gutenberg/blocks/aos-control/index.js":
+/*!******************************************************!*\
+  !*** ./src/js/gutenberg/blocks/aos-control/index.js ***!
+  \******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/js/gutenberg/blocks/aos-control/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/js/gutenberg/blocks/aos-control/save.js");
+
+
+
+
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('smaw-blocks/aos-control', {
+  title: 'Smaw AOS Control',
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Controller for AOS - Animation On Scroll', 'smaw'),
+  icon: 'controls-play',
+  category: 'smaw-blocks',
+  attributes: {
+    aosActive: {
+      type: 'boolean',
+      default: false
+    },
+    fade: {
+      type: 'string',
+      default: ''
+    },
+    flip: {
+      type: 'string',
+      default: ''
+    },
+    slide: {
+      type: 'string',
+      default: ''
+    },
+    zoom: {
+      type: 'string',
+      default: ''
+    },
+    offset: {
+      type: 'string',
+      default: ''
+    },
+    delay: {
+      type: 'string',
+      default: ''
+    },
+    duration: {
+      type: 'string',
+      default: ''
+    },
+    easing: {
+      type: 'string',
+      default: ''
+    },
+    anchorPlacement: {
+      type: 'string',
+      default: ''
+    }
+  },
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__.default,
+  save: _save__WEBPACK_IMPORTED_MODULE_3__.default
+});
+
+/***/ }),
+
+/***/ "./src/js/gutenberg/blocks/aos-control/save.js":
+/*!*****************************************************!*\
+  !*** ./src/js/gutenberg/blocks/aos-control/save.js ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Save = function Save(_ref) {
+  var attributes = _ref.attributes;
+  var fade = attributes.fade,
+      flip = attributes.flip,
+      slide = attributes.slide,
+      zoom = attributes.zoom,
+      offset = attributes.offset,
+      delay = attributes.delay,
+      duration = attributes.duration,
+      easing = attributes.easing,
+      anchorPlacement = attributes.anchorPlacement;
+  return /*#__PURE__*/React.createElement("div", {
+    "data-aos": fade + flip + slide + zoom,
+    "data-aos-anchor-placement": anchorPlacement,
+    "data-aos-easing": easing,
+    "data-aos-duration": duration,
+    "data-aos-delay": delay,
+    "data-aos-offset": offset
+  }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks.Content, null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Save);
+
+/***/ }),
+
 /***/ "./src/js/gutenberg/blocks/background/edit.js":
 /*!****************************************************!*\
   !*** ./src/js/gutenberg/blocks/background/edit.js ***!
@@ -2712,6 +3165,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _gutenberg_blocks_mp_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./gutenberg/blocks/mp-control */ "./src/js/gutenberg/blocks/mp-control/index.js");
 /* harmony import */ var _gutenberg_blocks_sizes_control__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./gutenberg/blocks/sizes-control */ "./src/js/gutenberg/blocks/sizes-control/index.js");
 /* harmony import */ var _gutenberg_blocks_positioning_control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./gutenberg/blocks/positioning-control */ "./src/js/gutenberg/blocks/positioning-control/index.js");
+/* harmony import */ var _gutenberg_blocks_aos_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./gutenberg/blocks/aos-control */ "./src/js/gutenberg/blocks/aos-control/index.js");
+
 
 
 

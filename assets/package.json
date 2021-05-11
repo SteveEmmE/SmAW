@@ -48,6 +48,8 @@
     "webpack-cli": "^4.5.0"
   },
   "dependencies": {
+    "aos": "^2.3.4",
+    "rellax": "^1.12.1",
     "reset-css": "^5.0.1"
   },
   "postcss": {

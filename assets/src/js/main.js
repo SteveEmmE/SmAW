@@ -1,6 +1,11 @@
-import './clock';
+/* AOS Control Block */
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-//Images
+AOS.init();
 
-import '../img/cat.jpg';
 
+/** Parallax Control Block */
+import Rellax from 'rellax';
+
+let rellax = new Rellax('.rellax', {}); 
