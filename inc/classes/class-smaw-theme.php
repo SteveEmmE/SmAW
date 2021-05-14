@@ -23,6 +23,7 @@ class SMAW_THEME {
         Meta_Boxes::get_instance();
         Sidebars::get_instance();
         Gutenberg::get_instance();
+        Customizer::get_instance();
 
         $this->setup_hooks();
     }

@@ -1,1 +1,3 @@
 # SmAW
+
+WordPress Template
