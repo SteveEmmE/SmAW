@@ -625,7 +625,10 @@ aos__WEBPACK_IMPORTED_MODULE_0___default().init();
 /** Parallax Control Block */
 
 
-var rellax = new (rellax__WEBPACK_IMPORTED_MODULE_2___default())('.rellax', {});
+
+if (jQuery('.rellax').length != 0) {
+  var rellax = new (rellax__WEBPACK_IMPORTED_MODULE_2___default())('.rellax', {});
+}
 }();
 /******/ })()
 ;

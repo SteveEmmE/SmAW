@@ -54,7 +54,8 @@ class Assets{
      * Register the global scripts
      */
     public function register_scripts(){
-        wp_enqueue_script('smaw-main-js', SMAW_BUILD_JS_URI . '/main.js', [], filemtime(SMAW_BUILD_JS_PATH . '/main.js'), true);
+        wp_enqueue_script('jquery', $in_footer = true);
+        wp_enqueue_script('smaw-main-js', SMAW_BUILD_JS_URI . '/main.js', ['jquery'], filemtime(SMAW_BUILD_JS_PATH . '/main.js'), true);
 
     }
 

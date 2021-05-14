@@ -9,7 +9,7 @@ get_header();
 ?>
 
 
-<main>
+<main style="width:100%">
     <?php if(have_posts()): 
             while(have_posts()): 
                 the_post();?>

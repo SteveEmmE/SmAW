@@ -1,5 +1,5 @@
 import {InspectorControls, InnerBlocks} from '@wordpress/block-editor';
-import {PanelBody, RangeControl, SelectControl} from '@wordpress/components';
+import {PanelBody, RangeControl, SelectControl, ToggleControl} from '@wordpress/components';
 
 
 const Edit = ({attributes, setAttributes}) => {
@@ -13,7 +13,8 @@ const Edit = ({attributes, setAttributes}) => {
         delay,
         duration,
         easing,
-        anchorPlacement
+        anchorPlacement,
+        once
     } = attributes;
 
 
@@ -29,6 +30,8 @@ const Edit = ({attributes, setAttributes}) => {
     let onChangeDelay = (newValue) => setAttributes({delay: newValue});
     let onChangeDuration = (newValue) => setAttributes({duration: newValue});
 
+    let onChangeOnce = (newValue) => setAttributes({once: newValue});
+
 
 
 
@@ -38,7 +41,7 @@ const Edit = ({attributes, setAttributes}) => {
 
             <PanelBody title="Fade Animation">
                 <SelectControl
-                    label={ 'Select the direction:' }
+                    label={ 'Select fade direction:' }
                     value={ fade }
                     onChange={  onChangeFade }
                     options={ [
@@ -57,7 +60,7 @@ const Edit = ({attributes, setAttributes}) => {
 
             <PanelBody title="Flip Animation">
                 <SelectControl
-                    label={ 'Select the direction:' }
+                    label={ 'Select flip direction:' }
                     value={ flip }
                     onChange={  onChangeFlip }
                     options={ [
@@ -72,7 +75,7 @@ const Edit = ({attributes, setAttributes}) => {
 
             <PanelBody title="Slide Animation">
                 <SelectControl
-                    label={ 'Select the direction:' }
+                    label={ 'Select slide direction:' }
                     value={ slide }
                     onChange={  onChangeSlide }
                     options={ [
@@ -87,7 +90,7 @@ const Edit = ({attributes, setAttributes}) => {
 
             <PanelBody title="Zoom Animation">
                 <SelectControl
-                    label={ 'Select the direction:' }
+                    label={ 'Select zoom direction:' }
                     value={ zoom }
                     onChange={  onChangeZoom }
                     options={ [
@@ -108,11 +111,10 @@ const Edit = ({attributes, setAttributes}) => {
 
             <PanelBody title="Anchor Placement">
                 <SelectControl
-                    label={ 'Select the option:' }
+                    label={ 'Defines which position of the element regarding to window should trigger the animation (element-window):' }
                     value={ anchorPlacement }
                     onChange={  onChangeAnchorPlacement }
                     options={ [
-                        { value: '', label: 'none'},
                         { value: 'top-bottom', label: 'top-bottom'},
                         { value: 'top-center', label: 'top-center'},
                         { value: 'top-top', label: 'top-top'},
@@ -132,9 +134,8 @@ const Edit = ({attributes, setAttributes}) => {
                     value={ easing }
                     onChange={  onChangeEasing }
                     options={ [
-                        { value: '', label: 'none'},
-                        { value: 'linear', label:'linear'},
                         { value: 'ease', label: 'ease'},
+                        { value: 'linear', label:'linear'},
                         { value: 'ease-in', label: 'ease-in'},
                         { value: 'ease-out', label: 'ease-out'},
                         { value: 'ease-in-out', label: 'ease-in-out'},
@@ -159,34 +160,50 @@ const Edit = ({attributes, setAttributes}) => {
 
             <PanelBody title="Offset">
                 <RangeControl
-                    label="Unit Width"
+                    label="Offset (in px) from the original trigger point"
                     value={offset}
                     onChange={onChangeOffset}
                     step={50}
                     min={ 0 }
                     max={ 4000 }
+                    initialPosition={150}
                 />
             </PanelBody>
 
             <PanelBody title="Delay">
                 <RangeControl
-                    label="Unit Width"
+                    label="Values from 0 to 3000, with step 50ms"
                     value={delay}
                     onChange={onChangeDelay}
                     step={50}
                     min={ 0 }
                     max={ 4000 }
+                    initialPosition={0}
                 />
             </PanelBody>
 
             <PanelBody title="Duration">
                 <RangeControl
-                    label="Unit Width"
+                    label="Values from 0 to 3000, with step 50ms"
                     value={duration}
                     onChange={onChangeDuration}
                     step={50}
                     min={ 0}
                     max={ 4000 }
+                    initialPosition={400}
+                />
+            </PanelBody>
+
+            <PanelBody>
+                <ToggleControl
+                    label="Whether animation should happen only once - while scrolling down"
+                    help={
+                        once
+                            ? 'only while scrolling down'
+                            : 'every time the trigger has reached'
+                    }
+                    checked={ once }
+                    onChange={ onChangeOnce }
                 />
             </PanelBody>
             

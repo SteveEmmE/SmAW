@@ -20,12 +20,14 @@ registerBlockType('smaw-blocks/aos-control', {
         slide:{type: 'string', default: ''},
         zoom:{type: 'string', default: ''},
 
-        offset:{type: 'string', default: ''},
-        delay:{type: 'string', default: ''},
-        duration:{type: 'string', default: ''},
-        easing:{type: 'string', default: ''},
+        offset:{type: 'number', default: 150},
+        delay:{type: 'number', default: 0},
+        duration:{type: 'number', default: 400},
+        easing:{type: 'string', default: 'ease'},
 
-        anchorPlacement:{type: 'string', default: ''},
+        anchorPlacement:{type: 'string', default: 'top-bottom'},
+
+        once:{type: 'boolean', default:false}
 
     },
 

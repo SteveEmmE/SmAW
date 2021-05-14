@@ -1,0 +1,15 @@
+.parallax-container{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display:block;
+    
+}
+.rellax{
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    position: absolute;
+    display:block;
+}

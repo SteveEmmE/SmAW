@@ -1,0 +1,13 @@
+.wp-block-columns{
+    display: flex;
+    flex-wrap: wrap;
+    
+    /* Classi da aggiungere manualmente */
+    &.are-justified-left{ justify-content: flex-start; }
+    &.are-justified-right{ justify-content: flex-end; }
+    &.are-justified-center{ justify-content: center; }
+    /**/
+
+    &.are-vertically-aligned-center{ align-items: center;}
+}
+

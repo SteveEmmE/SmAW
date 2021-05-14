@@ -2,10 +2,17 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+
 AOS.init();
 
 
 /** Parallax Control Block */
 import Rellax from 'rellax';
 
-let rellax = new Rellax('.rellax', {}); 
+if(jQuery('.rellax').length != 0){
+    let rellax = new Rellax('.rellax', {});
+}
+
+
+
+ 

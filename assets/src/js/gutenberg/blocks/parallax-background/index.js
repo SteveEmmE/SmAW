@@ -21,7 +21,7 @@ registerBlockType('smaw-blocks/parallax-background', {
         speedMobile: { type: 'number', default: 0},
         speedTablet: { type: 'number', default: 0},
         speedDesktop: { type: 'number', default: 0},
-        zIndex:{ type: 'number', default: -100 },
+        zIndex:{ type: 'number', default: 0 },
         sectionHeight: {type: 'number', default: 400},
         sectionWidth: {type: 'number', default: 100},
         positionX:{type: 'number', default: 0},

@@ -1,0 +1,19 @@
+[data-title="Smaw Image"],
+.wp-block-smaw-blocks-custom-image
+{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    img{
+        margin-left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        opacity: 0;
+
+        &.foreground{
+            opacity: 1;
+        }
+
+    }
+}
