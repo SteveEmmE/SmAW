@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'ArianLT';
+    src: url('ArianLT-Heavy.eot');
+    src: url('ArianLT-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('ArianLT-Heavy.woff2') format('woff2'),
+        url('ArianLT-Heavy.woff') format('woff'),
+        url('ArianLT-Heavy.ttf') format('truetype'),
+        url('ArianLT-Heavy.svg#ArianLT-Heavy') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArianLT';
+    src: url('ArianLT-Light.eot');
+    src: url('ArianLT-Light.eot?#iefix') format('embedded-opentype'),
+        url('ArianLT-Light.woff2') format('woff2'),
+        url('ArianLT-Light.woff') format('woff'),
+        url('ArianLT-Light.ttf') format('truetype'),
+        url('ArianLT-Light.svg#ArianLT-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArianLT';
+    src: url('ArianLT-Bold.eot');
+    src: url('ArianLT-Bold.eot?#iefix') format('embedded-opentype'),
+        url('ArianLT-Bold.woff2') format('woff2'),
+        url('ArianLT-Bold.woff') format('woff'),
+        url('ArianLT-Bold.ttf') format('truetype'),
+        url('ArianLT-Bold.svg#ArianLT-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArianLT-Demi';
+    src: url('ArianLT-Demi.eot');
+    src: url('ArianLT-Demi.eot?#iefix') format('embedded-opentype'),
+        url('ArianLT-Demi.woff2') format('woff2'),
+        url('ArianLT-Demi.woff') format('woff'),
+        url('ArianLT-Demi.ttf') format('truetype'),
+        url('ArianLT-Demi.svg#ArianLT-Demi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

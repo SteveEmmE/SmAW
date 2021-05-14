@@ -2,7 +2,7 @@
 @import "essentials";
 
 // Generic
-@import "2-generic/generic";
+/* @import "2-generic/generic";
 @import "2-generic/gutenberg";
 @import "2-generic/slick-carousel";
 @import "2-generic/search-results";
@@ -10,6 +10,11 @@
 // Layouts.
 @import "4-layouts/posts/meta";
 @import "4-layouts/posts/pagination";
-@import "4-layouts/header/nav/navigation";
+@import "4-layouts/header/nav/navigation"; */
 
 // Components
+
+
+body{
+    font-family: $font__main;
+}

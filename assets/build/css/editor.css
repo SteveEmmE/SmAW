@@ -1,55 +1,56 @@
-/* arsenal-regular - latin */
 @font-face {
-    font-family: 'Arsenal';
+    font-family: 'ArianLT';
+    src: url(../../src/library/fonts/ArianLT-Heavy.eot);
+    src: url(../../src/library/fonts/ArianLT-Heavy.eot?#iefix) format('embedded-opentype'),
+        url(../../src/library/fonts/ArianLT-Heavy.woff2) format('woff2'),
+        url(../../src/library/fonts/ArianLT-Heavy.woff) format('woff'),
+        url(../../src/library/fonts/ArianLT-Heavy.ttf) format('truetype'),
+        url(../../src/library/fonts/ArianLT-Heavy.svg#ArianLT-Heavy) format('svg');
+    font-weight: 900;
     font-style: normal;
-    font-weight: 400;
-    src: url(../../src/library/fonts/arsenal-v5-latin-regular.eot); /* IE9 Compat Modes */
-    src: local(''),
-         url(../../src/library/fonts/arsenal-v5-latin-regular.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */
-         url(../../src/library/fonts/arsenal-v5-latin-regular.woff2) format('woff2'), /* Super Modern Browsers */
-         url(../../src/library/fonts/arsenal-v5-latin-regular.woff) format('woff'), /* Modern Browsers */
-         url(../../src/library/fonts/arsenal-v5-latin-regular.ttf) format('truetype'), /* Safari, Android, iOS */
-         url(../../src/library/fonts/arsenal-v5-latin-regular.svg#Arsenal) format('svg'); /* Legacy iOS */
-  }
-  /* arsenal-italic - latin */
-  @font-face {
-    font-family: 'Arsenal';
-    font-style: italic;
-    font-weight: 400;
-    src: url(../../src/library/fonts/arsenal-v5-latin-italic.eot); /* IE9 Compat Modes */
-    src: local(''),
-         url(../../src/library/fonts/arsenal-v5-latin-italic.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */
-         url(../../src/library/fonts/arsenal-v5-latin-italic.woff2) format('woff2'), /* Super Modern Browsers */
-         url(../../src/library/fonts/arsenal-v5-latin-italic.woff) format('woff'), /* Modern Browsers */
-         url(../../src/library/fonts/arsenal-v5-latin-italic.ttf) format('truetype'), /* Safari, Android, iOS */
-         url(../../src/library/fonts/arsenal-v5-latin-italic.svg#Arsenal) format('svg'); /* Legacy iOS */
-  }
-  /* arsenal-700 - latin */
-  @font-face {
-    font-family: 'Arsenal';
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArianLT';
+    src: url(../../src/library/fonts/ArianLT-Light.eot);
+    src: url(../../src/library/fonts/ArianLT-Light.eot?#iefix) format('embedded-opentype'),
+        url(../../src/library/fonts/ArianLT-Light.woff2) format('woff2'),
+        url(../../src/library/fonts/ArianLT-Light.woff) format('woff'),
+        url(../../src/library/fonts/ArianLT-Light.ttf) format('truetype'),
+        url(../../src/library/fonts/ArianLT-Light.svg#ArianLT-Light) format('svg');
+    font-weight: 300;
     font-style: normal;
-    font-weight: 700;
-    src: url(../../src/library/fonts/arsenal-v5-latin-700.eot); /* IE9 Compat Modes */
-    src: local(''),
-         url(../../src/library/fonts/arsenal-v5-latin-700.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */
-         url(../../src/library/fonts/arsenal-v5-latin-700.woff2) format('woff2'), /* Super Modern Browsers */
-         url(../../src/library/fonts/arsenal-v5-latin-700.woff) format('woff'), /* Modern Browsers */
-         url(../../src/library/fonts/arsenal-v5-latin-700.ttf) format('truetype'), /* Safari, Android, iOS */
-         url(../../src/library/fonts/arsenal-v5-latin-700.svg#Arsenal) format('svg'); /* Legacy iOS */
-  }
-  /* arsenal-700italic - latin */
-  @font-face {
-    font-family: 'Arsenal';
-    font-style: italic;
-    font-weight: 700;
-    src: url(../../src/library/fonts/arsenal-v5-latin-700italic.eot); /* IE9 Compat Modes */
-    src: local(''),
-         url(../../src/library/fonts/arsenal-v5-latin-700italic.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */
-         url(../../src/library/fonts/arsenal-v5-latin-700italic.woff2) format('woff2'), /* Super Modern Browsers */
-         url(../../src/library/fonts/arsenal-v5-latin-700italic.woff) format('woff'), /* Modern Browsers */
-         url(../../src/library/fonts/arsenal-v5-latin-700italic.ttf) format('truetype'), /* Safari, Android, iOS */
-         url(../../src/library/fonts/arsenal-v5-latin-700italic.svg#Arsenal) format('svg'); /* Legacy iOS */
-  }
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArianLT';
+    src: url(../../src/library/fonts/ArianLT-Bold.eot);
+    src: url(../../src/library/fonts/ArianLT-Bold.eot?#iefix) format('embedded-opentype'),
+        url(../../src/library/fonts/ArianLT-Bold.woff2) format('woff2'),
+        url(../../src/library/fonts/ArianLT-Bold.woff) format('woff'),
+        url(../../src/library/fonts/ArianLT-Bold.ttf) format('truetype'),
+        url(../../src/library/fonts/ArianLT-Bold.svg#ArianLT-Bold) format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArianLT-Demi';
+    src: url(../../src/library/fonts/ArianLT-Demi.eot);
+    src: url(../../src/library/fonts/ArianLT-Demi.eot?#iefix) format('embedded-opentype'),
+        url(../../src/library/fonts/ArianLT-Demi.woff2) format('woff2'),
+        url(../../src/library/fonts/ArianLT-Demi.woff) format('woff'),
+        url(../../src/library/fonts/ArianLT-Demi.ttf) format('truetype'),
+        url(../../src/library/fonts/ArianLT-Demi.svg#ArianLT-Demi) format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
 /*---------------------------------
 		Colors Variables
 -----------------------------------*/
@@ -62,6 +63,14 @@
 /*---------------------------------
 		Element Colors
 -----------------------------------*/
+/* $color__border-input: $gray-100;
+$color__text-input: $dark-gray-200;
+$color__text-input-focus: $black;
+
+
+// <hr>
+$color__background-hr: $gray-150;
+$color__background-table: $blue-20; */
 /*---------------------------------
 		Border Colors
 -----------------------------------*/
@@ -71,423 +80,10 @@
 /*---------------------------------
 		Body Text Font Sizes
 -----------------------------------*/
-/**
- * Add font scale with media query as per configuration on $body-text
- * Ex: @include body-text( h1 );
- * This will add font-size and line-height with different breakpoints.
- */
-html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
-
-/* stylelint-disable */
-*,
-*:before,
-*:after {
-  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
-
-/* stylelint-enable */
-/**
- * 1. Fallback for when there is no custom background color defined. [WordPress]
- * 2. Remove default margin. [normalize.css]
- * 3. Set the base elements `font-size` to the value of your choosing.
- * 4. Work out the unitless `line-height` for your project based around your
- *    desired `line-height` (defined previously in pixels), and your projects
- *    base font size.
- */
-body {
-  margin: 0;
-  font-family: "Lato", sans-serif;
-  font-size: 16px;
-  line-height: 1.43;
-  background: #fff;
-  color: #414042; }
-  @media (min-width: 64em) {
-    body {
-      font-size: 18px;
-      line-height: 1.43; } }
-  body.mce-content-body {
-    font-family: inherit;
-    margin: 15px; }
-
-blockquote,
-q,
-blockquote.wp-block-quote {
-  quotes: "" "";
-  border-left: 4px solid #eee;
-  font-style: italic;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 16px;
-  background: transparent;
-  text-align: left;
-  /* stylelint-disable */
-  /* stylelint-enable */ }
-  blockquote p,
-  q p,
-  blockquote.wp-block-quote p {
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400; }
-  blockquote cite,
-  blockquote .wp-block-quote__citation,
-  q cite,
-  q .wp-block-quote__citation,
-  blockquote.wp-block-quote cite,
-  blockquote.wp-block-quote .wp-block-quote__citation {
-    display: block;
-    font-size: 16px;
-    font-weight: 700;
-    margin-top: 12px;
-    text-transform: uppercase; }
-  blockquote p:last-of-type,
-  q p:last-of-type,
-  blockquote.wp-block-quote p:last-of-type {
-    margin-bottom: 0; }
-  blockquote.is-large, blockquote.is-style-large,
-  q.is-large,
-  q.is-style-large,
-  blockquote.wp-block-quote.is-large,
-  blockquote.wp-block-quote.is-style-large {
-    margin: 0 auto; }
-
-/* Pull Quote
---------------------------------------------- */
-.wp-block-pullquote {
-  border: none;
-  padding: 0; }
-  .wp-block-pullquote blockquote {
-    border-left: 0;
-    border-top: 8px solid #eee;
-    border-bottom: 8px solid #eee;
-    padding: 16px 0;
-    text-align: center;
-    max-width: 50%;
-    margin: 0 auto; }
-  .wp-block-pullquote.alignleft blockquote, .wp-block-pullquote.alignright blockquote {
-    max-width: 100%; }
-
-img {
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle; }
-
-/* Image Support
---------------------------------------------- */
-.wp-block-image.size-medium img, .wp-block-image.size-thumbnail img, .wp-block-image.is-resized img {
-  width: auto; }
-
-.wp-block-image figcaption {
-  text-align: left;
-  padding: 10px 0; }
-
-figure {
-  max-width: 100%; }
-
-a {
-  cursor: pointer;
-  color: #0192cc;
-  text-decoration: none;
-  -webkit-transition: 0.3s;
-  transition: 0.3s; }
-  a:focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px; }
-  a:hover,
-  a a:active {
-    color: #355180;
-    text-decoration: underline;
-    outline: 0; }
-
-sub,
-sup {
-  position: relative;
-  font-size: 75%;
-  line-height: 0;
-  vertical-align: baseline; }
-
-sup {
-  top: -0.5em; }
-
-sub {
-  bottom: -0.25em; }
-
-/*------------------------------------*\
-    #HEADINGS
-\*------------------------------------*/
-/* stylelint-disable */
-h1 {
-  font-size: 31.5px;
-  line-height: 1.27; }
-
-h2 {
-  font-size: 31.5px;
-  line-height: 1.27; }
-
-h3 {
-  font-size: 24.5px;
-  line-height: 1.64; }
-
-h4 {
-  font-size: 17.5px;
-  line-height: 1.142; }
-
-h5 {
-  font-size: 14px;
-  line-height: 1.43; }
-
-h6 {
-  font-size: 11.9px;
-  line-height: 1.681; }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 10px 0;
-  text-rendering: optimizelegibility; }
-
-/*---------------------------
-		Lists
----------------------------*/
-ul,
-ol {
-  margin: 0 0 18px 0; }
-  ul.no-bullet,
-  ul.no-bullet ul,
-  ul.no-bullet ol,
-  ol.no-bullet,
-  ol.no-bullet ul,
-  ol.no-bullet ol {
-    margin: 0;
-    padding: 0;
-    list-style: none; }
-
-ul {
-  padding: 0;
-  margin: 0 0 10px 25px; }
-  @media (min-width: 48em) {
-    ul {
-      margin: 0 0 5px 0; } }
-
-li > ul,
-li > ol {
-  margin-bottom: 0;
-  margin-left: 18px; }
-
-dt {
-  font-weight: 700; }
-
-dd {
-  margin: 0 24px 24px; }
-
-p:empty {
-  display: none; }
-
-li > ul,
-li > ol {
-  margin-bottom: 0; }
-
-/*------------------------------------*\
-    #TABLE
-\*------------------------------------*/
-table {
-  max-width: 100%;
-  background-color: transparent;
-  border-collapse: collapse;
-  border-spacing: 0; }
-  @media (min-width: 48em) {
-    table {
-      max-width: 350px; } }
-
-/* Button
---------------------------------------------- */
-.wp-block-button .wp-block-button__link {
-  border-radius: 0;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 18px;
-  padding: 20px 24px; }
-  .wp-block-button .wp-block-button__link:hover {
-    background: #ccc;
-    text-decoration: none; }
-
-/* stylelint-enable */
-/*------------------------------------*\
-    Form Fields
-\*------------------------------------*/
-input,
-button,
-select,
-textarea {
-  font-family: "Lato", sans-serif; }
-
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
-.uneditable-input {
-  display: inline-block;
-  height: 20px;
-  width: 206px;
-  padding: 14px 6px;
-  /* adjusting border-box difference on live site */
-  margin: 0 0 10px;
-  line-height: 1.43;
-  color: #555;
-  vertical-align: middle;
-  border-radius: 4px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border linear 0.2s, -webkit-box-shadow linear 0.2s;
-  transition: border linear 0.2s, -webkit-box-shadow linear 0.2s;
-  transition: border linear 0.2s, box-shadow linear 0.2s;
-  transition: border linear 0.2s, box-shadow linear 0.2s, -webkit-box-shadow linear 0.2s; }
-
-textarea {
-  height: auto;
-  padding: 4px 6px;
-  max-width: 100%;
-  outline: none;
-  overflow: auto; }
-
-select {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  -webkit-transition: none;
-  transition: none;
-  width: 220px;
-  padding: 0 6px; }
-
-select,
-input[type="file"] {
-  height: 30px;
-  line-height: 2.15; }
-
-button {
-  margin: 0; }
-
-label {
-  display: block;
-  margin-bottom: 5px; }
-
-label,
-input,
-button,
-select,
-textarea {
-  font-size: 16px;
-  line-height: 1.43;
-  font-weight: 400; }
-  @media (min-width: 64em) {
-    label,
-    input,
-    button,
-    select,
-    textarea {
-      font-size: 18px;
-      line-height: 1.43; } }
-
-label,
-select,
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"],
-input[type="radio"],
-input[type="checkbox"] {
-  cursor: pointer; }
-
-input[type="search"] {
-  -webkit-appearance: textfield; }
-
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none; }
-
-/*------------------------------------*\
-    #OTHER
-\*------------------------------------*/
-pre {
-  display: block;
-  padding: 9.5px;
-  margin: 0 0 10px;
-  font-size: 13px;
-  line-height: 1.54;
-  word-break: break-all;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  background-color: #e2eaee;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  font-family: "Lato", sans-serif, monospace; }
-
-code {
-  padding: 2px 4px;
-  color: #d14;
-  white-space: nowrap;
-  background-color: #f7f7f9;
-  border: 1px solid #e1e1e8;
-  font-family: "Lato", sans-serif, monospace;
-  font-size: 12px;
-  border-radius: 3px; }
-
-/* Separator
---------------------------------------------- */
-.wp-block-separator,
-hr {
-  width: 100%;
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #fff;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box; }
-  .wp-block-separator:not(.is-style-dots),
-  hr:not(.is-style-dots) {
-    background-color: #eff3f6;
-    border: 0;
-    height: 1px; }
-  .wp-block-separator:not(.is-style-wide):not(.is-style-dots),
-  hr:not(.is-style-wide):not(.is-style-dots) {
-    width: 100%;
-    height: 4px;
-    background: transparent; }
-    .wp-block-separator:not(.is-style-wide):not(.is-style-dots)::before,
-    hr:not(.is-style-wide):not(.is-style-dots)::before {
-      content: "";
-      display: block;
-      height: 4px;
-      width: 40px;
-      background: #eff3f6; }
-  .wp-block-separator.is-style-dots::before,
-  hr.is-style-dots::before {
-    color: #eff3f6;
-    font-size: 18px;
-    letter-spacing: 12px;
-    padding-left: 12px; }
-
+/* // Generic.
+@import "../2-generic/elements";
+@import "../2-generic/buttons";
+@import "../2-generic/editor-color-classes"; */
 /* Page Width */
 .wp-block {
   max-width: 1600px; }
