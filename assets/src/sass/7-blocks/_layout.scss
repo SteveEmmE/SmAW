@@ -11,3 +11,6 @@
     &.are-vertically-aligned-center{ align-items: center;}
 }
 
+.alignfull{ @include container-size('full') }
+.alignwide{ @include container-size('wide') }
+

@@ -4,18 +4,8 @@ html {
 	@include border-box;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
+	@include body-text( html );
 }
-
-/* stylelint-disable */
-*,
-*:before,
-*:after {
-	/* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-	box-sizing: inherit;
-
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-/* stylelint-enable */
 
 /**
  * 1. Fallback for when there is no custom background color defined. [WordPress]
@@ -27,36 +17,16 @@ html {
  */
 body {
 	@include font-family();
-	@include body-text( body );
-
-	background: $color__background-body;
-	color: $color__body-text;
-
+	@include colors-tx-bg($white, $charleston-green);
 }
+
 
 
 
 /*------------------------------------*\
     #LINKS
 \*------------------------------------*/
-a {
-	cursor: pointer;
-	color: $color__link;
-	text-decoration: none;
-	transition: 0.3s;
-
-	&:focus {
-		outline: 5px auto -webkit-focus-ring-color;
-		outline-offset: -2px;
-	}
-
-	&:hover,
-	a:active {
-		color: $color__link-hover;
-		text-decoration: underline;
-		outline: 0;
-	}
-}
+a { @include links($color__link, $color__link-hover); }
 
 /*------------------------------------*\
     #SUB & SUP
@@ -76,29 +46,13 @@ sub { bottom: -0.25em; }
     #HEADINGS
 \*------------------------------------*/
 /* stylelint-disable */
-h1 {
-	@include body-text( h1 )
-}
-
-h2 {
-	@include body-text( h2 )
-}
-
-h3 {
-	@include body-text( h3 )
-}
-
-h4 {
-	@include body-text( h4 )
-}
-
-h5 {
-	@include body-text( h5 )
-}
-
-h6 {
-	@include body-text( h6 )
-}
+h1 { @include body-text( h1 ) }
+h2 { @include body-text( h2 ) }
+h3 { @include body-text( h3 ) }
+h4 { @include body-text( h4 ) }
+h5 { @include body-text( h5 ) }
+h6 { @include body-text( h6 ) }
+p  { @include body-text( p  ) }
 
 h1,
 h2,
@@ -106,7 +60,6 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 10px 0;
 	text-rendering: optimizelegibility;
 }
 
@@ -116,8 +69,6 @@ h6 {
 
 ul,
 ol {
-	margin: 0 0 18px 0;
-
 	&.no-bullet {
 		&,
 		ul,
@@ -131,11 +82,6 @@ ol {
 
 ul {
 	padding: 0;
-	margin: 0 0 10px 25px;
-
-	@include mq( md ) {
-		margin: 0 0 5px 0;
-	}
 }
 
 li > ul,

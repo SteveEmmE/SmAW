@@ -1,0 +1,19 @@
+/*-----------------
+  Navbar
+------------------*/
+.navbar{
+    @include colors-tx-bg($cinnabar, $white);
+
+    .top-menu__item{
+      display: inline-block;
+    }
+
+    a { 
+      @include links($white, $barn-red); 
+      text-transform: uppercase;
+      font-weight: $font__bold;
+      font-size: 2.1rem;
+  }
+    
+}
+

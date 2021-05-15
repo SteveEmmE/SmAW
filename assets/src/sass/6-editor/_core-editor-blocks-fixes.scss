@@ -1,6 +1,9 @@
 /* Page Width */
-.wp-block {
-    max-width: 1600px;
+.wp-block[data-align="full"]{
+    max-width: $container-fluid;
+}
+.wp-block[data-align="wide"]{
+    max-width: $container-max-width;
 }
 
 

@@ -17,7 +17,7 @@
 	word-wrap: normal;
 
 	&:focus {
-		border-radius: $border-radius;
+		border-radius: 5px;
 		box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 		clip: auto;
 		clip-path: none;
@@ -65,12 +65,18 @@
 }
 
 /*---------------------------
+		Width 
+---------------------------*/
+
+.container{ @include container-size('wide'); }
+.container-fluid{ @include container-size('full'); }
+
+
+/*---------------------------
 		Others
 ---------------------------*/
 
-.hide {
-	display: none;
-}
+
 
 .hidden {
 	visibility: hidden;
@@ -79,3 +85,26 @@
 .visible {
 	visibility: visible;
 }
+
+
+/*------------
+    Display
+------------*/
+.d-block{ display: block; }
+.d-hide { display: none; }
+
+// Flex
+.d-flex{ 
+	display: flex;
+
+	&.flex-between{ justify-content: space-between; }
+	&.align-center { align-items: center; }
+}
+
+
+/*---------------------
+    Margin & Padding
+-----------------------*/
+
+@include margin($margin-range);
+@include padding($padding-range);

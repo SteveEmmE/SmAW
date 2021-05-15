@@ -10,14 +10,15 @@ $font__fallback: sans-serif;
 // Global theme font.
 $font__main: "ArianLT", $font__fallback;
 
-// Base line height.
-$font__base-line-height: 30px;
 
 /*------------------------
 		Font Weights
 --------------------------*/
 
-
+$font__thin: 100;
+$font__semibold: 300;
+$font__bold: 600;
+$font_heavy: 900;
 
 
 /*---------------------------------
@@ -27,68 +28,87 @@ $font__base-line-height: 30px;
 $body-text: (
 	"h1": (
 		"sm": (
-			font-size: 31.5px,
+			font-size: 4rem,
 			line-height: 1.27,
-		),
+		)
 	),
 	"h2": (
 		"sm": (
-			font-size: 31.5px,
-			line-height: 1.27,
-		),
+			font-size: 3.5rem,
+			line-height: 1.27
+		)
 	),
 	"h3": (
 		"sm": (
-			font-size: 24.5px,
-			line-height: 1.64,
+			font-size: 3.1rem,
+			line-height: 1.64
 		),
 	),
 	"h4": (
 		"sm": (
-			font-size: 17.5px,
-			line-height: 1.142,
+			font-size: 2.8rem,
+			line-height: 1.142
 		),
 	),
 	"h5": (
 		"sm": (
-			font-size: 14px,
-			line-height: 1.43,
+			font-size: 2.4rem,
+			line-height: 1.43
 		),
 	),
 	"h6": (
 		"sm": (
-			font-size: 11.9px,
-			line-height: 1.681,
+			font-size: 2.2rem,
+			line-height: 1.4
 		),
 	),
-	"body": (
+	"p": (
 		"sm": (
-			font-size: 16px,
-			line-height: 1.43,
+			font-size: 2.1rem,
+			line-height: 1.4
+		),
+	),
+	"html": (
+		"sm": (
+			font-size: 8px,
+			line-height: 1.2
+		),
+		"md": (
+			font-size: 9px,
+			line-height: 1.2
 		),
 		"lg": (
-			font-size: 18px,
-			line-height: 1.43,
+			font-size: 9px,
+			line-height: 1.3
 		),
+		"xl": (
+			font-size: 10px,
+			line-height: 1.4
+		),
+		"xxl": (
+			font-size: 10px,
+			line-height: 1.5
+		),
+
 	),
 	"l": (
 		"sm": (
-			font-size: 18px,
+			font-size: 1.5em,
 		),
 	),
 	"m": (
 		"sm": (
-			font-size: 16px,
+			font-size: 1.2em,
 		),
 	),
 	"s": (
 		"sm": (
-			font-size: 12px,
+			font-size: 0.8em,
 		),
 	),
 	"xs": (
 		"sm": (
-			font-size: 11px,
+			font-size: 0.6em,
 		),
 	),
 );

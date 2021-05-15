@@ -19,7 +19,7 @@
         url(../../src/fonts/arianLT/ArianLT-Light.woff) format('woff'),
         url(../../src/fonts/arianLT/ArianLT-Light.ttf) format('truetype'),
         url(../../src/fonts/arianLT/ArianLT-Light.svg#ArianLT-Light) format('svg');
-    font-weight: 300;
+    font-weight: 100;
     font-style: normal;
     font-display: swap;
 }
@@ -32,20 +32,20 @@
         url(../../src/fonts/arianLT/ArianLT-Bold.woff) format('woff'),
         url(../../src/fonts/arianLT/ArianLT-Bold.ttf) format('truetype'),
         url(../../src/fonts/arianLT/ArianLT-Bold.svg#ArianLT-Bold) format('svg');
-    font-weight: bold;
+    font-weight: 600;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'ArianLT-Demi';
+    font-family: 'ArianLT';
     src: url(../../src/fonts/arianLT/ArianLT-Demi.eot);
     src: url(../../src/fonts/arianLT/ArianLT-Demi.eot?#iefix) format('embedded-opentype'),
         url(../../src/fonts/arianLT/ArianLT-Demi.woff2) format('woff2'),
         url(../../src/fonts/arianLT/ArianLT-Demi.woff) format('woff'),
         url(../../src/fonts/arianLT/ArianLT-Demi.ttf) format('truetype'),
         url(../../src/fonts/arianLT/ArianLT-Demi.svg#ArianLT-Demi) format('svg');
-    font-weight: normal;
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
@@ -83,16 +83,23 @@ $color__background-table: $blue-20; */
 /*---------------------------------
 		Body Text Font Sizes
 -----------------------------------*/
+/*---------------------------
+		Others
+---------------------------*/
 /**
  * Add font scale with media query as per configuration on $body-text
  * Ex: @include body-text( h1 );
  * This will add font-size and line-height with different breakpoints.
  */
+/* Container */
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
+  -webkit-text-size-adjust: 100%;
+  font-size: 8px;
+  line-height: 1.2; }
   html * {
     -webkit-box-sizing: border-box;
             box-sizing: border-box; }
@@ -102,17 +109,29 @@ html {
   html:after {
     -webkit-box-sizing: border-box;
             box-sizing: border-box; }
+  html *:before {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+  html *:after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+  @media (min-width: 45em) {
+    html {
+      font-size: 9px;
+      line-height: 1.2; } }
+  @media (min-width: 60em) {
+    html {
+      font-size: 9px;
+      line-height: 1.3; } }
+  @media (min-width: 71.25em) {
+    html {
+      font-size: 10px;
+      line-height: 1.4; } }
+  @media (min-width: 82.5em) {
+    html {
+      font-size: 10px;
+      line-height: 1.5; } }
 
-/* stylelint-disable */
-*,
-*:before,
-*:after {
-  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
-
-/* stylelint-enable */
 /**
  * 1. Fallback for when there is no custom background color defined. [WordPress]
  * 2. Remove default margin. [normalize.css]
@@ -123,14 +142,8 @@ html {
  */
 body {
   font-family: "ArianLT", sans-serif;
-  font-size: 16px;
-  line-height: 1.43;
-  background: #ffffff;
+  background-color: #ffffff;
   color: #2a2b26; }
-  @media (min-width: 60em) {
-    body {
-      font-size: 18px;
-      line-height: 1.43; } }
 
 /*------------------------------------*\
     #LINKS
@@ -171,28 +184,32 @@ sub {
 \*------------------------------------*/
 /* stylelint-disable */
 h1 {
-  font-size: 31.5px;
+  font-size: 4rem;
   line-height: 1.27; }
 
 h2 {
-  font-size: 31.5px;
+  font-size: 3.5rem;
   line-height: 1.27; }
 
 h3 {
-  font-size: 24.5px;
+  font-size: 3.1rem;
   line-height: 1.64; }
 
 h4 {
-  font-size: 17.5px;
+  font-size: 2.8rem;
   line-height: 1.142; }
 
 h5 {
-  font-size: 14px;
+  font-size: 2.4rem;
   line-height: 1.43; }
 
 h6 {
-  font-size: 11.9px;
-  line-height: 1.681; }
+  font-size: 2.2rem;
+  line-height: 1.4; }
+
+p {
+  font-size: 2.1rem;
+  line-height: 1.4; }
 
 h1,
 h2,
@@ -200,31 +217,23 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 10px 0;
   text-rendering: optimizelegibility; }
 
 /*---------------------------
 		Lists
 ---------------------------*/
-ul,
-ol {
-  margin: 0 0 18px 0; }
-  ul.no-bullet,
-  ul.no-bullet ul,
-  ul.no-bullet ol,
-  ol.no-bullet,
-  ol.no-bullet ul,
-  ol.no-bullet ol {
-    margin: 0;
-    padding: 0;
-    list-style: none; }
+ul.no-bullet,
+ul.no-bullet ul,
+ul.no-bullet ol,
+ol.no-bullet,
+ol.no-bullet ul,
+ol.no-bullet ol {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
 
 ul {
-  padding: 0;
-  margin: 0 0 10px 25px; }
-  @media (min-width: 45em) {
-    ul {
-      margin: 0 0 5px 0; } }
+  padding: 0; }
 
 li > ul,
 li > ol {
@@ -346,17 +355,7 @@ input,
 button,
 select,
 textarea {
-  font-size: 16px;
-  line-height: 1.43;
   font-weight: 400; }
-  @media (min-width: 60em) {
-    label,
-    input,
-    button,
-    select,
-    textarea {
-      font-size: 18px;
-      line-height: 1.43; } }
 
 label,
 select,
@@ -378,6 +377,370 @@ input[type="search"]::-webkit-search-cancel-button {
 /*------------------------------------*\
     #OTHER
 \*------------------------------------*/
+/*---------------------------
+		Accessiblity
+---------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  height: 1px;
+  left: -999em;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal; }
+  .screen-reader-text:focus {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto;
+    -webkit-clip-path: none;
+            clip-path: none;
+    display: block;
+    font-size: 1em;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+    /* Above WP toolbar. */ }
+
+/*---------------------------
+		Alignments
+---------------------------*/
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
+
+.text-center {
+  text-align: center; }
+
+.text-justify {
+  text-align: justify; }
+
+/*---------------------------
+		Width 
+---------------------------*/
+.container {
+  max-width: 1300px;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.container-fluid {
+  max-width: 100%; }
+
+/*---------------------------
+		Others
+---------------------------*/
+.hidden {
+  visibility: hidden; }
+
+.visible {
+  visibility: visible; }
+
+/*------------
+    Display
+------------*/
+.d-block {
+  display: block; }
+
+.d-hide {
+  display: none; }
+
+.d-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .d-flex.flex-between {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+  .d-flex.align-center {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+
+/*---------------------
+    Margin & Padding
+-----------------------*/
+.mt-1 {
+  margin-top: 1rem; }
+
+.mb-1 {
+  margin-bottom: 1rem; }
+
+.ml-1 {
+  margin-left: 1rem; }
+
+.mr-1 {
+  margin-right: 1rem; }
+
+.mx-1 {
+  margin-left: 1rem;
+  margin-right: 1rem; }
+
+.my-1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem; }
+
+.m-1 {
+  margin: 1rem; }
+
+.mt-2 {
+  margin-top: 2rem; }
+
+.mb-2 {
+  margin-bottom: 2rem; }
+
+.ml-2 {
+  margin-left: 2rem; }
+
+.mr-2 {
+  margin-right: 2rem; }
+
+.mx-2 {
+  margin-left: 2rem;
+  margin-right: 2rem; }
+
+.my-2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem; }
+
+.m-2 {
+  margin: 2rem; }
+
+.mt-3 {
+  margin-top: 3rem; }
+
+.mb-3 {
+  margin-bottom: 3rem; }
+
+.ml-3 {
+  margin-left: 3rem; }
+
+.mr-3 {
+  margin-right: 3rem; }
+
+.mx-3 {
+  margin-left: 3rem;
+  margin-right: 3rem; }
+
+.my-3 {
+  margin-top: 3rem;
+  margin-bottom: 3rem; }
+
+.m-3 {
+  margin: 3rem; }
+
+.mt-4 {
+  margin-top: 4rem; }
+
+.mb-4 {
+  margin-bottom: 4rem; }
+
+.ml-4 {
+  margin-left: 4rem; }
+
+.mr-4 {
+  margin-right: 4rem; }
+
+.mx-4 {
+  margin-left: 4rem;
+  margin-right: 4rem; }
+
+.my-4 {
+  margin-top: 4rem;
+  margin-bottom: 4rem; }
+
+.m-4 {
+  margin: 4rem; }
+
+.mt-5 {
+  margin-top: 5rem; }
+
+.mb-5 {
+  margin-bottom: 5rem; }
+
+.ml-5 {
+  margin-left: 5rem; }
+
+.mr-5 {
+  margin-right: 5rem; }
+
+.mx-5 {
+  margin-left: 5rem;
+  margin-right: 5rem; }
+
+.my-5 {
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
+
+.m-5 {
+  margin: 5rem; }
+
+.pt-1 {
+  padding-top: 1rem; }
+
+.pb-1 {
+  padding-bottom: 1rem; }
+
+.pl-1 {
+  padding-left: 1rem; }
+
+.pr-1 {
+  padding-right: 1rem; }
+
+.px-1 {
+  padding-left: 1rem;
+  padding-right: 1rem; }
+
+.py-1 {
+  padding-top: 1rem;
+  padding-bottom: 1rem; }
+
+.p-1 {
+  padding: 1rem; }
+
+.pt-2 {
+  padding-top: 2rem; }
+
+.pb-2 {
+  padding-bottom: 2rem; }
+
+.pl-2 {
+  padding-left: 2rem; }
+
+.pr-2 {
+  padding-right: 2rem; }
+
+.px-2 {
+  padding-left: 2rem;
+  padding-right: 2rem; }
+
+.py-2 {
+  padding-top: 2rem;
+  padding-bottom: 2rem; }
+
+.p-2 {
+  padding: 2rem; }
+
+.pt-3 {
+  padding-top: 3rem; }
+
+.pb-3 {
+  padding-bottom: 3rem; }
+
+.pl-3 {
+  padding-left: 3rem; }
+
+.pr-3 {
+  padding-right: 3rem; }
+
+.px-3 {
+  padding-left: 3rem;
+  padding-right: 3rem; }
+
+.py-3 {
+  padding-top: 3rem;
+  padding-bottom: 3rem; }
+
+.p-3 {
+  padding: 3rem; }
+
+.pt-4 {
+  padding-top: 4rem; }
+
+.pb-4 {
+  padding-bottom: 4rem; }
+
+.pl-4 {
+  padding-left: 4rem; }
+
+.pr-4 {
+  padding-right: 4rem; }
+
+.px-4 {
+  padding-left: 4rem;
+  padding-right: 4rem; }
+
+.py-4 {
+  padding-top: 4rem;
+  padding-bottom: 4rem; }
+
+.p-4 {
+  padding: 4rem; }
+
+.pt-5 {
+  padding-top: 5rem; }
+
+.pb-5 {
+  padding-bottom: 5rem; }
+
+.pl-5 {
+  padding-left: 5rem; }
+
+.pr-5 {
+  padding-right: 5rem; }
+
+.px-5 {
+  padding-left: 5rem;
+  padding-right: 5rem; }
+
+.py-5 {
+  padding-top: 5rem;
+  padding-bottom: 5rem; }
+
+.p-5 {
+  padding: 5rem; }
+
+/*-----------------
+  Navbar
+------------------*/
+.navbar {
+  background-color: #ea3f2d;
+  color: #ffffff; }
+  .navbar .top-menu__item {
+    display: inline-block; }
+  .navbar a {
+    cursor: pointer;
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 2.1rem; }
+    .navbar a:focus {
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px; }
+    .navbar a:hover,
+    .navbar a a:active {
+      color: #770d02;
+      text-decoration: underline;
+      outline: 0; }
+
 /* @import "2-generic/generic";
 @import "2-generic/gutenberg";
 @import "2-generic/slick-carousel";

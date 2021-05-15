@@ -1,0 +1,66 @@
+@mixin border-box {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    & *{ box-sizing: border-box; }
+    &:before{ box-sizing: border-box; }
+    &:after{ box-sizing: border-box; }
+    & *:before{ box-sizing: border-box; }
+    & *:after{ box-sizing: border-box; }
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Container */
+@mixin container-size($size){
+    @if $size == "wide" {
+        max-width: $container-max-width;
+        padding-left: $container-padding-left;
+        padding-right: $container-padding-right;
+        @include center-block();
+    } @else {
+        max-width: $container-fluid;
+    }
+    
+    
+}
+
+@mixin colors-tx-bg($bg-color, $tx-color) {
+    background-color: $bg-color;
+    color: $tx-color;
+}
+
+
+@mixin margin($number){
+    @if type-of($number) != "number" {
+		@error "`#{$number}` is not a valid value for $values. It must be a number.";
+	}
+    @for $i from 1 through $number {
+        .mt-#{$i}{ margin-top: #{$i}rem; }
+        .mb-#{$i}{ margin-bottom: #{$i}rem; }
+        .ml-#{$i}{ margin-left: #{$i}rem; }
+        .mr-#{$i}{ margin-right: #{$i}rem; }
+        .mx-#{$i}{ margin-left: #{$i}rem; margin-right: #{$i}rem; }
+        .my-#{$i}{ margin-top: #{$i}rem; margin-bottom: #{$i}rem; }
+        .m-#{$i}{ margin: #{$i}rem; }
+    }
+}
+
+@mixin padding($number){
+    @if type-of($number) != "number" {
+		@error "`#{$number}` is not a valid value for $values. It must be a number.";
+	}
+    @for $i from 1 through $number {
+        .pt-#{$i}{ padding-top: #{$i}rem; }
+        .pb-#{$i}{ padding-bottom: #{$i}rem; }
+        .pl-#{$i}{ padding-left: #{$i}rem; }
+        .pr-#{$i}{ padding-right: #{$i}rem; }
+        .px-#{$i}{ padding-left: #{$i}rem; padding-right: #{$i}rem; }
+        .py-#{$i}{ padding-top: #{$i}rem; padding-bottom: #{$i}rem; }
+        .p-#{$i}{ padding: #{$i}rem; }
+    }
+}
