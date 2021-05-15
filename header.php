@@ -21,9 +21,7 @@
         wp_body_open();
     } 
 ?>
-    <header>
-        <?php if(function_exists('the_custom_logo')) the_custom_logo(); ?>
-    header</header>
+
 
 <?php
 $the_post_id = get_the_ID();

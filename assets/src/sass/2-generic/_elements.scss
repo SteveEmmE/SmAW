@@ -1,7 +1,7 @@
 // View applied styles by going to https://your-site.com/wp-content/themes/videojet/assets/style-guide/elements.html
 
 html {
-	box-sizing: border-box;
+	@include border-box;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 }
@@ -26,115 +26,19 @@ html {
  *    base font size.
  */
 body {
-	margin: 0;
 	@include font-family();
 	@include body-text( body );
 
 	background: $color__background-body;
 	color: $color__body-text;
 
-	// WP Editor
-	&.mce-content-body {
-		font-family: inherit;
-		margin: 15px;
-	}
 }
 
-// Gutenberg block quote support.
-blockquote,
-q,
-blockquote.wp-block-quote {
-	quotes: "" "";
-	border-left: 4px solid $gray-150;
-	font-style: italic;
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 16px;
-	background: transparent;
-	text-align: left;
 
-	p {
-		font-size: 16px;
-		font-style: normal;
-		font-weight: 400;
-	}
 
-	/* stylelint-disable */
-	cite,
-	.wp-block-quote__citation {
-		display: block;
-		font-size: 16px;
-		font-weight: 700;
-		margin-top: 12px;
-		text-transform: uppercase;
-	}
-	/* stylelint-enable */
-
-	p:last-of-type {
-		margin-bottom: 0;
-	}
-
-	&.is-large,
-	&.is-style-large {
-		margin: 0 auto;
-
-	}
-
-}
-
-/* Pull Quote
---------------------------------------------- */
-
-.wp-block-pullquote {
-	border: none;
-	padding: 0;
-
-	blockquote {
-		border-left: 0;
-		border-top: 8px solid $gray-150;
-		border-bottom: 8px solid $gray-150;
-		padding: 16px 0;
-		text-align: center;
-		max-width: 50%;
-		margin: 0 auto;
-	}
-
-	&.alignleft,
-	&.alignright {
-
-		blockquote {
-			max-width: 100%;
-		}
-	}
-}
-
-img {
-	height: auto;
-	max-width: 100%;
-	vertical-align: middle;
-}
-
-/* Image Support
---------------------------------------------- */
-.wp-block-image {
-	&.size-medium,
-	&.size-thumbnail,
-	&.is-resized {
-		img {
-			width: auto;
-		}
-	}
-
-	figcaption {
-		text-align: left;
-		padding: 10px 0;
-	}
-}
-
-figure {
-	max-width: 100%;
-}
-
+/*------------------------------------*\
+    #LINKS
+\*------------------------------------*/
 a {
 	cursor: pointer;
 	color: $color__link;
@@ -154,6 +58,10 @@ a {
 	}
 }
 
+/*------------------------------------*\
+    #SUB & SUP
+\*------------------------------------*/
+
 sub,
 sup {
 	position: relative;
@@ -161,14 +69,8 @@ sup {
 	line-height: 0;
 	vertical-align: baseline;
 }
-
-sup {
-	top: -0.5em;
-}
-
-sub {
-	bottom: -0.25em;
-}
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
 
 /*------------------------------------*\
     #HEADINGS
@@ -231,7 +133,7 @@ ul {
 	padding: 0;
 	margin: 0 0 10px 25px;
 
-	@include mq( medium ) {
+	@include mq( md ) {
 		margin: 0 0 5px 0;
 	}
 }
@@ -271,7 +173,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 
-	@include mq( medium ) {
+	@include mq( md ) {
 		max-width: 350px;
 	}
 }
@@ -289,7 +191,7 @@ table {
 		padding: 20px 24px;
 
 		&:hover {
-			background: $gray-200;
+			background: #dddddd;
 			text-decoration: none;
 		}
 
@@ -331,12 +233,12 @@ input[type="color"],
 	padding: 14px 6px; /* adjusting border-box difference on live site */
 	margin: 0 0 10px;
 	line-height: 1.43;
-	color: $gray-300;
+	color: #333333;
 	vertical-align: middle;
 	border-radius: 4px;
 	background-color: $white;
-	border: 1px solid $gray-200;
-	box-shadow: inset 0 1px 1px $opacity-black-075;
+	border: 1px solid #dddddd;
+	box-shadow: inset 0 1px 1px 0.75;
 	transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
@@ -403,69 +305,3 @@ input[type="search"]::-webkit-search-cancel-button {
     #OTHER
 \*------------------------------------*/
 
-pre {
-	display: block;
-	padding: 9.5px;
-	margin: 0 0 10px;
-	font-size: 13px; // Exceptional font-size.
-	line-height: 1.54;
-	word-break: break-all;
-	word-wrap: break-word;
-	white-space: pre-wrap;
-	background-color: $gray-160;
-	border: 1px solid $opacity-black-015;
-	border-radius: 4px;
-	font-family: $font__code;
-}
-
-code {
-	padding: 2px 4px;
-	color: #d14;
-	white-space: nowrap;
-	background-color: #f7f7f9;
-	border: 1px solid #e1e1e8;
-	font-family: $font__code;
-	@include body-text( s );
-	border-radius: 3px;
-}
-
-/* Separator
---------------------------------------------- */
-
-.wp-block-separator,
-hr {
-
-	width: 100%;
-	margin: 20px 0;
-	border: 0;
-	border-top: 1px solid $color__background-hr;
-	border-bottom: 1px solid $white;
-	box-sizing: content-box;
-
-	&:not(.is-style-dots) {
-		background-color: $gray-100;
-		border: 0;
-		height: 1px;
-	}
-
-	&:not(.is-style-wide):not(.is-style-dots) {
-		width: 100%;
-		height: 4px;
-		background: transparent;
-
-		&::before {
-			content: "";
-			display: block;
-			height: 4px;
-			width: 40px;
-			background: $gray-100;
-		}
-	}
-
-	&.is-style-dots::before {
-		color: $gray-100;
-		font-size: 18px;
-		letter-spacing: 12px;
-		padding-left: 12px;
-	}
-}

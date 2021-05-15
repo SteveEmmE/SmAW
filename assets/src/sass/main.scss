@@ -1,5 +1,8 @@
 // Essentials.
 @import "essentials";
+@import "1-tools/tools";
+
+@import "2-generic/elements";
 
 // Generic
 /* @import "2-generic/generic";
@@ -14,7 +17,3 @@
 
 // Components
 
-
-body{
-    font-family: $font__main;
-}

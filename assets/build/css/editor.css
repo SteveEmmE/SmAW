@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'ArianLT';
-    src: url(../../src/library/fonts/ArianLT-Heavy.eot);
-    src: url(../../src/library/fonts/ArianLT-Heavy.eot?#iefix) format('embedded-opentype'),
-        url(../../src/library/fonts/ArianLT-Heavy.woff2) format('woff2'),
-        url(../../src/library/fonts/ArianLT-Heavy.woff) format('woff'),
-        url(../../src/library/fonts/ArianLT-Heavy.ttf) format('truetype'),
-        url(../../src/library/fonts/ArianLT-Heavy.svg#ArianLT-Heavy) format('svg');
+    src: url(../../src/fonts/arianLT/ArianLT-Heavy.eot);
+    src: url(../../src/fonts/arianLT/ArianLT-Heavy.eot?#iefix) format('embedded-opentype'),
+        url(../../src/fonts/arianLT/ArianLT-Heavy.woff2) format('woff2'),
+        url(../../src/fonts/arianLT/ArianLT-Heavy.woff) format('woff'),
+        url(../../src/fonts/arianLT/ArianLT-Heavy.ttf) format('truetype'),
+        url(../../src/fonts/arianLT/ArianLT-Heavy.svg#ArianLT-Heavy) format('svg');
     font-weight: 900;
     font-style: normal;
     font-display: swap;
@@ -13,12 +13,12 @@
 
 @font-face {
     font-family: 'ArianLT';
-    src: url(../../src/library/fonts/ArianLT-Light.eot);
-    src: url(../../src/library/fonts/ArianLT-Light.eot?#iefix) format('embedded-opentype'),
-        url(../../src/library/fonts/ArianLT-Light.woff2) format('woff2'),
-        url(../../src/library/fonts/ArianLT-Light.woff) format('woff'),
-        url(../../src/library/fonts/ArianLT-Light.ttf) format('truetype'),
-        url(../../src/library/fonts/ArianLT-Light.svg#ArianLT-Light) format('svg');
+    src: url(../../src/fonts/arianLT/ArianLT-Light.eot);
+    src: url(../../src/fonts/arianLT/ArianLT-Light.eot?#iefix) format('embedded-opentype'),
+        url(../../src/fonts/arianLT/ArianLT-Light.woff2) format('woff2'),
+        url(../../src/fonts/arianLT/ArianLT-Light.woff) format('woff'),
+        url(../../src/fonts/arianLT/ArianLT-Light.ttf) format('truetype'),
+        url(../../src/fonts/arianLT/ArianLT-Light.svg#ArianLT-Light) format('svg');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -26,12 +26,12 @@
 
 @font-face {
     font-family: 'ArianLT';
-    src: url(../../src/library/fonts/ArianLT-Bold.eot);
-    src: url(../../src/library/fonts/ArianLT-Bold.eot?#iefix) format('embedded-opentype'),
-        url(../../src/library/fonts/ArianLT-Bold.woff2) format('woff2'),
-        url(../../src/library/fonts/ArianLT-Bold.woff) format('woff'),
-        url(../../src/library/fonts/ArianLT-Bold.ttf) format('truetype'),
-        url(../../src/library/fonts/ArianLT-Bold.svg#ArianLT-Bold) format('svg');
+    src: url(../../src/fonts/arianLT/ArianLT-Bold.eot);
+    src: url(../../src/fonts/arianLT/ArianLT-Bold.eot?#iefix) format('embedded-opentype'),
+        url(../../src/fonts/arianLT/ArianLT-Bold.woff2) format('woff2'),
+        url(../../src/fonts/arianLT/ArianLT-Bold.woff) format('woff'),
+        url(../../src/fonts/arianLT/ArianLT-Bold.ttf) format('truetype'),
+        url(../../src/fonts/arianLT/ArianLT-Bold.svg#ArianLT-Bold) format('svg');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -39,12 +39,12 @@
 
 @font-face {
     font-family: 'ArianLT-Demi';
-    src: url(../../src/library/fonts/ArianLT-Demi.eot);
-    src: url(../../src/library/fonts/ArianLT-Demi.eot?#iefix) format('embedded-opentype'),
-        url(../../src/library/fonts/ArianLT-Demi.woff2) format('woff2'),
-        url(../../src/library/fonts/ArianLT-Demi.woff) format('woff'),
-        url(../../src/library/fonts/ArianLT-Demi.ttf) format('truetype'),
-        url(../../src/library/fonts/ArianLT-Demi.svg#ArianLT-Demi) format('svg');
+    src: url(../../src/fonts/arianLT/ArianLT-Demi.eot);
+    src: url(../../src/fonts/arianLT/ArianLT-Demi.eot?#iefix) format('embedded-opentype'),
+        url(../../src/fonts/arianLT/ArianLT-Demi.woff2) format('woff2'),
+        url(../../src/fonts/arianLT/ArianLT-Demi.woff) format('woff'),
+        url(../../src/fonts/arianLT/ArianLT-Demi.ttf) format('truetype'),
+        url(../../src/fonts/arianLT/ArianLT-Demi.svg#ArianLT-Demi) format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -77,6 +77,9 @@ $color__background-table: $blue-20; */
 /*----------------
 		Font
 ------------------*/
+/*------------------------
+		Font Weights
+--------------------------*/
 /*---------------------------------
 		Body Text Font Sizes
 -----------------------------------*/

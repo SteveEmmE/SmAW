@@ -1,0 +1,19 @@
+// mq breakpoints.
+$mq-breakpoints: (
+	sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px
+) !default;
+
+$container: 1266px;
+$container-fluid: 100%;
+
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

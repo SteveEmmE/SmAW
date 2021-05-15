@@ -1,18 +1,12 @@
-// Center block
-@mixin center-block {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
 
+@mixin font-family( $font: $font__main ) {
+	font-family: $font__main;
+}
 @mixin font-smoothing() {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-@mixin font-family( $font: $font__main ) {
-	font-family: $font__main;
-}
 
 /**
  * Add font scale with media query as per configuration on $body-text
@@ -31,7 +25,7 @@
 		@if $device-size == false {
 			@each $device, $values in $size {
 
-				@if $device != "small" {
+				@if $device != "sm" {
 					@include mq($from: $device) {
 						font-size: map_get($values, "font-size");
 						line-height: map_get($values, "line-height");

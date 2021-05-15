@@ -5,22 +5,32 @@ $header_menus = wp_get_nav_menu_items($header_menu_id);
 ?>
 
 <!-- SIDEBAR SECTION -->
-<div class="sidebar-container">
-    <div class="sidebar-container__content">
+<div class="sidebar">
+    <div class="sidebar__content">
     
     </div>  
 </div>
 <div class="sidebar-filter"></div>
 
-<!-- <div class="navbar__logo">
+
+<header class="top-banner">
+    <div class="top-banner__logo">
         <?=function_exists('the_custom_logo')? the_custom_logo() : '';?>
-    </div> -->
+    </div> 
+
+    <div class="top-banner__info">
+        <ul>
+            <li>Spalto Marengo, 96 - Alessandria 15121</li>
+            <li>+39 345 6789123 | 0131 456372</li>
+            <li>luca@zlimpianti.it</li>
+        </ul>
+    </div>
+</header>
+
 
 <!-- NAVBAR SECTION -->
 <nav class="navbar">
         
-
-
 <a href="<?= get_theme_mod('smaw-navbar-button-link');?>" class="cta-btn ml-1"><?= get_theme_mod('smaw-navbar-button-text');?></a>
 
 
