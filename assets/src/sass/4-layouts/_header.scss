@@ -1,19 +1,80 @@
 /*-----------------
+  Top Banner Info
+------------------*/
+.top-banner{
+    justify-content: center;
+
+    @include mq($from: map_get($mq-breakpoints, 'md')){ justify-content: space-between; }
+
+    .top-banner__info li p{
+        text-align: right;
+    }
+
+}
+
+
+
+/*-----------------
   Navbar
 ------------------*/
 .navbar{
     @include colors-tx-bg($cinnabar, $white);
+    position: absolute;
+    width: 100%;
+    transition: all 0.4s ease-in;
+    box-shadow: 0px 0px 0px $charleston-green;
+    max-height: 4rem;
+    overflow: hidden;
 
     .top-menu__item{
-      display: inline-block;
+        display: inline-block;
     }
 
-    a { 
-      @include links($white, $barn-red); 
-      text-transform: uppercase;
-      font-weight: $font__bold;
-      font-size: 2.1rem;
-  }
-    
+    a, .menu-close, .menu-open { 
+        @include links($white, $barn-red); 
+        text-transform: uppercase;
+        font-weight: $font__bold;
+        font-size: 2.1rem;
+    }
+
+    &.fixed{
+        position: fixed;
+        top: 0; left:0;
+        width: 100%;
+        z-index: $z-element-2;
+        box-shadow: 0px 2px 5px $charleston-green;
+
+    }
+
+    &.open{ max-height: 100vh; }
+
 }
+
+
+/*-----------------
+  SideBar
+------------------*/
+
+.sidebar{
+    &__content{
+        padding-left: 8rem;
+        padding-right: 8rem;
+
+        .top-menu__item{
+            display: block;
+            padding-bottom: 3rem; padding-top: 3rem;
+            text-align: center;
+            border-bottom: 1px solid $white;
+        }
+
+        .top-banner__info {
+            padding-bottom: 3rem; padding-top: 3rem;
+            li p{
+                text-align: center;
+            }
+        }
+    }
+}
+
+
 

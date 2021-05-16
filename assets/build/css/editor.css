@@ -196,7 +196,9 @@ html {
 body {
   font-family: "ArianLT", sans-serif;
   background-color: #ffffff;
-  color: #2a2b26; }
+  color: #2a2b26;
+  font-size: 2.1rem;
+  line-height: 1; }
 
 /*------------------------------------*\
     #LINKS
@@ -408,6 +410,8 @@ input,
 button,
 select,
 textarea {
+  font-size: 2.1rem;
+  line-height: 1;
   font-weight: 400; }
 
 label,
@@ -467,6 +471,21 @@ input[type="search"]::-webkit-search-cancel-button {
     /* Above WP toolbar. */ }
 
 /*---------------------------
+		Text modifiers
+---------------------------*/
+.text-smaller-xs {
+  font-size: 0.6em; }
+
+.text-smaller-s {
+  font-size: 0.8em; }
+
+.text-bigger-m {
+  font-size: 1.2em; }
+
+.text-bigger-l {
+  font-size: 1.5em; }
+
+/*---------------------------
 		Alignments
 ---------------------------*/
 .left {
@@ -492,8 +511,6 @@ input[type="search"]::-webkit-search-cancel-button {
 ---------------------------*/
 .container {
   max-width: 1300px;
-  padding-left: 30px;
-  padding-right: 30px;
   display: block;
   margin-left: auto;
   margin-right: auto; }
@@ -529,6 +546,10 @@ input[type="search"]::-webkit-search-cancel-button {
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
             justify-content: space-between; }
+  .d-flex.flex-around {
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around; }
   .d-flex.align-center {
     -webkit-box-align: center;
     -webkit-align-items: center;
@@ -768,15 +789,52 @@ input[type="search"]::-webkit-search-cancel-button {
 .p-5 {
   padding: 5rem; }
 
+/*---------------------
+    Positioning
+-----------------------*/
+.p-fixed {
+  position: fixed; }
+
+.p-relative {
+  position: relative; }
+
+.p-absolute {
+  position: absolute; }
+
+/*-----------------
+  Top Banner Info
+------------------*/
+.top-banner {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  @media (min-width: 45em) {
+    .top-banner {
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between; } }
+  .top-banner .top-banner__info li p {
+    text-align: right; }
+
 /*-----------------
   Navbar
 ------------------*/
 .navbar {
   background-color: #ea3f2d;
-  color: #ffffff; }
+  color: #ffffff;
+  position: absolute;
+  width: 100%;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+  -webkit-box-shadow: 0px 0px 0px #2a2b26;
+          box-shadow: 0px 0px 0px #2a2b26;
+  max-height: 4rem;
+  overflow: hidden; }
   .navbar .top-menu__item {
     display: inline-block; }
-  .navbar a {
+  .navbar a, .navbar .menu-close, .navbar .menu-open {
     cursor: pointer;
     color: #ffffff;
     text-decoration: none;
@@ -785,14 +843,51 @@ input[type="search"]::-webkit-search-cancel-button {
     text-transform: uppercase;
     font-weight: 600;
     font-size: 2.1rem; }
-    .navbar a:focus {
+    .navbar a:focus, .navbar .menu-close:focus, .navbar .menu-open:focus {
       outline: 5px auto -webkit-focus-ring-color;
       outline-offset: -2px; }
     .navbar a:hover,
-    .navbar a a:active {
+    .navbar a a:active, .navbar .menu-close:hover,
+    .navbar .menu-close a:active, .navbar .menu-open:hover,
+    .navbar .menu-open a:active {
       color: #770d02;
       text-decoration: underline;
       outline: 0; }
+  .navbar.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    -webkit-box-shadow: 0px 2px 5px #2a2b26;
+            box-shadow: 0px 2px 5px #2a2b26; }
+  .navbar.open {
+    max-height: 100vh; }
+
+/*-----------------
+  SideBar
+------------------*/
+.sidebar__content {
+  padding-left: 8rem;
+  padding-right: 8rem; }
+  .sidebar__content .top-menu__item {
+    display: block;
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+    text-align: center;
+    border-bottom: 1px solid #ffffff; }
+  .sidebar__content .top-banner__info {
+    padding-bottom: 3rem;
+    padding-top: 3rem; }
+    .sidebar__content .top-banner__info li p {
+      text-align: center; }
+
+/*-----------------
+  Credits
+------------------*/
+.credits {
+  background-color: #dadcd5;
+  color: #2a2b26; }
 
 /*---------------------------------
 		Colors Variables
@@ -831,11 +926,8 @@ $color__background-table: $blue-20; */
 @import "../2-generic/buttons";
 @import "../2-generic/editor-color-classes"; */
 /* Page Width */
-.wp-block[data-align="full"] {
+.wp-block {
   max-width: 100%; }
-
-.wp-block[data-align="wide"] {
-  max-width: 1300px; }
 
 /* no margin on top and bottom of text */
 .block-editor-block-list__block {

@@ -84,6 +84,7 @@ class Gutenberg{
 
         //Add the possibility to align wide a block in guteneberg
         add_theme_support('align-wide');
+        
 
         
     }
@@ -180,7 +181,7 @@ class Gutenberg{
     }
 
     
-    function pdp_gutenberg_blocks(){
+  /*   function pdp_gutenberg_blocks(){
 
         wp_register_script('custom-blocks', PDP_DIR_URI.'/build/index.js', array('wp-blocks', 'wp-editor', 'wp-components'));
         wp_register_style('reset', PDP_DIR_URI.'/css/reset.min.css', [], filemtime(PDP_DIR_PATH.'/css/reset.min.css'), 'all');
@@ -220,7 +221,7 @@ class Gutenberg{
         wp_enqueue_style( 'style-editor', get_theme_file_uri( '/css/editor.min.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
     
     }
-    
+     */
     
     
     

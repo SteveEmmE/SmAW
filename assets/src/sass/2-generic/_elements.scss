@@ -18,6 +18,7 @@ html {
 body {
 	@include font-family();
 	@include colors-tx-bg($white, $charleston-green);
+	@include body-text( body );
 }
 
 

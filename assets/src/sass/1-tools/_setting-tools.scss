@@ -19,8 +19,6 @@
 @mixin container-size($size){
     @if $size == "wide" {
         max-width: $container-max-width;
-        padding-left: $container-padding-left;
-        padding-right: $container-padding-right;
         @include center-block();
     } @else {
         max-width: $container-fluid;

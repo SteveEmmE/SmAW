@@ -43,7 +43,8 @@ class Menus{
     public function register_menus(){
         register_nav_menus([
             'smaw-navbar-menu' => esc_html__('Navbar Menu', 'smaw'),
-            'smaw-footer-menu' => esc_html__('Footer Menu', 'smaw')
+            'smaw-footer-menu-1' => esc_html__('Footer Menu 1', 'smaw'),
+            'smaw-footer-menu-2' => esc_html__('Footer Menu 2', 'smaw')
         ]);
     }
 

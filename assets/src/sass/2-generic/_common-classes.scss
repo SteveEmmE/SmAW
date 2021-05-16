@@ -35,6 +35,15 @@
 }
 
 /*---------------------------
+		Text modifiers
+---------------------------*/
+.text-smaller-xs{ @include body-text( xs ); }
+.text-smaller-s{ @include body-text( s ); }
+.text-bigger-m{ @include body-text( m ); }
+.text-bigger-l{ @include body-text( l ); }
+
+
+/*---------------------------
 		Alignments
 ---------------------------*/
 
@@ -98,6 +107,7 @@
 	display: flex;
 
 	&.flex-between{ justify-content: space-between; }
+	&.flex-around{ justify-content: space-around; }
 	&.align-center { align-items: center; }
 }
 
@@ -108,3 +118,16 @@
 
 @include margin($margin-range);
 @include padding($padding-range);
+
+
+
+/*---------------------
+    Positioning
+-----------------------*/
+
+.p-fixed{ position: fixed; }
+.p-relative{ position: relative; }
+.p-absolute{ position: absolute; }
+
+
+
