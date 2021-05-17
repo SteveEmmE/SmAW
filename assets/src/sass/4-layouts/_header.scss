@@ -30,11 +30,13 @@
         display: inline-block;
     }
 
-    a, .menu-close, .menu-open { 
-        @include links($white, $barn-red); 
-        text-transform: uppercase;
-        font-weight: $font__bold;
-        font-size: 2.1rem;
+    a{
+        &, .menu-close, .menu-open { 
+            @include links($white, $barn-red); 
+            text-transform: uppercase;
+            font-weight: $font__bold;
+            font-size: 2.1rem;
+        }
     }
 
     &.fixed{

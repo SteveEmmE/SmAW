@@ -1,4 +1,23 @@
 /*-----------------
+  Footer
+------------------*/
+footer{
+    .container{ flex-wrap: wrap; }
+    .footer__item{   
+        min-width: 120px;
+
+        &:nth-child(2){
+            order:-1;
+            @include mq(sm){
+                order:2;
+            }
+        }
+    }
+}
+
+
+
+/*-----------------
   Credits
 ------------------*/
 

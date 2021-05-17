@@ -108,7 +108,11 @@
 
 	&.flex-between{ justify-content: space-between; }
 	&.flex-around{ justify-content: space-around; }
+
 	&.align-center { align-items: center; }
+
+	@include flex-order($flex-order-num);
+
 }
 
 

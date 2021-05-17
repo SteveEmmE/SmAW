@@ -62,3 +62,12 @@
         .p-#{$i}{ padding: #{$i}rem; }
     }
 }
+
+@mixin flex-order($number){
+    @if type-of($number) != "number" {
+		@error "`#{$number}` is not a valid value for $values. It must be a number.";
+	}
+    @for $i from 1 through $number {
+        .flex-order-#{$i}{ order: #{$i}; }
+    }
+}

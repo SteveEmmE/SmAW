@@ -13,15 +13,18 @@
 
 
 /* Margin comun fix */
-@media (min-width: 782px){
-    .editor-styles-wrapper .block-editor-block-list__block.wp-block-column:not(:first-child) {
-        margin-left: 32px;
+
+.block-editor-block-list__block.wp-block-column:not(:first-child) {
+    @media (min-width: 782px){
+        margin-left: 0px !important;
     }
 }
 
 
-@media (min-width: 600px){
-    .editor-styles-wrapper .block-editor-block-list__block.wp-block-column:nth-child(2n) {
-        margin-left: 32px;
+
+.block-editor-block-list__block.wp-block-column:nth-child(2n) {
+    @media (min-width: 600px){
+        margin-left: 0px !important;
     }
 }
+

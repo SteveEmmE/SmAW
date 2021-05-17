@@ -22,32 +22,33 @@
 
         <div class="container d-flex flex-around align-center py-4">
 
-            <div class="footer__item">
+            <div class="footer__item flex-order-1">
                 <?php if(!empty($footer_menus_1) && is_array($footer_menus_1)):?>
                     <ul class="">
 
                         <?php foreach ($footer_menus_1 as $menu_item):?>
                             <?php if(!$menu_item->menu_item_parent): ?>
-                                <li><a class='' href="<?=$menu_item->url?>"><?=$menu_item->title?></a></li>
+                                <li class='text-center'><a  href="<?=$menu_item->url?>"><?=$menu_item->title?></a></li>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
                 <?php endif; ?>
             </div>
-            <div class="footer__item">
+
+            <div class="footer__item flex-order-2">
                 <div class="logo">
                     <?=function_exists('the_custom_logo')? the_custom_logo() : '';?>
                 </div>
                 
             </div>
 
-            <div class="footer__item">
+            <div class="footer__item flex-order-3">
                 <?php if(!empty($footer_menus_2) && is_array($footer_menus_2)):?>
                     <ul class="">
 
                         <?php foreach ($footer_menus_2 as $menu_item):?>
                             <?php if(!$menu_item->menu_item_parent): ?>
-                                <li><a class='' href="<?=$menu_item->url?>"><?=$menu_item->title?></a></li>
+                                <li class='text-center'><a  href="<?=$menu_item->url?>"><?=$menu_item->title?></a></li>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
@@ -57,7 +58,7 @@
         </div>
 
         <div class="credits py-3">
-            <p class="text-center text-smaller-s"> &copy; Copyright 2021 | All right reserver | Credit by Stefano Monti</p>
+            <p class="text-center text-smaller-s"> &copy; Copyright 2021 | All rights reserver | Credit by Stefano Monti</p>
         </div>
        
 
