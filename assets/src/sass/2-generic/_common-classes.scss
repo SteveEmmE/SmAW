@@ -109,9 +109,19 @@
 	&.flex-between{ justify-content: space-between; }
 	&.flex-around{ justify-content: space-around; }
 
+	&.flex-wrap{ flex-wrap: wrap; }
+	&.flex-nowrap{ flex-wrap: nowrap; }
+
 	&.align-center { align-items: center; }
 
+	&.row-reverse { flex-direction: row-reverse; }
+	&.col-reverse { flex-direction: column-reverse; }
+
+	@include col-size-responsive();
+
 	@include flex-order($flex-order-num);
+
+	@include flex-basis-steps($flex-basis-step, $mq-breakpoints);
 
 }
 

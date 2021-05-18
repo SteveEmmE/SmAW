@@ -10,7 +10,7 @@ import Save from './save';
 registerBlockType('smaw-blocks/image-with-desc', {
 
     title: 'Image With Description',
-    description: __('Image Width Description', 'smaw'),
+    description: __('Image With Description', 'smaw'),
     icon: 'align-pull-left',
     category: 'smaw-blocks',
 
@@ -21,7 +21,7 @@ registerBlockType('smaw-blocks/image-with-desc', {
         imageWidthSave:{type: 'string', default: '50%'},
         imageHeight:{type: 'string', default: '500'},
         rowDirection:{type: 'boolean', default: 'false'},
-        responsiveReverse:{type: 'boolean', default: false},
+        responsiveTrigger:{type: 'boolean', default: false},
         innerBlockWidth:{type: 'string', default: ''}
     },
 

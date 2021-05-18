@@ -1,10 +1,10 @@
 import {InspectorControls, InnerBlocks, MediaPlaceholder} from '@wordpress/block-editor';
-import {PanelBody, ResizableBox, ToggleControl} from '@wordpress/components';
+import {PanelBody, ResizableBox, SelectControl, ToggleControl} from '@wordpress/components';
+import get from 'lodash/get';
 
 
-const Edit = ({attributes, setAttributes}) => {
+const Edit = ({clientId, attributes, setAttributes, toggleSelection} ) => {
         
-
     const{
         id,
         images,
@@ -12,9 +12,11 @@ const Edit = ({attributes, setAttributes}) => {
         imageWidthSave,
         imageHeight,
         rowDirection,
-        responsiveReverse,
+        responsiveTrigger,
         innerBlockWidth
     } = attributes;
+
+   
 
     function onChangeImagesUrl(media){
 
@@ -55,7 +57,7 @@ const Edit = ({attributes, setAttributes}) => {
         console.log(wpBlockWidth + ' - ' + wpBlockImageWidth + ' = ' + innerBlockWidth);
         console.log((wpBlockWidth-wpBlockImageWidth) + 'px');
 
-        let wpBlockWidth = document.querySelector('.tc-row').offsetWidth;
+        let wpBlockWidth = document.querySelector('#block-'+clientId+'>div').offsetWidth;
         let wpBlockImageWidth = document.querySelector('.tc-col-image'+id?`.${id}`:'').offsetWidth;
 
         setAttributes( {innerBlockWidth: (wpBlockWidth-wpBlockImageWidth)+'px'})
@@ -69,13 +71,10 @@ const Edit = ({attributes, setAttributes}) => {
     }
 
 
-    function onChangeResponsiveReverse(){
-        setAttributes({responsiveReverse: !responsiveReverse})
+    function onChangeResponsiveTrigger(newValue){
+        setAttributes({responsiveTrigger: newValue})
     }
 
-    
-    console.log(responsiveReverse);
-    console.log(rowDirection? 'tc-row__reverse' : '')
  
 
     return ([
@@ -108,20 +107,27 @@ const Edit = ({attributes, setAttributes}) => {
             </PanelBody>
 
 
-            <PanelBody title="Responsive Control">
-                <ToggleControl
-                    label="responsive reverse"
-                    checked={ responsiveReverse }
-                    onChange={ onChangeResponsiveReverse }
+
+
+            <PanelBody> 
+                <SelectControl
+                    label={ 'Responsive Column Control:' }
+                    value={ responsiveTrigger }
+                    onChange={  onChangeResponsiveTrigger }
+                    options={ [
+                        { value: null, label: 'Select size', disabled: true },
+                        { value: '', label: 'none' },
+                        { value: 'col-sm-responsive', label: 'sm' },
+                        { value: 'col-md-responsive', label: 'md' },
+                        { value: 'col-lg-responsive', label: 'lg' },
+                        { value: 'col-xl-responsive', label: 'xl' },
+                        { value: 'col-xxl-responsive', label: 'xxl' },
+                    ] }
                 />
             </PanelBody>
         </InspectorControls>,
         <div 
-            className={`tc-row ${rowDirection? 'tc-row__reverse' : ''} ${responsiveReverse? 'responsive-reverse': '' }`}
-            style={{
-                backgroundColor: backgroundColor
-            }}
-        >
+            className={`d-flex align-center ${rowDirection? 'row-reverse' : ''} ${responsiveTrigger}`}>
             <ResizableBox
                 size={ {
                     imageWidth,

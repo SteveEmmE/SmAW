@@ -63,11 +63,40 @@
     }
 }
 
+/*--------------
+    Flex Mixing
+---------------*/
+
 @mixin flex-order($number){
     @if type-of($number) != "number" {
 		@error "`#{$number}` is not a valid value for $values. It must be a number.";
 	}
     @for $i from 1 through $number {
         .flex-order-#{$i}{ order: #{$i}; }
+    }
+}
+
+//da inserire dentro la class d-flex .... forse non è la soluzione migliore
+@mixin col-size-responsive(){
+    @each $label, $size in $mq-breakpoints {
+        &.col-#{$label}-responsive{
+            @include mq($until: $size){
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+@mixin flex-basis-steps($step, $sizes){
+    @for $i from 1 to ceil(100 / $step)+2{
+        $value: ($i - 1)*$step;
+        @each $label, $size in $sizes{
+            .flex-basis-#{$label}-#{$value}{ 
+                @include mq($until: $size){
+                    flex-basis: percentage($value/100); 
+                }
+            }
+
+        }
     }
 }

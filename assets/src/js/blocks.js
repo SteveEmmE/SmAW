@@ -7,6 +7,8 @@ import './gutenberg/blocks/positioning-control';
 import './gutenberg/blocks/aos-control';
 import './gutenberg/blocks/parallax-background';
 import './gutenberg/blocks/image-width-desc';
+import './gutenberg/blocks/smaw-columns';
+import './gutenberg/blocks/smaw-column';
 
 import './gutenberg/blocks/image';
 /* let sliders = jQuery('.image-container');
