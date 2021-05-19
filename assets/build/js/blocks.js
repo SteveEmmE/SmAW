@@ -15,12 +15,121 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
 var enableFontsControlOnBlocks = ['core/paragraph'];
+var fontOptions = [{
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('none'),
+  value: ''
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('thin'),
+  value: 'text-thin'
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('semibold'),
+  value: 'text-semibold'
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('bold'),
+  value: 'text-bold'
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('heavy'),
+  value: 'text-heavy'
+}];
 
-var addFontsAttribute = function addFontsAttribute(settings, name) {};
+var addFontsAttribute = function addFontsAttribute(settings, name) {
+  if (!enableFontsControlOnBlocks.includes(name)) {
+    return settings;
+  }
+
+  settings.attributes = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.assign)(settings.attributes, {
+    font: {
+      type: 'string',
+      default: fontOptions[0].value
+    }
+  });
+  settings.apiVersion = 2;
+
+  var newSettings = _objectSpread(_objectSpread({}, settings), {}, {
+    attributes: _objectSpread(_objectSpread({}, settings.attributes), {}, {
+      font: {
+        type: 'string',
+        default: fontOptions[0].value
+      }
+    }),
+    edit: function edit(props) {
+      var font = props.attributes.font;
+      var blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
+        className: font
+      });
+      return [/*#__PURE__*/React.createElement("div", blockProps, settings.edit(props))];
+    }
+  });
+
+  return newSettings;
+};
+
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.registerBlockType', 'extend-block-example/attribute/spacing', addFontsAttribute);
+/** -------------------------------------------------------------------------------------- */
+
+
+
+
+
+var withFontsControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.createHigherOrderComponent)(function (BlockEdit) {
+  return function (props) {
+    // Do nothing if it's another block than our defined ones.
+    if (!enableFontsControlOnBlocks.includes(props.name)) {
+      return /*#__PURE__*/React.createElement(BlockEdit, props);
+    }
+
+    var font = props.attributes.font;
+    return /*#__PURE__*/React.createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.Fragment, null, /*#__PURE__*/React.createElement(BlockEdit, props), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('My Fonts Control'),
+      initialOpen: true
+    }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Font weight'),
+      value: font,
+      options: fontOptions,
+      onChange: function onChange(selectedFontOption) {
+        props.setAttributes({
+          font: selectedFontOption
+        });
+      }
+    }))));
+  };
+}, 'withSpacingControl');
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('editor.BlockEdit', 'extend-block-example/with-spacing-control', withFontsControl);
+
+var addFontExtraProps = function addFontExtraProps(saveElementProps, blockType, attributes) {
+  // Do nothing if it's another block than our defined ones.
+  if (!enableFontsControlOnBlocks.includes(blockType.name)) {
+    return saveElementProps;
+  }
+
+  var font = attributes.font; // Use Lodash's assign to gracefully handle if attributes are undefined
+
+  (0,lodash__WEBPACK_IMPORTED_MODULE_0__.assign)(saveElementProps, {
+    className: font
+  });
+  return saveElementProps;
+};
+
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.getSaveContent.extraProps', 'extend-block-example/get-save-content/extra-props', addFontExtraProps);
 
 /***/ }),
 
@@ -4502,6 +4611,17 @@ module.exports = window["wp"]["compose"];
 
 "use strict";
 module.exports = window["wp"]["data"];
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["element"];
 
 /***/ }),
 
