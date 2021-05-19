@@ -8,6 +8,7 @@ import {createBlock} from '@wordpress/blocks';
 const Edit = ({clientId, attributes, setAttributes} ) => {
 
     const {
+        width,
         responsiveTriggers,
         innerBlocksTemplate,
     } = attributes;
@@ -23,15 +24,29 @@ const Edit = ({clientId, attributes, setAttributes} ) => {
             console.log(key);
             let tmpResponsiveTriggers = JSON.parse(JSON.stringify(responsiveTriggers));
             tmpResponsiveTriggers[key] = newValue;
-            updateInnerBlock(key, newValue);
+            updateInnerBlock(key, newValue, true);
             setAttributes({responsiveTriggers: tmpResponsiveTriggers});
 
             
         }
     }
 
-    function updateInnerBlock(newSize, newValue){
-        let classes = Object.keys(responsiveTriggers).reduce((res, size) =>  `${newSize==size ? 'flex-basis-'+newSize+'-'+newValue : 'flex-basis-'+size+'-'+responsiveTriggers[size]} ${res}`, '')
+    function onChangeWidth(newValue){
+        updateInnerBlock(null, newValue, false);
+        setAttributes({width: newValue});
+    }
+
+    function generateFlexBasisClass(size, value){
+        if(size == null) return 'flex-basis-'+value;
+        return 'flex-basis-'+size+'-'+value;
+    }
+
+    function updateInnerBlock(newSize, newValue, responsiveValue){
+        let classes;
+        if(responsiveValue && newSize != null)
+            classes = Object.keys(responsiveTriggers).reduce((res, size) =>  `${res} ${newSize==size ? generateFlexBasisClass(newSize, newValue) : generateFlexBasisClass(size, responsiveTriggers[size])}`, generateFlexBasisClass(null, width))
+        else
+            classes = Object.keys(responsiveTriggers).reduce((res, size) =>  `${res} ${generateFlexBasisClass(size, responsiveTriggers[size])}`, generateFlexBasisClass(null, newValue))
         console.log(classes);
         let new_inner_blocks = [
             createBlock("core/column", {className: classes}, inner_blocks[0].innerBlocks)
@@ -39,24 +54,14 @@ const Edit = ({clientId, attributes, setAttributes} ) => {
         console.log(new_inner_blocks)
         replaceInnerBlocks(clientId, new_inner_blocks, false);
     }
-/* 
-    for(let i = 0; i < mediaUrlsNum; i++){
-        onChangeImage.push(function(media) {             
-            let src = get( media, [ 'sizes', 'large', 'url' ] ) || get( media, [ 'media_details', 'sizes', 'large', 'source_url' ] );
-            let tmpMediaUrls = [...mediaUrls]
-            let tmpMediaAlt = [...mediaAlt]
-            tmpMediaUrls[i] = src || media.url;
-            tmpMediaAlt[i] = media.alt;
-            setAttributes({mediaUrls: tmpMediaUrls});
-            setAttributes({mediaAlt: tmpMediaAlt});
-        });
-    } */
+
 
     console.log(responsiveTriggers.sm);
      
     return [
         <InspectorControls>
             <PanelBody>
+              
                 <RangeControl
                     label="Flex-Basis sm"
                     value={ responsiveTriggers.sm }
@@ -97,6 +102,15 @@ const Edit = ({clientId, attributes, setAttributes} ) => {
                     label="Flex-Basis xxl"
                     value={ responsiveTriggers.xxl }
                     onChange={ onChangeFlexBasis.xxl }
+                    min={ 0 }
+                    max={ 100 }
+                    step={ 10 }
+                    initialPosition={ 0 }
+                />
+                  <RangeControl
+                    label="Flex-Basis"
+                    value={ width }
+                    onChange={ onChangeWidth }
                     min={ 0 }
                     max={ 100 }
                     step={ 10 }

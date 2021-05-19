@@ -15,6 +15,7 @@ registerBlockType('smaw-blocks/smaw-column', {
     category: 'smaw-blocks',
 
     attributes:{
+        width: { type:'number', default: 50 },
         responsiveTriggers:{
             type: 'object', 
             default: {
@@ -30,7 +31,7 @@ registerBlockType('smaw-blocks/smaw-column', {
             default: [
                 [
                     'core/column',
-                    {},
+                    {className: 'flex-basis-0'},
                     []
                 ],
             ]

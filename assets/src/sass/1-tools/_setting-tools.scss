@@ -90,10 +90,11 @@
 @mixin flex-basis-steps($step, $sizes){
     @for $i from 1 to ceil(100 / $step)+2{
         $value: ($i - 1)*$step;
+        .flex-basis-#{$value}{ flex-basis: percentage($value / 100); }
         @each $label, $size in $sizes{
             .flex-basis-#{$label}-#{$value}{ 
                 @include mq($until: $size){
-                    flex-basis: percentage($value/100); 
+                    flex-basis: percentage($value / 100); 
                 }
             }
 

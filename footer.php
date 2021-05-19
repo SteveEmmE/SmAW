@@ -28,7 +28,7 @@
 
                         <?php foreach ($footer_menus_1 as $menu_item):?>
                             <?php if(!$menu_item->menu_item_parent): ?>
-                                <li class='text-center'><a  href="<?=$menu_item->url?>"><?=$menu_item->title?></a></li>
+                                <li class='has-text-align-center'><a  href="<?=$menu_item->url?>"><?=$menu_item->title?></a></li>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
@@ -48,7 +48,7 @@
 
                         <?php foreach ($footer_menus_2 as $menu_item):?>
                             <?php if(!$menu_item->menu_item_parent): ?>
-                                <li class='text-center'><a  href="<?=$menu_item->url?>"><?=$menu_item->title?></a></li>
+                                <li class='has-text-align-center'><a  href="<?=$menu_item->url?>"><?=$menu_item->title?></a></li>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
@@ -58,7 +58,7 @@
         </div>
 
         <div class="credits py-3">
-            <p class="text-center text-smaller-s"> &copy; Copyright 2021 | All rights reserver | Credit by Stefano Monti</p>
+            <p class="has-text-align-center text-smaller-s"> &copy; Copyright 2021 | All rights reserver | Credit by Stefano Monti</p>
         </div>
        
 

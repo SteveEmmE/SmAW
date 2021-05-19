@@ -12,12 +12,11 @@ registerBlockType('smaw-blocks/background', {
     icon: 'format-image',
     category: 'smaw-blocks',
 
-    supports: {
-        align: [ 'left', 'right', 'full', 'wide' ]
-    },
 
     attributes:{
         imgUrl:{type: 'string', default: ''},
+        filterActive: { type: 'boolean', default: false },
+        filterColor: {  type: 'string', default: ''},
         backgroundColor:{type: 'string', default: ''},
         focalPoints: {
             type: 'object',

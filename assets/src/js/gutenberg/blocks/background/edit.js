@@ -1,5 +1,6 @@
 import {InspectorControls, MediaPlaceholder, InnerBlocks} from '@wordpress/block-editor';
 import {PanelBody, ColorPicker, FocalPointPicker, RangeControl, ToggleControl} from '@wordpress/components';
+import { filter } from 'lodash';
 import get from 'lodash/get';
 
 
@@ -7,6 +8,8 @@ const Edit = ({attributes, setAttributes}) => {
         
     const{
         imgUrl,
+        filterActive,
+        filterColor,
         backgroundColor,
         focalPoints,
         repeat,
@@ -22,17 +25,14 @@ const Edit = ({attributes, setAttributes}) => {
         let rgbaColor = `rgba(${newColor.rgb.r},${newColor.rgb.g},${newColor.rgb.b},${newColor.rgb.a})`
         setAttributes({backgroundColor: rgbaColor});
     }
-    function onChangeFocalPoints(newFocalPoints){
-        setAttributes({focalPoints: newFocalPoints});
-    }
-    function onChangeRepeat(newValue){
-        setAttributes({repeat: newValue});
-    }
-    function onChangeSizeX(newValue){
-        setAttributes({sizeX: newValue});
-    }
-    function onChangeSizeY(newValue){
-        setAttributes({sizeY: newValue});
+    function onChangeFocalPoints(newFocalPoints){ setAttributes({focalPoints: newFocalPoints}); }
+    function onChangeRepeat(newValue){ setAttributes({repeat: newValue}); }
+    function onChangeSizeX(newValue){ setAttributes({sizeX: newValue}); }
+    function onChangeSizeY(newValue){ setAttributes({sizeY: newValue}); }
+    function onChangeFilterActive(){ setAttributes({filterActive: !filterActive}); }
+    function onChangeFilterColor(newColor) { 
+        let rgbaColor = `rgba(${newColor.rgb.r},${newColor.rgb.g},${newColor.rgb.b},${newColor.rgb.a})`
+        setAttributes({filterColor: rgbaColor});
     }
 
  
@@ -55,6 +55,21 @@ const Edit = ({attributes, setAttributes}) => {
                     accept="image/*"
                     allowedTypes={['image']}
                 />  
+                <ToggleControl
+                    label="filter"
+                    checked={ filterActive }
+                    help={filterActive ? 'active' : 'deactive'}
+                    onChange={ onChangeFilterActive }
+                />
+                {
+                    filterActive ?
+                        <ColorPicker
+                            color={ filterColor }
+                            onChangeComplete={ onChangeFilterColor }
+                        />
+                    :
+                        ''
+                }
             </PanelBody>
             <PanelBody title={"Background Color"}>
                 <ColorPicker
@@ -92,6 +107,7 @@ const Edit = ({attributes, setAttributes}) => {
                 <ToggleControl
                     label="repeat"
                     checked={ repeat }
+                    help={repeat ? 'repeat' : 'no repeat'}
                     onChange={ onChangeRepeat }
                 />
             </PanelBody>
@@ -100,7 +116,7 @@ const Edit = ({attributes, setAttributes}) => {
         </InspectorControls>,
         <div
             style={{
-                backgroundImage: imgUrl!=''? `url(${imgUrl})`: '',
+                backgroundImage: `${filterActive? 'linear-gradient('+filterColor+', '+filterColor+'),' : ''} ${imgUrl!=''? 'url('+imgUrl+')': ''}`,
                 backgroundColor: backgroundColor,
                 backgroundPosition: `${ (1 - focalPoints.x) * 100 }% ${ focalPoints.y * 100 }%`,
                 backgroundSize: `${ sizeX!=0 ? sizeX+'%' : 'auto' } ${ sizeY!=0 ? sizeY+'%' : 'auto'  }`,

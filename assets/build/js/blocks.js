@@ -481,8 +481,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
-/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -491,6 +494,8 @@ var Edit = function Edit(_ref) {
   var attributes = _ref.attributes,
       setAttributes = _ref.setAttributes;
   var imgUrl = attributes.imgUrl,
+      filterActive = attributes.filterActive,
+      filterColor = attributes.filterColor,
       backgroundColor = attributes.backgroundColor,
       focalPoints = attributes.focalPoints,
       repeat = attributes.repeat,
@@ -498,7 +503,7 @@ var Edit = function Edit(_ref) {
       sizeY = attributes.sizeY;
 
   function onChangeImgUrl(media) {
-    var photo = lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(media, ['sizes', 'full', 'url']) || lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(media, ['media_details', 'sizes', 'full', 'source_url']);
+    var photo = lodash_get__WEBPACK_IMPORTED_MODULE_3___default()(media, ['sizes', 'full', 'url']) || lodash_get__WEBPACK_IMPORTED_MODULE_3___default()(media, ['media_details', 'sizes', 'full', 'source_url']);
     setAttributes({
       imgUrl: photo
     });
@@ -535,6 +540,19 @@ var Edit = function Edit(_ref) {
     });
   }
 
+  function onChangeFilterActive() {
+    setAttributes({
+      filterActive: !filterActive
+    });
+  }
+
+  function onChangeFilterColor(newColor) {
+    var rgbaColor = "rgba(".concat(newColor.rgb.r, ",").concat(newColor.rgb.g, ",").concat(newColor.rgb.b, ",").concat(newColor.rgb.a, ")");
+    setAttributes({
+      filterColor: rgbaColor
+    });
+  }
+
   return [/*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InspectorControls, {
     style: {
       marginBottom: '40px'
@@ -555,7 +573,15 @@ var Edit = function Edit(_ref) {
     onSelect: onChangeImgUrl,
     accept: "image/*",
     allowedTypes: ['image']
-  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+  }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: "filter",
+    checked: filterActive,
+    help: filterActive ? 'active' : 'deactive',
+    onChange: onChangeFilterActive
+  }), filterActive ? /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPicker, {
+    color: filterColor,
+    onChangeComplete: onChangeFilterColor
+  }) : ''), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: "Background Color"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPicker, {
     color: backgroundColor,
@@ -580,10 +606,11 @@ var Edit = function Edit(_ref) {
   })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
     label: "repeat",
     checked: repeat,
+    help: repeat ? 'repeat' : 'no repeat',
     onChange: onChangeRepeat
   }))), /*#__PURE__*/React.createElement("div", {
     style: {
-      backgroundImage: imgUrl != '' ? "url(".concat(imgUrl, ")") : '',
+      backgroundImage: "".concat(filterActive ? 'linear-gradient(' + filterColor + ', ' + filterColor + '),' : '', " ").concat(imgUrl != '' ? 'url(' + imgUrl + ')' : ''),
       backgroundColor: backgroundColor,
       backgroundPosition: "".concat((1 - focalPoints.x) * 100, "% ").concat(focalPoints.y * 100, "%"),
       backgroundSize: "".concat(sizeX != 0 ? sizeX + '%' : 'auto', " ").concat(sizeY != 0 ? sizeY + '%' : 'auto'),
@@ -619,11 +646,16 @@ __webpack_require__.r(__webpack_exports__);
   description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background image', 'smaw'),
   icon: 'format-image',
   category: 'smaw-blocks',
-  supports: {
-    align: ['left', 'right', 'full', 'wide']
-  },
   attributes: {
     imgUrl: {
+      type: 'string',
+      default: ''
+    },
+    filterActive: {
+      type: 'boolean',
+      default: false
+    },
+    filterColor: {
       type: 'string',
       default: ''
     },
@@ -672,6 +704,8 @@ __webpack_require__.r(__webpack_exports__);
 var Save = function Save(_ref) {
   var attributes = _ref.attributes;
   var imgUrl = attributes.imgUrl,
+      filterActive = attributes.filterActive,
+      filterColor = attributes.filterColor,
       backgroundColor = attributes.backgroundColor,
       focalPoints = attributes.focalPoints,
       repeat = attributes.repeat,
@@ -679,7 +713,7 @@ var Save = function Save(_ref) {
       sizeY = attributes.sizeY;
   return /*#__PURE__*/React.createElement("div", {
     style: {
-      backgroundImage: imgUrl != '' ? "url(".concat(imgUrl, ")") : '',
+      backgroundImage: "".concat(filterActive ? 'linear-gradient(' + filterColor + ', ' + filterColor + '),' : '', " ").concat(imgUrl != '' ? 'url(' + imgUrl + ')' : ''),
       backgroundColor: backgroundColor,
       backgroundPosition: "".concat((1 - focalPoints.x) * 100, "% ").concat(focalPoints.y * 100, "%"),
       backgroundSize: "".concat(sizeX != 0 ? sizeX + '%' : 'auto', " ").concat(sizeY != 0 ? sizeY + '%' : 'auto'),
@@ -2170,7 +2204,8 @@ var Edit = function Edit(_ref) {
   var clientId = _ref.clientId,
       attributes = _ref.attributes,
       setAttributes = _ref.setAttributes;
-  var responsiveTriggers = attributes.responsiveTriggers,
+  var width = attributes.width,
+      responsiveTriggers = attributes.responsiveTriggers,
       innerBlocksTemplate = attributes.innerBlocksTemplate;
 
   var _useDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useDispatch)("core/block-editor"),
@@ -2194,7 +2229,7 @@ var Edit = function Edit(_ref) {
       console.log(key);
       var tmpResponsiveTriggers = JSON.parse(JSON.stringify(responsiveTriggers));
       tmpResponsiveTriggers[key] = newValue;
-      updateInnerBlock(key, newValue);
+      updateInnerBlock(key, newValue, true);
       setAttributes({
         responsiveTriggers: tmpResponsiveTriggers
       });
@@ -2205,10 +2240,25 @@ var Edit = function Edit(_ref) {
     _loop();
   }
 
-  function updateInnerBlock(newSize, newValue) {
-    var classes = Object.keys(responsiveTriggers).reduce(function (res, size) {
-      return "".concat(newSize == size ? 'flex-basis-' + newSize + '-' + newValue : 'flex-basis-' + size + '-' + responsiveTriggers[size], " ").concat(res);
-    }, '');
+  function onChangeWidth(newValue) {
+    updateInnerBlock(null, newValue, false);
+    setAttributes({
+      width: newValue
+    });
+  }
+
+  function generateFlexBasisClass(size, value) {
+    if (size == null) return 'flex-basis-' + value;
+    return 'flex-basis-' + size + '-' + value;
+  }
+
+  function updateInnerBlock(newSize, newValue, responsiveValue) {
+    var classes;
+    if (responsiveValue && newSize != null) classes = Object.keys(responsiveTriggers).reduce(function (res, size) {
+      return "".concat(res, " ").concat(newSize == size ? generateFlexBasisClass(newSize, newValue) : generateFlexBasisClass(size, responsiveTriggers[size]));
+    }, generateFlexBasisClass(null, width));else classes = Object.keys(responsiveTriggers).reduce(function (res, size) {
+      return "".concat(res, " ").concat(generateFlexBasisClass(size, responsiveTriggers[size]));
+    }, generateFlexBasisClass(null, newValue));
     console.log(classes);
     var new_inner_blocks = [(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.createBlock)("core/column", {
       className: classes
@@ -2216,19 +2266,6 @@ var Edit = function Edit(_ref) {
     console.log(new_inner_blocks);
     replaceInnerBlocks(clientId, new_inner_blocks, false);
   }
-  /* 
-      for(let i = 0; i < mediaUrlsNum; i++){
-          onChangeImage.push(function(media) {             
-              let src = get( media, [ 'sizes', 'large', 'url' ] ) || get( media, [ 'media_details', 'sizes', 'large', 'source_url' ] );
-              let tmpMediaUrls = [...mediaUrls]
-              let tmpMediaAlt = [...mediaAlt]
-              tmpMediaUrls[i] = src || media.url;
-              tmpMediaAlt[i] = media.alt;
-              setAttributes({mediaUrls: tmpMediaUrls});
-              setAttributes({mediaAlt: tmpMediaAlt});
-          });
-      } */
-
 
   console.log(responsiveTriggers.sm);
   return [/*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InspectorControls, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
@@ -2271,6 +2308,14 @@ var Edit = function Edit(_ref) {
     max: 100,
     step: 10,
     initialPosition: 0
+  }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+    label: "Flex-Basis",
+    value: width,
+    onChange: onChangeWidth,
+    min: 0,
+    max: 100,
+    step: 10,
+    initialPosition: 0
   }))), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks, {
     template: innerBlocksTemplate
   })];
@@ -2304,6 +2349,10 @@ __webpack_require__.r(__webpack_exports__);
   icon: 'columns',
   category: 'smaw-blocks',
   attributes: {
+    width: {
+      type: 'number',
+      default: 50
+    },
     responsiveTriggers: {
       type: 'object',
       default: {
@@ -2316,7 +2365,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     innerBlocksTemplate: {
       type: 'array',
-      default: [['core/column', {}, []]]
+      default: [['core/column', {
+        className: 'flex-basis-0'
+      }, []]]
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__.default,

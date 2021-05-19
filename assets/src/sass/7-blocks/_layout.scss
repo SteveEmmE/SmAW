@@ -1,6 +1,4 @@
 .wp-block-columns{
-    display: flex;
-    flex-wrap: wrap;
     
     /* Classi da aggiungere manualmente */
     &.are-justified-left{ justify-content: flex-start; }
@@ -9,5 +7,11 @@
     /**/
 
     &.are-vertically-aligned-center{ align-items: center;}
+
+    .wp-block-column{
+        flex-grow: 1;
+    }
 }
+
+
 
