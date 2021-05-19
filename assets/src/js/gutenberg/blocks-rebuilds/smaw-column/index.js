@@ -9,13 +9,16 @@ import Save from './save';
 
 registerBlockType('smaw-blocks/smaw-column', {
 
+    apiVersion: 2,
     title: 'Smaw Column',
     description: __('Custom Column', 'smaw'),
     icon: 'columns',
     category: 'smaw-blocks',
 
+
     attributes:{
         width: { type:'number', default: 50 },
+        classes: { type: 'string', default: '' },
         responsiveTriggers:{
             type: 'object', 
             default: {
@@ -31,7 +34,7 @@ registerBlockType('smaw-blocks/smaw-column', {
             default: [
                 [
                     'core/column',
-                    {className: 'flex-basis-0'},
+                    {className: 'flex-basis-50'},
                     []
                 ],
             ]

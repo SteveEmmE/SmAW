@@ -14,6 +14,8 @@ registerBlockType('smaw-blocks/smaw-columns', {
     icon: 'columns',
     category: 'smaw-blocks',
 
+   
+
     attributes:{
         responsiveTrigger:{type: 'string', default: ''},
         wrapper:{ type: 'string', default: '' },
@@ -27,8 +29,8 @@ registerBlockType('smaw-blocks/smaw-columns', {
                         className:'d-flex '
                     },
                     [
-                        ['smaw-blocks/smaw-column',{},[]],
-                        ['smaw-blocks/smaw-column',{},[]]
+                        ['smaw-blocks/smaw-column',{className: 'flex-basis-0'},[]],
+                        ['smaw-blocks/smaw-column',{className: 'flex-basis-0'},[]]
                     ]
                 ],
             ]

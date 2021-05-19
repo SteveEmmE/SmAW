@@ -505,6 +505,21 @@ input[type="search"]::-webkit-search-cancel-button {
     z-index: 100000;
     /* Above WP toolbar. */ }
 
+/*--------------------------
+		Text Weight
+---------------------------*/
+.text-thin {
+  font-weight: 100; }
+
+.text-semibold {
+  font-weight: 300; }
+
+.text-bold {
+  font-weight: 600; }
+
+.text-heavy {
+  font-weight: 900; }
+
 /*---------------------------
 		Text modifiers
 ---------------------------*/

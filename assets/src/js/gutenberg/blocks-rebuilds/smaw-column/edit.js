@@ -2,16 +2,28 @@ import {InspectorControls, InnerBlocks} from '@wordpress/block-editor';
 import {PanelBody, SelectControl, RangeControl} from '@wordpress/components';
 import {useDispatch, useSelect} from '@wordpress/data';
 import {createBlock} from '@wordpress/blocks';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { useBlockProps } from '@wordpress/block-editor';
 
 
 
-const Edit = ({clientId, attributes, setAttributes} ) => {
+const Edit = ({attributes, setAttributes, clientId}) => {
+
+
 
     const {
         width,
         responsiveTriggers,
         innerBlocksTemplate,
+        classes
     } = attributes;
+
+    let blockProps = useBlockProps( {
+        className: classes,
+    } );
+    console.log(blockProps);
+
+
 
     const { replaceInnerBlocks } = useDispatch("core/block-editor");
     let { inner_blocks } = useSelect(select => ({
@@ -21,13 +33,10 @@ const Edit = ({clientId, attributes, setAttributes} ) => {
     let onChangeFlexBasis = {};
     for (const [key, value] of Object.entries(responsiveTriggers)) {
         onChangeFlexBasis[key] = function(newValue){
-            console.log(key);
             let tmpResponsiveTriggers = JSON.parse(JSON.stringify(responsiveTriggers));
             tmpResponsiveTriggers[key] = newValue;
             updateInnerBlock(key, newValue, true);
             setAttributes({responsiveTriggers: tmpResponsiveTriggers});
-
-            
         }
     }
 
@@ -42,21 +51,19 @@ const Edit = ({clientId, attributes, setAttributes} ) => {
     }
 
     function updateInnerBlock(newSize, newValue, responsiveValue){
-        let classes;
+        let tmpClasses;
         if(responsiveValue && newSize != null)
-            classes = Object.keys(responsiveTriggers).reduce((res, size) =>  `${res} ${newSize==size ? generateFlexBasisClass(newSize, newValue) : generateFlexBasisClass(size, responsiveTriggers[size])}`, generateFlexBasisClass(null, width))
+            tmpClasses = Object.keys(responsiveTriggers).reduce((res, size) =>  `${res} ${newSize==size ? generateFlexBasisClass(newSize, newValue) : generateFlexBasisClass(size, responsiveTriggers[size])}`, generateFlexBasisClass(null, width))
         else
-            classes = Object.keys(responsiveTriggers).reduce((res, size) =>  `${res} ${generateFlexBasisClass(size, responsiveTriggers[size])}`, generateFlexBasisClass(null, newValue))
-        console.log(classes);
+            tmpClasses = Object.keys(responsiveTriggers).reduce((res, size) =>  `${res} ${generateFlexBasisClass(size, responsiveTriggers[size])}`, generateFlexBasisClass(null, newValue))
         let new_inner_blocks = [
-            createBlock("core/column", {className: classes}, inner_blocks[0].innerBlocks)
+            createBlock("core/column", {className: tmpClasses}, inner_blocks[0].innerBlocks)
         ];
-        console.log(new_inner_blocks)
+
         replaceInnerBlocks(clientId, new_inner_blocks, false);
+        setAttributes({classes: tmpClasses});
     }
 
-
-    console.log(responsiveTriggers.sm);
      
     return [
         <InspectorControls>
@@ -120,9 +127,13 @@ const Edit = ({clientId, attributes, setAttributes} ) => {
             
         </InspectorControls>,
 
-        <InnerBlocks
-            template={ innerBlocksTemplate }
-        />
+        <div {...blockProps}>
+            <InnerBlocks
+                template={ innerBlocksTemplate }
+            />
+        </div>
+        
+       
     ]
    
 

@@ -34,6 +34,17 @@
 	}
 }
 
+
+/*--------------------------
+		Text Weight
+---------------------------*/
+
+.text-thin{ font-weight: $font__thin };
+.text-semibold{ font-weight: $font__semibold };
+.text-bold{ font-weight: $font__bold };
+.text-heavy{ font-weight: $font__heavy };
+
+
 /*---------------------------
 		Text modifiers
 ---------------------------*/

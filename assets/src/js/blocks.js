@@ -1,16 +1,16 @@
 import '../sass/blocks.scss';
 
-import './gutenberg/blocks/background';
-import './gutenberg/blocks/mp-control';
-import './gutenberg/blocks/sizes-control';
-import './gutenberg/blocks/positioning-control';
-import './gutenberg/blocks/aos-control';
-import './gutenberg/blocks/parallax-background';
-import './gutenberg/blocks/image-width-desc';
-import './gutenberg/blocks/smaw-columns';
-import './gutenberg/blocks/smaw-column';
+import './gutenberg/blocks-rebuilds/background';
+import './gutenberg/blocks-rebuilds/mp-control';
+import './gutenberg/blocks-rebuilds/sizes-control';
+import './gutenberg/blocks-rebuilds/positioning-control';
+import './gutenberg/blocks-rebuilds/aos-control';
+import './gutenberg/blocks-rebuilds/parallax-background';
+import './gutenberg/blocks-rebuilds/image-width-desc';
+import './gutenberg/blocks-rebuilds/smaw-columns';
+import './gutenberg/blocks-rebuilds/smaw-column';
 
-import './gutenberg/blocks/image';
+import './gutenberg/blocks-rebuilds/image';
 /* let sliders = jQuery('.image-container');
 
 Array.from($(sliders)).forEach((slider) => {
@@ -23,3 +23,5 @@ Array.from($(sliders)).forEach((slider) => {
 })
 
  */
+
+import './gutenberg/blocks-extensions/paragraph-extension';
