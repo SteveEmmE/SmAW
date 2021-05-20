@@ -24,4 +24,4 @@ Array.from($(sliders)).forEach((slider) => {
 
  */
 
-import './gutenberg/blocks-extensions/paragraph-extension';
+import './gutenberg/blocks-extensions/font-extensions';

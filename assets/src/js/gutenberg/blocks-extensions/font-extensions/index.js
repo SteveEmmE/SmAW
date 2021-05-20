@@ -3,11 +3,12 @@ import { addFilter } from '@wordpress/hooks';
 import { __} from '@wordpress/i18n';
 import { useBlockProps } from '@wordpress/block-editor';
 
-const enableFontsControlOnBlocks = [
-    'core/paragraph',
+const enableFontControlOnBlocks = [
+    'core/heading',
+    'core/paragraph'
 ];
 
-const fontOptions = [
+const fontWeightOptions = [
     { label: __('none'), value:'' },
     { label: __('thin'), value:'text-thin' },
     { label: __('semibold'), value:'text-semibold' },
@@ -16,52 +17,24 @@ const fontOptions = [
 ]
 
 
-const addFontsAttribute = (settings, name)  => {
+const addFontAttributes = (settings, name)  => {
 
-    if ( ! enableFontsControlOnBlocks.includes( name ) ) {
+    if ( ! enableFontControlOnBlocks.includes( name ) ) {
         return settings;
     }
 
     settings.attributes = assign( settings.attributes, {
-        font: {
+        fontWeight: {
             type: 'string',
-            default: fontOptions[ 0 ].value,
+            default: fontWeightOptions[ 0 ].value,
         },
     } );
-    settings.apiVersion = 2;
 
-
-    const newSettings = {
-        ...settings,
-        attributes:{
-            ...settings.attributes,
-            font: {
-                type: 'string',
-                default: fontOptions[ 0 ].value,
-            },
-        },
-        edit(props) {
-            const { font } = props.attributes;
-
-            const blockProps = useBlockProps( {
-                className: font,
-            } );
-    
-            return ([
-                <div {...blockProps}>
-                   {settings.edit(props)}
-               </div>
-            ]);
-        }
-    }
-
-
-
-    return newSettings;
+    return settings;
 
 }
 
-addFilter( 'blocks.registerBlockType', 'extend-block-example/attribute/spacing', addFontsAttribute );
+addFilter( 'blocks.registerBlockType', 'smaw-blocks/font-attributes', addFontAttributes );
 
 
 
@@ -79,13 +52,13 @@ import { PanelBody, SelectControl } from '@wordpress/components';
 const withFontsControl = createHigherOrderComponent( ( BlockEdit ) => {
     return ( props ) => {
         // Do nothing if it's another block than our defined ones.
-        if ( ! enableFontsControlOnBlocks.includes( props.name ) ) {
+        if ( ! enableFontControlOnBlocks.includes( props.name ) ) {
             return (
                 <BlockEdit { ...props } />
             );
         }
 
-        const { font } = props.attributes;
+        const { fontWeight } = props.attributes;
 
 
         return (
@@ -93,16 +66,16 @@ const withFontsControl = createHigherOrderComponent( ( BlockEdit ) => {
                 <BlockEdit { ...props } />
                 <InspectorControls>
                     <PanelBody
-                        title={ __( 'My Fonts Control' ) }
+                        title={ __( 'Font Controls' ) }
                         initialOpen={ true }
                     >
                         <SelectControl
                             label={ __( 'Font weight' ) }
-                            value={ font }
-                            options={ fontOptions }
-                            onChange={ ( selectedFontOption ) => {
+                            value={ fontWeight }
+                            options={ fontWeightOptions }
+                            onChange={ ( selectedFontweightOption ) => {
                                 props.setAttributes( {
-                                    font: selectedFontOption
+                                    fontWeight: selectedFontweightOption
                                 } );
                             } }
                         />
@@ -114,25 +87,42 @@ const withFontsControl = createHigherOrderComponent( ( BlockEdit ) => {
     };
 }, 'withSpacingControl' );
 
-addFilter( 'editor.BlockEdit', 'extend-block-example/with-spacing-control', withFontsControl );
+addFilter( 'editor.BlockEdit', 'smaw-blocks/with-spacing-control', withFontsControl );
 
 
+/** --------------------------------------------------------------------------------------------------- */
 
+const withStyles = createHigherOrderComponent( ( BlockListBlock ) => {
+	return ( props ) => {
+        if ( ! enableFontControlOnBlocks.includes( props.name ) ) {
+            return <BlockListBlock {...props}/>;
+        }
+    
+		let wrapperProps = props.wrapperProps;
+		wrapperProps = {
+            className: props.attributes.fontWeight
+		}; 
+
+		return <BlockListBlock { ...props } {...wrapperProps}/>;
+	};
+}, 'withStyles' );
+
+wp.hooks.addFilter( 'editor.BlockListBlock', `smaw-blocks/core-blocks-font-weight`, withStyles );
 
 
 
 const addFontExtraProps = ( saveElementProps, blockType, attributes ) => {
     // Do nothing if it's another block than our defined ones.
-    if ( ! enableFontsControlOnBlocks.includes( blockType.name ) ) {
+    if ( ! enableFontControlOnBlocks.includes( blockType.name ) ) {
         return saveElementProps;
     }
 
-    const {font} = attributes;
+    const {fontWeight} = attributes;
 
     // Use Lodash's assign to gracefully handle if attributes are undefined
-    assign( saveElementProps, { className: font }  );
+    assign( saveElementProps, { className: fontWeight }  );
 
     return saveElementProps;
 };
 
-addFilter( 'blocks.getSaveContent.extraProps', 'extend-block-example/get-save-content/extra-props', addFontExtraProps );
+addFilter( 'blocks.getSaveContent.extraProps', 'smaw-blocks/get-save-content/extra-props', addFontExtraProps );

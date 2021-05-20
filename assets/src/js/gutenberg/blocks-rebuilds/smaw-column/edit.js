@@ -21,7 +21,6 @@ const Edit = ({attributes, setAttributes, clientId}) => {
     let blockProps = useBlockProps( {
         className: classes,
     } );
-    console.log(blockProps);
 
 
 
