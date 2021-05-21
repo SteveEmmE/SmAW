@@ -20,13 +20,8 @@ const Save = ({attributes}) => {
             {
                 imagesSrc.map((image, i) => 
                     <img 
-                        className={`${i==0 ? 'foreground': ''}`}
+                        className={`${i==0 ? 'foreground': ''} ${imagesWidthOverflow}`}
                         src={image} 
-                        style={{
-                            display: 'block',
-                            height:'100%',
-                            width: 'auto'
-                        }}
                     />
                 )
             }

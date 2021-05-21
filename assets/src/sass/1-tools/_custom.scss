@@ -3,9 +3,10 @@
     @each $label, $size in $sizes {
         @include mq($from: $size){
             #{$el}.overflow-#{$label}{
-                margin-left: 50%;
-                transform: translateX(-50%);
+                top:-100%; left:-100%; right: -100%; bottom:-100%;
+                margin: auto;
                 position: absolute;
+                //server che l'img abbia una width in px
             }
         }
     }

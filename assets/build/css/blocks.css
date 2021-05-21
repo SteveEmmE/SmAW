@@ -4885,7 +4885,8 @@ footer .footer__item {
 .wp-block-smaw-blocks-custom-image {
   width: 100%;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   [data-title="Smaw Image"] img,
   .wp-block-smaw-blocks-custom-image img {
     display: block;
@@ -4895,37 +4896,47 @@ footer .footer__item {
     @media (min-width: 33.75em) {
       [data-title="Smaw Image"] img.overflow-sm,
       .wp-block-smaw-blocks-custom-image img.overflow-sm {
-        margin-left: 50%;
-        -webkit-transform: translateX(-50%);
-                transform: translateX(-50%);
+        top: -100%;
+        left: -100%;
+        right: -100%;
+        bottom: -100%;
+        margin: auto;
         position: absolute; } }
     @media (min-width: 45em) {
       [data-title="Smaw Image"] img.overflow-md,
       .wp-block-smaw-blocks-custom-image img.overflow-md {
-        margin-left: 50%;
-        -webkit-transform: translateX(-50%);
-                transform: translateX(-50%);
+        top: -100%;
+        left: -100%;
+        right: -100%;
+        bottom: -100%;
+        margin: auto;
         position: absolute; } }
     @media (min-width: 60em) {
       [data-title="Smaw Image"] img.overflow-lg,
       .wp-block-smaw-blocks-custom-image img.overflow-lg {
-        margin-left: 50%;
-        -webkit-transform: translateX(-50%);
-                transform: translateX(-50%);
+        top: -100%;
+        left: -100%;
+        right: -100%;
+        bottom: -100%;
+        margin: auto;
         position: absolute; } }
     @media (min-width: 71.25em) {
       [data-title="Smaw Image"] img.overflow-xl,
       .wp-block-smaw-blocks-custom-image img.overflow-xl {
-        margin-left: 50%;
-        -webkit-transform: translateX(-50%);
-                transform: translateX(-50%);
+        top: -100%;
+        left: -100%;
+        right: -100%;
+        bottom: -100%;
+        margin: auto;
         position: absolute; } }
     @media (min-width: 82.5em) {
       [data-title="Smaw Image"] img.overflow-xxl,
       .wp-block-smaw-blocks-custom-image img.overflow-xxl {
-        margin-left: 50%;
-        -webkit-transform: translateX(-50%);
-                transform: translateX(-50%);
+        top: -100%;
+        left: -100%;
+        right: -100%;
+        bottom: -100%;
+        margin: auto;
         position: absolute; } }
     [data-title="Smaw Image"] img.foreground,
     .wp-block-smaw-blocks-custom-image img.foreground {

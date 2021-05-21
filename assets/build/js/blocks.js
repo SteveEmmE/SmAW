@@ -384,7 +384,7 @@ var withStyles = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHigher
         colReverse = _props$attributes2.colReverse;
     var wrapperProps = props.wrapperProps;
     wrapperProps = {
-      className: "d-flex ".concat(wrapper, " ").concat(responsiveTrigger + (colReverse ? '-reverse' : ''), " ").concat(rowReverse ? 'row-reverse' : '', " ")
+      className: "d-flex ".concat(wrapper, " ").concat(responsiveTrigger + '' + (colReverse ? '-reverse' : ''), " ").concat(rowReverse ? 'row-reverse' : '', " ")
     };
     return /*#__PURE__*/React.createElement(BlockListBlock, _extends({}, props, wrapperProps));
   };
@@ -400,10 +400,11 @@ var addExtraProps = function addExtraProps(saveElementProps, blockType, attribut
   var wrapper = attributes.wrapper,
       responsiveTrigger = attributes.responsiveTrigger,
       rowReverse = attributes.rowReverse,
-      colReverse = attributes.colReverse; // Use Lodash's assign to gracefully handle if attributes are undefined
+      colReverse = attributes.colReverse;
+  console.log(saveElementProps); // Use Lodash's assign to gracefully handle if attributes are undefined
 
-  saveElementProps = (0,lodash__WEBPACK_IMPORTED_MODULE_2__.assign)(saveElementProps, {
-    className: "d-flex ".concat(wrapper, " ").concat(responsiveTrigger + '-' + (colReverse ? '-reverse' : ''), " ").concat(rowReverse ? 'row-reverse' : '', " ")
+  (0,lodash__WEBPACK_IMPORTED_MODULE_2__.assign)(saveElementProps, {
+    className: saveElementProps.className + " d-flex ".concat(wrapper, " ").concat(responsiveTrigger + '' + (colReverse ? '-reverse' : ''), " ").concat(rowReverse ? 'row-reverse' : '', " ")
   });
   return saveElementProps;
 };
@@ -1779,13 +1780,8 @@ var Save = function Save(_ref) {
     }
   }, imagesSrc.map(function (image, i) {
     return /*#__PURE__*/React.createElement("img", {
-      className: "".concat(i == 0 ? 'foreground' : ''),
-      src: image,
-      style: {
-        display: 'block',
-        height: '100%',
-        width: 'auto'
-      }
+      className: "".concat(i == 0 ? 'foreground' : '', " ").concat(imagesWidthOverflow),
+      src: image
     });
   }));
 };
