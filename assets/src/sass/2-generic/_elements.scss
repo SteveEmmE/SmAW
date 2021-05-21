@@ -224,7 +224,6 @@ input,
 button,
 select,
 textarea {
-	@include body-text( body );
 	font-weight: 400;
 }
 

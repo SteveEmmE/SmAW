@@ -34,6 +34,22 @@
 	}
 }
 
+/*--------------------------
+		Colors
+---------------------------*/
+//text
+.has-cinnabar-color{ color: $cinnabar}
+.has-barn-red-color{ color: $barn-red}
+.has-charleston-green-color{color: $charleston-green}
+.has-timberwolf-color{color: $timberwolf}
+.has-white-color{color: $white}
+
+//background
+.has-cinnabar-background-color{ background-color: $cinnabar}
+.has-barn-red-background-color{ background-color: $barn-red}
+.has-charleston-green-background-color{background-color: $charleston-green}
+.has-timberwolf-background-color{background-color: $timberwolf}
+.has-white-background-color{background-color: $white}
 
 /*--------------------------
 		Text Weight
@@ -141,8 +157,8 @@
     Margin & Padding
 -----------------------*/
 
-@include margin($margin-range);
-@include padding($padding-range);
+@include margin($margin-range, $mq-breakpoints);
+@include padding($padding-range, $mq-breakpoints);
 
 
 
@@ -153,6 +169,8 @@
 .p-fixed{ position: fixed; }
 .p-relative{ position: relative; }
 .p-absolute{ position: absolute; }
+
+@include position($min, $max, $mq-breakpoints);
 
 
 

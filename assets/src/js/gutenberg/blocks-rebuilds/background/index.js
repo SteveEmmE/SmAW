@@ -26,6 +26,7 @@ registerBlockType('smaw-blocks/background', {
             }
         },
         repeat:{type: 'boolean', default: false},
+        cover: { type: 'boolean', default: false },
         sizeX: {type: 'number', default: '100'},
         sizeY: {type: 'number', default: '0'}
     },

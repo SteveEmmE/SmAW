@@ -1,6 +1,8 @@
 import {InspectorControls, InnerBlocks} from '@wordpress/block-editor';
-import {PanelBody} from '@wordpress/components';
+import {PanelBody, RangeControl} from '@wordpress/components';
 import { __experimentalBoxControl as BoxControl } from '@wordpress/components';
+
+const breakpoints = ['sm', 'md', 'lg', 'xl', 'xxl'];
 
 const Edit = ({attributes, setAttributes}) => {
         
@@ -25,13 +27,20 @@ const Edit = ({attributes, setAttributes}) => {
                 <BoxControl
                     values={ padding}
                     onChange={ onChangePadding}
+                    units={['rem']}
                 />
             </PanelBody>
+            {
+                breakpoints.forEach((size) => {
+                    
+                })
+            }
           
         </InspectorControls>,
 
         
         <div 
+
             style={{
                 paddingTop: padding.top,
                 paddingBottom: padding.bottom,

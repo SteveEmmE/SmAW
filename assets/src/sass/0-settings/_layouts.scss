@@ -13,10 +13,17 @@ $container-fluid: 100%;
 $container-padding-left: 30px;
 $container-padding-right: 30px;
 
+//Margin Padding
+$margin-range: 16;
+$padding-range: 16;
 
-$margin-range: 5;
-$padding-range: 5;
+//Positioning
+$min: -16;
+$max: 16;
+
+//Flex
 
 $flex-order-num: 3;
 
 $flex-basis-step: 10;
+

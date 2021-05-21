@@ -1,7 +1,6 @@
 import {assign, at} from 'lodash';
 import { addFilter } from '@wordpress/hooks';
 import { __} from '@wordpress/i18n';
-import { useBlockProps } from '@wordpress/block-editor';
 
 const enableFontControlOnBlocks = [
     'core/heading',
@@ -27,14 +26,15 @@ const addFontAttributes = (settings, name)  => {
         fontWeight: {
             type: 'string',
             default: fontWeightOptions[ 0 ].value,
-        },
+        }
     } );
+
 
     return settings;
 
 }
 
-addFilter( 'blocks.registerBlockType', 'smaw-blocks/font-attributes', addFontAttributes );
+addFilter( 'blocks.registerBlockType', 'smaw-blocks/font-extensions/add-attributes', addFontAttributes );
 
 
 
@@ -44,7 +44,7 @@ addFilter( 'blocks.registerBlockType', 'smaw-blocks/font-attributes', addFontAtt
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, SelectControl } from '@wordpress/components';
+import { PanelBody, SelectControl, ColorPicker } from '@wordpress/components';
 
 
 
@@ -59,7 +59,6 @@ const withFontsControl = createHigherOrderComponent( ( BlockEdit ) => {
         }
 
         const { fontWeight } = props.attributes;
-
 
         return (
             <Fragment>
@@ -87,7 +86,7 @@ const withFontsControl = createHigherOrderComponent( ( BlockEdit ) => {
     };
 }, 'withSpacingControl' );
 
-addFilter( 'editor.BlockEdit', 'smaw-blocks/with-spacing-control', withFontsControl );
+addFilter( 'editor.BlockEdit', 'smaw-blocks/font-extensions/block-edit', withFontsControl );
 
 
 /** --------------------------------------------------------------------------------------------------- */
@@ -97,19 +96,28 @@ const withStyles = createHigherOrderComponent( ( BlockListBlock ) => {
         if ( ! enableFontControlOnBlocks.includes( props.name ) ) {
             return <BlockListBlock {...props}/>;
         }
-    
+
 		let wrapperProps = props.wrapperProps;
 		wrapperProps = {
-            className: props.attributes.fontWeight
+            className: props.attributes.fontWeight,
 		}; 
 
 		return <BlockListBlock { ...props } {...wrapperProps}/>;
 	};
 }, 'withStyles' );
 
-wp.hooks.addFilter( 'editor.BlockListBlock', `smaw-blocks/core-blocks-font-weight`, withStyles );
+wp.hooks.addFilter( 'editor.BlockListBlock', `smaw-blocks/font-extensions/editor-wrapper`, withStyles );
 
 
+
+const createColorClass = (color) => {
+    if(color == undefined) return '';
+    return 'has-'+color.trim().replace(' ', '-')+'-color';
+}
+const createAlignmentClass = (alignment) => {
+    if(alignment == undefined) return '';
+    return 'has-text-align-'+alignment.trim();
+}
 
 const addFontExtraProps = ( saveElementProps, blockType, attributes ) => {
     // Do nothing if it's another block than our defined ones.
@@ -117,12 +125,13 @@ const addFontExtraProps = ( saveElementProps, blockType, attributes ) => {
         return saveElementProps;
     }
 
-    const {fontWeight} = attributes;
+
+    const {fontWeight, textColor, textAlign} = attributes;
 
     // Use Lodash's assign to gracefully handle if attributes are undefined
-    assign( saveElementProps, { className: fontWeight }  );
+    assign( saveElementProps, { className: `${fontWeight} ${createColorClass(textColor)} ${createAlignmentClass(textAlign)}` }  );
 
     return saveElementProps;
 };
 
-addFilter( 'blocks.getSaveContent.extraProps', 'smaw-blocks/get-save-content/extra-props', addFontExtraProps );
+addFilter( 'blocks.getSaveContent.extraProps', 'smaw-blocks/font-extensions/save', addFontExtraProps );

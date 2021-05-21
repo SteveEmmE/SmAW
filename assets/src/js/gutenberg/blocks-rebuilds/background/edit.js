@@ -12,6 +12,7 @@ const Edit = ({attributes, setAttributes}) => {
         backgroundColor,
         focalPoints,
         repeat,
+        cover,
         sizeX,
         sizeY
     } = attributes;
@@ -26,12 +27,18 @@ const Edit = ({attributes, setAttributes}) => {
     }
     function onChangeFocalPoints(newFocalPoints){ setAttributes({focalPoints: newFocalPoints}); }
     function onChangeRepeat(newValue){ setAttributes({repeat: newValue}); }
+    function onChangeCover() { setAttributes({cover: !cover}); }
     function onChangeSizeX(newValue){ setAttributes({sizeX: newValue}); }
     function onChangeSizeY(newValue){ setAttributes({sizeY: newValue}); }
     function onChangeFilterActive(){ setAttributes({filterActive: !filterActive}); }
     function onChangeFilterColor(newColor) { 
         let rgbaColor = `rgba(${newColor.rgb.r},${newColor.rgb.g},${newColor.rgb.b},${newColor.rgb.a})`
         setAttributes({filterColor: rgbaColor});
+    }
+
+    const backgroundSizeValue = (cover) => {
+        if (cover) return 'cover';
+        return  `${sizeX!=0 ? sizeX+'%' : 'auto'}  ${sizeY!=0 ? sizeY+'%' : 'auto' }`;
     }
 
  
@@ -83,24 +90,35 @@ const Edit = ({attributes, setAttributes}) => {
                 />
             </PanelBody>
             <PanelBody>
-                <RangeControl
-                    label="X background size"
-                    value={ sizeX }
-                    onChange={ onChangeSizeX }
-                    min={ 0 }
-                    max={ 100 }
-                    initialPosition={100}
+                <ToggleControl
+                    label="cover"
+                    checked={ cover }
+                    help={cover ? 'cover' : 'select x y sizes' }
+                    onChange={ onChangeCover }
                 />
-            </PanelBody>
-            <PanelBody>
-                <RangeControl
-                    label="Y background size"
-                    value={ sizeY }
-                    onChange={ onChangeSizeY }
-                    min={ 0 }
-                    max={ 100 }
-                    initialPosition={0}
-                />
+                {
+                    !cover ?
+                        [
+                            <RangeControl
+                                label="X background size"
+                                value={ sizeX }
+                                onChange={ onChangeSizeX }
+                                min={ 0 }
+                                max={ 100 }
+                                initialPosition={100}
+                            />,
+                            <RangeControl
+                                label="Y background size"
+                                value={ sizeY }
+                                onChange={ onChangeSizeY }
+                                min={ 0 }
+                                max={ 100 }
+                                initialPosition={0}
+                            />
+                        ]
+                    :
+                        ''
+                }
             </PanelBody>
             <PanelBody>
                 <ToggleControl
@@ -118,7 +136,7 @@ const Edit = ({attributes, setAttributes}) => {
                 backgroundImage: `${filterActive? 'linear-gradient('+filterColor+', '+filterColor+'),' : ''} ${imgUrl!=''? 'url('+imgUrl+')': ''}`,
                 backgroundColor: backgroundColor,
                 backgroundPosition: `${ (1 - focalPoints.x) * 100 }% ${ focalPoints.y * 100 }%`,
-                backgroundSize: `${ sizeX!=0 ? sizeX+'%' : 'auto' } ${ sizeY!=0 ? sizeY+'%' : 'auto'  }`,
+                backgroundSize: backgroundSizeValue(cover),
                 backgroundRepeat: repeat ? 'repeat' : 'no-repeat'
             }}
         >

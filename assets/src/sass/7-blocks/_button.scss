@@ -1,44 +1,45 @@
 /* stylelint-disable */
-.editor-styles-wrapper .wp-block-button,
-.wp-block-button {
 
-	// Style variation for 'layout-border-blue-fill'
-	&.is-style-layout-border-blue-fill {
+.wp-block-buttons{
+	display: flex;
 
-		.wp-block-button__link {
-			border: 1px solid $blue-200;
-			background-color: $blue-40 !important;
-			color: $white !important;
-			padding: 8px 30px;
-			border-radius: 3px;
+	&.is-content-justification-center{ justify-content: center; }
+	&.is-content-justification-left{ justify-content: start; }
+	&.is-content-justification-right{ justify-content: end; }
+
+
+
+	.editor-styles-wrapper .wp-block-button,
+	.wp-block-button {
+
+		&.wp-block-button__width-25{ width: 25%; }
+		&.wp-block-button__width-50{ width: 50%; }
+		&.wp-block-button__width-75{ width: 75%; }
+		&.wp-block-button__width-100{ width: 100%; }
+
+		&.is-style-outline>a{
+			outline-style: solid;
+			outline-width: 3px;
+
+			&.has-cinnabar-color{ outline-color: $cinnabar}
+			&.has-barn-red-color{ outline-color: $barn-red}
+			&.has-charleston-green-color{outline-color: $charleston-green}
+			&.has-timberwolf-color{outline-color: $timberwolf}
+			&.has-white-color{outline-color: $white}
 		}
-	}
 
-	// Style variation for 'layout-border-white-no-fill'
-	&.is-style-layout-border-white-no-fill {
-
-		.wp-block-button__link {
-			border: 1px solid $white;
-			background-color: transparent !important;
-			color: $white !important;
-			padding: 8px 30px;
-			border-radius: 3px;
+		.wp-block-button__link{
+			display: block;
+			width:100%;
+			text-align: center;
 		}
-	}
-}
 
-// Style variation block settings preview styles.
-.block-editor-block-styles__item[aria-label="White outline - to be used with dark background"] {
-	.block-editor-block-styles__item-preview,
-	.block-editor-block-list__layout.is-root-container {
-		background-color: $blue-200;
+		// Style variation for 'layout-border-blue-fill'
 
-		.wp-block-button.is-style-layout-border-white-no-fill {
-			.wp-block-button__link {
-				background-color: $blue-200;
-			}
-		}
 	}
 }
+
+
+
 
 /* stylelint-enable */

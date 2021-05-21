@@ -32,8 +32,12 @@
     color: $tx-color;
 }
 
+/*--------------------------
+    Margin & Padding Mixing
+---------------------------*/
 
-@mixin margin($number){
+
+@mixin margin($number, $sizes){
     @if type-of($number) != "number" {
 		@error "`#{$number}` is not a valid value for $values. It must be a number.";
 	}
@@ -45,10 +49,24 @@
         .mx-#{$i}{ margin-left: #{$i}rem; margin-right: #{$i}rem; }
         .my-#{$i}{ margin-top: #{$i}rem; margin-bottom: #{$i}rem; }
         .m-#{$i}{ margin: #{$i}rem; }
+
+        @each $label, $size in $sizes{
+            @include mq($until: $size){
+                .mt-#{$i}-#{$label}{ padding-top: #{$i}rem; }
+                .mb-#{$i}-#{$label}{ padding-bottom: #{$i}rem; }
+                .ml-#{$i}-#{$label}{ padding-left: #{$i}rem; }
+                .mr-#{$i}-#{$label}{ padding-right: #{$i}rem; }
+                .mx-#{$i}-#{$label}{ padding-left: #{$i}rem; padding-right: #{$i}rem; }
+                .my-#{$i}-#{$label}{ padding-top: #{$i}rem; padding-bottom: #{$i}rem; }
+                .m-#{$i}-#{$label}{ padding: #{$i}rem; }
+            }
+            
+        }
+
     }
 }
 
-@mixin padding($number){
+@mixin padding($number, $sizes){
     @if type-of($number) != "number" {
 		@error "`#{$number}` is not a valid value for $values. It must be a number.";
 	}
@@ -60,6 +78,44 @@
         .px-#{$i}{ padding-left: #{$i}rem; padding-right: #{$i}rem; }
         .py-#{$i}{ padding-top: #{$i}rem; padding-bottom: #{$i}rem; }
         .p-#{$i}{ padding: #{$i}rem; }
+
+        @each $label, $size in $sizes{
+            @include mq($until: $size){
+                .pt-#{$i}-#{$label}{ padding-top: #{$i}rem; }
+                .pb-#{$i}-#{$label}{ padding-bottom: #{$i}rem; }
+                .pl-#{$i}-#{$label}{ padding-left: #{$i}rem; }
+                .pr-#{$i}-#{$label}{ padding-right: #{$i}rem; }
+                .px-#{$i}-#{$label}{ padding-left: #{$i}rem; padding-right: #{$i}rem; }
+                .py-#{$i}-#{$label}{ padding-top: #{$i}rem; padding-bottom: #{$i}rem; }
+                .p-#{$i}-#{$label}{ padding: #{$i}rem; }
+            }
+            
+        }
+    }
+}
+
+/*---------------------
+    Positioning Mixing
+----------------------*/
+@mixin position($start, $end, $sizes){
+    @if type-of($start) != "number" or type-of($end) != "number"{
+		@error "not a valid value for $values. It must be a number.";
+	}
+    @for $i from $start through $end {
+        .top-#{$i}{ top: #{$i}rem; }
+        .bottom-#{$i}{ bottom: #{$i}rem; }
+        .left-#{$i}{ left: #{$i}rem; }
+        .right-#{$i}{ right: #{$i}rem; }
+
+        @each $label, $size in $sizes{
+            @include mq($until: $size){
+                .top-#{$i}-#{$label}{ top: #{$i}rem; }
+                .bottom-#{$i}-#{$label}{ bottom: #{$i}rem; }
+                .left-#{$i}-#{$label}{ left: #{$i}rem; }
+                .right-#{$i}-#{$label}{ right: #{$i}rem; }
+            }
+            
+        }
     }
 }
 

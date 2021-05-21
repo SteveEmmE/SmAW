@@ -15,16 +15,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 
 
 
@@ -61,14 +60,14 @@ var addFontAttributes = function addFontAttributes(settings, name) {
   return settings;
 };
 
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.registerBlockType', 'smaw-blocks/font-attributes', addFontAttributes);
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.registerBlockType', 'smaw-blocks/font-extensions/add-attributes', addFontAttributes);
 /** -------------------------------------------------------------------------------------- */
 
 
 
 
 
-var withFontsControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.createHigherOrderComponent)(function (BlockEdit) {
+var withFontsControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHigherOrderComponent)(function (BlockEdit) {
   return function (props) {
     // Do nothing if it's another block than our defined ones.
     if (!enableFontControlOnBlocks.includes(props.name)) {
@@ -76,7 +75,7 @@ var withFontsControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.create
     }
 
     var fontWeight = props.attributes.fontWeight;
-    return /*#__PURE__*/React.createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.Fragment, null, /*#__PURE__*/React.createElement(BlockEdit, props), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
+    return /*#__PURE__*/React.createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.Fragment, null, /*#__PURE__*/React.createElement(BlockEdit, props), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InspectorControls, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Font Controls'),
       initialOpen: true
     }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.SelectControl, {
@@ -91,10 +90,10 @@ var withFontsControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.create
     }))));
   };
 }, 'withSpacingControl');
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('editor.BlockEdit', 'smaw-blocks/with-spacing-control', withFontsControl);
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('editor.BlockEdit', 'smaw-blocks/font-extensions/block-edit', withFontsControl);
 /** --------------------------------------------------------------------------------------------------- */
 
-var withStyles = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.createHigherOrderComponent)(function (BlockListBlock) {
+var withStyles = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHigherOrderComponent)(function (BlockListBlock) {
   return function (props) {
     if (!enableFontControlOnBlocks.includes(props.name)) {
       return /*#__PURE__*/React.createElement(BlockListBlock, props);
@@ -107,7 +106,17 @@ var withStyles = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.createHigher
     return /*#__PURE__*/React.createElement(BlockListBlock, _extends({}, props, wrapperProps));
   };
 }, 'withStyles');
-wp.hooks.addFilter('editor.BlockListBlock', "smaw-blocks/core-blocks-font-weight", withStyles);
+wp.hooks.addFilter('editor.BlockListBlock', "smaw-blocks/font-extensions/editor-wrapper", withStyles);
+
+var createColorClass = function createColorClass(color) {
+  if (color == undefined) return '';
+  return 'has-' + color.trim().replace(' ', '-') + '-color';
+};
+
+var createAlignmentClass = function createAlignmentClass(alignment) {
+  if (alignment == undefined) return '';
+  return 'has-text-align-' + alignment.trim();
+};
 
 var addFontExtraProps = function addFontExtraProps(saveElementProps, blockType, attributes) {
   // Do nothing if it's another block than our defined ones.
@@ -115,15 +124,17 @@ var addFontExtraProps = function addFontExtraProps(saveElementProps, blockType, 
     return saveElementProps;
   }
 
-  var fontWeight = attributes.fontWeight; // Use Lodash's assign to gracefully handle if attributes are undefined
+  var fontWeight = attributes.fontWeight,
+      textColor = attributes.textColor,
+      textAlign = attributes.textAlign; // Use Lodash's assign to gracefully handle if attributes are undefined
 
   (0,lodash__WEBPACK_IMPORTED_MODULE_0__.assign)(saveElementProps, {
-    className: fontWeight
+    className: "".concat(fontWeight, " ").concat(createColorClass(textColor), " ").concat(createAlignmentClass(textAlign))
   });
   return saveElementProps;
 };
 
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.getSaveContent.extraProps', 'smaw-blocks/get-save-content/extra-props', addFontExtraProps);
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.getSaveContent.extraProps', 'smaw-blocks/font-extensions/save', addFontExtraProps);
 
 /***/ }),
 
@@ -622,6 +633,7 @@ var Edit = function Edit(_ref) {
       backgroundColor = attributes.backgroundColor,
       focalPoints = attributes.focalPoints,
       repeat = attributes.repeat,
+      cover = attributes.cover,
       sizeX = attributes.sizeX,
       sizeY = attributes.sizeY;
 
@@ -651,6 +663,12 @@ var Edit = function Edit(_ref) {
     });
   }
 
+  function onChangeCover() {
+    setAttributes({
+      cover: !cover
+    });
+  }
+
   function onChangeSizeX(newValue) {
     setAttributes({
       sizeX: newValue
@@ -675,6 +693,11 @@ var Edit = function Edit(_ref) {
       filterColor: rgbaColor
     });
   }
+
+  var backgroundSizeValue = function backgroundSizeValue(cover) {
+    if (cover) return 'cover';
+    return "".concat(sizeX != 0 ? sizeX + '%' : 'auto', "  ").concat(sizeY != 0 ? sizeY + '%' : 'auto');
+  };
 
   return [/*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InspectorControls, {
     style: {
@@ -712,21 +735,26 @@ var Edit = function Edit(_ref) {
   })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FocalPointPicker, {
     value: focalPoints,
     onChange: onChangeFocalPoints
-  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    label: "cover",
+    checked: cover,
+    help: cover ? 'cover' : 'select x y sizes',
+    onChange: onChangeCover
+  }), !cover ? [/*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
     label: "X background size",
     value: sizeX,
     onChange: onChangeSizeX,
     min: 0,
     max: 100,
     initialPosition: 100
-  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+  }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
     label: "Y background size",
     value: sizeY,
     onChange: onChangeSizeY,
     min: 0,
     max: 100,
     initialPosition: 0
-  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+  })] : ''), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
     label: "repeat",
     checked: repeat,
     help: repeat ? 'repeat' : 'no repeat',
@@ -736,7 +764,7 @@ var Edit = function Edit(_ref) {
       backgroundImage: "".concat(filterActive ? 'linear-gradient(' + filterColor + ', ' + filterColor + '),' : '', " ").concat(imgUrl != '' ? 'url(' + imgUrl + ')' : ''),
       backgroundColor: backgroundColor,
       backgroundPosition: "".concat((1 - focalPoints.x) * 100, "% ").concat(focalPoints.y * 100, "%"),
-      backgroundSize: "".concat(sizeX != 0 ? sizeX + '%' : 'auto', " ").concat(sizeY != 0 ? sizeY + '%' : 'auto'),
+      backgroundSize: backgroundSizeValue(cover),
       backgroundRepeat: repeat ? 'repeat' : 'no-repeat'
     }
   }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks, null))];
@@ -797,6 +825,10 @@ __webpack_require__.r(__webpack_exports__);
       type: 'boolean',
       default: false
     },
+    cover: {
+      type: 'boolean',
+      default: false
+    },
     sizeX: {
       type: 'number',
       default: '100'
@@ -832,14 +864,21 @@ var Save = function Save(_ref) {
       backgroundColor = attributes.backgroundColor,
       focalPoints = attributes.focalPoints,
       repeat = attributes.repeat,
+      cover = attributes.cover,
       sizeX = attributes.sizeX,
       sizeY = attributes.sizeY;
+
+  var backgroundSizeValue = function backgroundSizeValue(cover) {
+    if (cover) return 'cover';
+    return "".concat(sizeX != 0 ? sizeX + '%' : 'auto', "  ").concat(sizeY != 0 ? sizeY + '%' : 'auto');
+  };
+
   return /*#__PURE__*/React.createElement("div", {
     style: {
       backgroundImage: "".concat(filterActive ? 'linear-gradient(' + filterColor + ', ' + filterColor + '),' : '', " ").concat(imgUrl != '' ? 'url(' + imgUrl + ')' : ''),
       backgroundColor: backgroundColor,
       backgroundPosition: "".concat((1 - focalPoints.x) * 100, "% ").concat(focalPoints.y * 100, "%"),
-      backgroundSize: "".concat(sizeX != 0 ? sizeX + '%' : 'auto', " ").concat(sizeY != 0 ? sizeY + '%' : 'auto'),
+      backgroundSize: backgroundSizeValue(cover),
       backgroundRepeat: repeat ? 'repeat' : 'no-repeat'
     }
   }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks.Content, null));
@@ -1347,6 +1386,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var breakpoints = ['sm', 'md', 'lg', 'xl', 'xxl'];
 
 var Edit = function Edit(_ref) {
   var attributes = _ref.attributes,
@@ -1379,8 +1419,9 @@ var Edit = function Edit(_ref) {
     title: "Padding Control"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalBoxControl, {
     values: padding,
-    onChange: onChangePadding
-  }))), /*#__PURE__*/React.createElement("div", {
+    onChange: onChangePadding,
+    units: ['rem']
+  })), breakpoints.forEach(function (size) {})), /*#__PURE__*/React.createElement("div", {
     style: {
       paddingTop: padding.top,
       paddingBottom: padding.bottom,
@@ -1423,23 +1464,30 @@ __webpack_require__.r(__webpack_exports__);
   category: 'smaw-blocks',
   attributes: {
     margin: {
-      type: 'object',
-      default: {
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0'
-      }
+      type: 'array',
+      default: []
     },
     padding: {
-      type: 'object',
-      default: {
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0'
-      }
+      type: 'array',
+      default: []
     }
+    /*   margin:{type: 'object',
+          default: {
+              top: '0',
+              left: '0',
+              right: '0',
+              bottom: '0'
+          }
+      },
+      padding:{type: 'object',
+          default: {
+              top: '0',
+              left: '0',
+              right: '0',
+              bottom: '0'
+          }
+      } */
+
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__.default,
   save: _save__WEBPACK_IMPORTED_MODULE_3__.default

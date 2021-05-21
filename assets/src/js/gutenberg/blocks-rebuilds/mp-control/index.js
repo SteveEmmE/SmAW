@@ -15,7 +15,9 @@ registerBlockType('smaw-blocks/mp-control', {
     category: 'smaw-blocks',
 
     attributes:{
-        margin:{type: 'object',
+        margin: { type: 'array', default: [] },
+        padding: { type:'array', default: [] },
+      /*   margin:{type: 'object',
             default: {
                 top: '0',
                 left: '0',
@@ -30,7 +32,7 @@ registerBlockType('smaw-blocks/mp-control', {
                 right: '0',
                 bottom: '0'
             }
-        }
+        } */
     },
 
     edit: Edit,    

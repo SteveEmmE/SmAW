@@ -9,9 +9,15 @@ const Save = ({attributes}) => {
         backgroundColor,
         focalPoints,
         repeat,
+        cover,
         sizeX,
         sizeY
     } = attributes;
+
+    const backgroundSizeValue = (cover) => {
+        if (cover) return 'cover';
+        return  `${sizeX!=0 ? sizeX+'%' : 'auto'}  ${sizeY!=0 ? sizeY+'%' : 'auto' }`;
+    }
 
     return (
         <div
@@ -19,7 +25,7 @@ const Save = ({attributes}) => {
                 backgroundImage: `${filterActive? 'linear-gradient('+filterColor+', '+filterColor+'),' : ''} ${imgUrl!=''? 'url('+imgUrl+')': ''}`,
                 backgroundColor: backgroundColor,
                 backgroundPosition: `${ (1 - focalPoints.x) * 100 }% ${ focalPoints.y * 100 }%`,
-                backgroundSize: `${ sizeX!=0 ? sizeX+'%' : 'auto' } ${ sizeY!=0 ? sizeY+'%' : 'auto'  }`,
+                backgroundSize: backgroundSizeValue(cover),
                 backgroundRepeat: repeat ? 'repeat' : 'no-repeat'
             }}
         >
