@@ -144,7 +144,7 @@
 	&.row-reverse { flex-direction: row-reverse; }
 	&.col-reverse { flex-direction: column-reverse; }
 
-	@include col-size-responsive();
+	@include col-size-responsive('&');
 
 	@include flex-order($flex-order-num);
 
@@ -169,8 +169,9 @@
 .p-fixed{ position: fixed; }
 .p-relative{ position: relative; }
 .p-absolute{ position: absolute; }
+.p-static { position: static; }
 
-@include position($min, $max, $mq-breakpoints);
+//@include position($min, $max, $mq-breakpoints);
 
 
 

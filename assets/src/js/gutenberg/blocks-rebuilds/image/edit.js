@@ -1,6 +1,7 @@
 import {InspectorControls, MediaPlaceholder, InnerBlocks} from '@wordpress/block-editor';
-import {PanelBody, ResizableBox, RangeControl, ToggleControl} from '@wordpress/components';
+import {PanelBody, ResizableBox, SelectControl, ToggleControl} from '@wordpress/components';
 import get from 'lodash/get';
+import { __ } from '@wordpress/i18n';
 
 
 const Edit = ({attributes, setAttributes, toggleSelection}) => {
@@ -33,18 +34,7 @@ const Edit = ({attributes, setAttributes, toggleSelection}) => {
 
     }
 
-    console.log(imagesSrc);
-
-    function onChangeImagesWidthOverflow(){
-        setAttributes({imagesWidthOverflow: !imagesWidthOverflow});
-        console.log(imagesWidthOverflow);
-    }
-
-
-
     return ([
-
-
 
         <InspectorControls>
             <PanelBody title={"Select the image/images"}>
@@ -67,10 +57,23 @@ const Edit = ({attributes, setAttributes, toggleSelection}) => {
             </PanelBody>
 
             <PanelBody>
-                <ToggleControl
-                    label="Width Overflow"
-                    checked={imagesWidthOverflow}
-                    onChange={onChangeImagesWidthOverflow}
+                <SelectControl
+                    label={ __( 'breakpoint overflow property' ) }
+                    value={ imagesWidthOverflow }
+                    options={
+                        [
+                            { label: __('sm'), value:'overflow-sm' },
+                            { label: __('md'), value:'overflow-md' },
+                            { label: __('lg'), value:'overflow-lg' },
+                            { label: __('xl'), value:'overflow-xl' },
+                            { label: __('xxl'), value:'overflow-xxl' }
+                        ]
+                    }
+                    onChange={ ( selectedimagesWidthOverflow ) => {
+                        setAttributes( {
+                            imagesWidthOverflow: selectedimagesWidthOverflow
+                        } );
+                    } }
                 />
             </PanelBody>
         </InspectorControls>,
@@ -111,11 +114,10 @@ const Edit = ({attributes, setAttributes, toggleSelection}) => {
                 <img 
                     src={imagesSrc[0]} 
                     style={{
-                        display: 'block',
-                        height:'100%',
-                        minWidth: `${imagesWidthOverflow ? imagesWidth[0]+'px' : 'auto'}`,
                         opacity:1
                     }}
+                    className={imagesWidthOverflow}
+
                 />
                
             </div>

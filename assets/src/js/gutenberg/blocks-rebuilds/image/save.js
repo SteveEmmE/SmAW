@@ -25,7 +25,7 @@ const Save = ({attributes}) => {
                         style={{
                             display: 'block',
                             height:'100%',
-                            minWidth: `${imagesWidthOverflow ? imagesWidth[i]+'px' : 'auto'}`
+                            width: 'auto'
                         }}
                     />
                 )

@@ -102,10 +102,10 @@
 		@error "not a valid value for $values. It must be a number.";
 	}
     @for $i from $start through $end {
-        .top-#{$i}{ top: #{$i}rem; }
-        .bottom-#{$i}{ bottom: #{$i}rem; }
-        .left-#{$i}{ left: #{$i}rem; }
-        .right-#{$i}{ right: #{$i}rem; }
+        .top-#{$i}-base { top: #{$i}rem; }
+        .bottom-#{$i}-base{ bottom: #{$i}rem; }
+        .left-#{$i}-base{ left: #{$i}rem; }
+        .right-#{$i}-base{ right: #{$i}rem; }
 
         @each $label, $size in $sizes{
             @include mq($until: $size){
@@ -133,11 +133,17 @@
 }
 
 //da inserire dentro la class d-flex .... forse non è la soluzione migliore
-@mixin col-size-responsive(){
+@mixin col-size-responsive($el){
     @each $label, $size in $mq-breakpoints {
-        &.col-#{$label}-responsive{
+        #{$el}.col-#{$label}-responsive{
             @include mq($until: $size){
                 flex-direction: column;
+            }
+        }
+        #{$el}.col-#{$label}-responsive-reverse{
+            @include mq($until: $size){
+                flex-direction: column-reverse;
+
             }
         }
     }

@@ -7,8 +7,8 @@ import './gutenberg/blocks-rebuilds/positioning-control';
 import './gutenberg/blocks-rebuilds/aos-control';
 import './gutenberg/blocks-rebuilds/parallax-background';
 import './gutenberg/blocks-rebuilds/image-width-desc';
-import './gutenberg/blocks-rebuilds/smaw-columns';
-import './gutenberg/blocks-rebuilds/smaw-column';
+/* import './gutenberg/blocks-rebuilds/smaw-columns';
+import './gutenberg/blocks-rebuilds/smaw-column'; */
 
 import './gutenberg/blocks-rebuilds/image';
 /* let sliders = jQuery('.image-container');
@@ -25,3 +25,5 @@ Array.from($(sliders)).forEach((slider) => {
  */
 
 import './gutenberg/blocks-extensions/font-extensions';
+import './gutenberg/blocks-extensions/column-extensions';
+import './gutenberg/blocks-extensions/columns-extensions';

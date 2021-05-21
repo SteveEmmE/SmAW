@@ -1,0 +1,12 @@
+@mixin overflow-image($sizes, $el:'')
+{
+    @each $label, $size in $sizes {
+        @include mq($from: $size){
+            #{$el}.overflow-#{$label}{
+                margin-left: 50%;
+                transform: translateX(-50%);
+                position: absolute;
+            }
+        }
+    }
+}

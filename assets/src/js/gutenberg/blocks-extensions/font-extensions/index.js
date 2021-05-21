@@ -1,4 +1,4 @@
-import {assign, at} from 'lodash';
+import {assign} from 'lodash';
 import { addFilter } from '@wordpress/hooks';
 import { __} from '@wordpress/i18n';
 
@@ -44,7 +44,7 @@ addFilter( 'blocks.registerBlockType', 'smaw-blocks/font-extensions/add-attribut
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, ColorPicker } from '@wordpress/components';
+import { PanelBody, SelectControl } from '@wordpress/components';
 
 
 
