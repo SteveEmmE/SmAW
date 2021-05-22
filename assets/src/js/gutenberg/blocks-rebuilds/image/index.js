@@ -14,9 +14,18 @@ registerBlockType('smaw-blocks/custom-image', {
 
     attributes: {
         imagesSrc:{type: 'array', default: []},
+        allowedSizes:{
+            type: 'array',
+            default: []
+        },
+        size:{
+            type: 'string',
+            default: 'full'
+        },
         imagesHeight:{type: 'string', default: '500px'},
         imagesWidthOverflow:{ type:'string', default: ''},
-        imagesWidth:{ type:'array', default: []}
+        imagesWidth:{ type:'array', default: []},
+        gallery:{type:'array', default:[]}
     },
 
     edit: Edit,    

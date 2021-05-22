@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
+    "lightslider": "^1.1.6",
     "rellax": "^1.12.1",
     "reset-css": "^5.0.1"
   },

@@ -44,6 +44,58 @@ jQuery(window).scroll(function (){
 
 
 /**
+ * Image Sliders
+ */
+
+ let sliders = jQuery('.image-container');
+
+ Array.from(jQuery(sliders)).forEach((slider) => {
+     let slides = Array.from(jQuery(slider).find('img'));
+     setInterval(() => {
+         jQuery(slides[0]).removeClass('foreground');
+         slides.push(slides.shift());
+         jQuery(slides[0]).addClass('foreground');
+     },2000)
+ })
+
+
+/**
+ * Light-Slider
+ */
+
+import 'lightslider/dist/js/lightslider';
+import 'lightslider/dist/css/lightslider.css'
+
+
+Array.from(jQuery('.lightSlider')).forEach(s => {
+    let items = jQuery(s).data('items');
+    let responsiveBreakpoints = jQuery(s).data('breakpoints');
+
+    jQuery(s).lightSlider({
+    
+        pager:false,
+        auto:true,
+        item:items,
+        loop: true,
+        slideMove:1,
+        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+        speed:600,
+        responsive : responsiveBreakpoints.map(rb => {
+            return {
+                breakpoint:rb.value,
+                settings: {
+                    item:rb.itemsNumber,
+                    slideMove:1,
+                }
+            }
+        })
+
+    });  
+})
+ 
+
+
+/**
  * Menu Responsive
  */
 

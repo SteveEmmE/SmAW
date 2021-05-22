@@ -55,7 +55,6 @@ const addEditBlocksControl = createHigherOrderComponent( ( BlockEdit ) => {
         const {
             width,
             responsiveTriggers,
-            classes
         } = props.attributes;
 
         function generateFlexBasisClass(size, value){
@@ -189,8 +188,10 @@ const addExtraProps = ( saveElementProps, blockType, attributes ) => {
 
     const { classes } = attributes;
 
+
     // Use Lodash's assign to gracefully handle if attributes are undefined
     saveElementProps = assign( saveElementProps, { className: classes }  );
+    saveElementProps = assign( saveElementProps, { style: {} }  );
 
     return saveElementProps;
 };

@@ -1,2 +1,12 @@
 @import "header";
 @import "footer";
+
+.page-separator{
+    hr{
+        border-color: $charleston-green;
+        width: 15%;
+        margin-right: auto;
+        margin-left: 0;
+    }
+
+}

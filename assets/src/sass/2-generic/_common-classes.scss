@@ -69,6 +69,8 @@
 .text-bigger-m{ @include body-text( m ); }
 .text-bigger-l{ @include body-text( l ); }
 
+.text-uppercase{ text-transform: uppercase; }
+
 
 /*---------------------------
 		Alignments
@@ -104,8 +106,12 @@
 		Width 
 ---------------------------*/
 
-.container{ @include container-size('wide'); }
-.container-fluid{ @include container-size('full'); }
+.container{ 
+	max-width:1300px;
+	padding-left:30px;
+	padding-right:30px;
+	margin-left: auto; margin-right:auto;
+}
 
 
 /*---------------------------
@@ -135,6 +141,7 @@
 
 	&.flex-between{ justify-content: space-between; }
 	&.flex-around{ justify-content: space-around; }
+	&.flex-center{ justify-content: center; }
 
 	&.flex-wrap{ flex-wrap: wrap; }
 	&.flex-nowrap{ flex-wrap: nowrap; }

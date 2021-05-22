@@ -145,7 +145,6 @@ const addExtraProps = ( saveElementProps, blockType, attributes ) => {
         colReverse
     } = attributes;
 
-    console.log(saveElementProps);
 
     // Use Lodash's assign to gracefully handle if attributes are undefined
     assign( saveElementProps, { className: saveElementProps.className+` d-flex ${wrapper} ${responsiveTrigger+''+(colReverse? '-reverse':'')} ${rowReverse ? 'row-reverse' : ''} ` }  );

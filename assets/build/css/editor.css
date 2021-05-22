@@ -154,6 +154,9 @@ $color__background-table: $blue-20; */
 /*--------------
     Flex Mixing
 ---------------*/
+/*----------------------
+    SmAW Image
+-----------------------*/
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -556,6 +559,9 @@ input[type="search"]::-webkit-search-cancel-button {
 .text-bigger-l {
   font-size: 1.5em; }
 
+.text-uppercase {
+  text-transform: uppercase; }
+
 /*---------------------------
 		Alignments
 ---------------------------*/
@@ -582,12 +588,10 @@ input[type="search"]::-webkit-search-cancel-button {
 ---------------------------*/
 .container {
   max-width: 1300px;
-  display: block;
+  padding-left: 30px;
+  padding-right: 30px;
   margin-left: auto;
   margin-right: auto; }
-
-.container-fluid {
-  max-width: 100%; }
 
 /*---------------------------
 		Others
@@ -621,6 +625,11 @@ input[type="search"]::-webkit-search-cancel-button {
     -webkit-justify-content: space-around;
         -ms-flex-pack: distribute;
             justify-content: space-around; }
+  .d-flex.flex-center {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
   .d-flex.flex-wrap {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
@@ -4794,6 +4803,12 @@ footer .footer__item {
 .credits {
   background-color: #f2f2f2;
   color: #2a2b26; }
+
+.page-separator hr {
+  border-color: #2a2b26;
+  width: 15%;
+  margin-right: auto;
+  margin-left: 0; }
 
 /*---------------------------------
 		Colors Variables

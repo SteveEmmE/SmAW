@@ -1,16 +1,20 @@
-[data-title="Smaw Image"],
-.wp-block-smaw-blocks-custom-image
+.image-container
 {
     width: 100%;
     overflow: hidden;
     position: relative;
-    overflow:hidden;
+
+    @include responsive-height-image-container($mq-breakpoints, '&');
 
     img{
-        display: block;
+        top:-100%; 
+        left:-100%; 
+        right: -100%; 
+        bottom:-100%;
+        margin: auto;
+        position: absolute;
         opacity: 0;
-        width:100%;
-        height: auto;
+        transition: all 0.6s ease-in-out;
 
         @include overflow-image($mq-breakpoints, '&');
 
@@ -19,16 +23,13 @@
         }
 
     }
+
+    // edito fix to show the right propery on editor
+    
 }
 
-/* figure.wp-block-image { 
-    width: 100%; 
-
-    img {
-        width: 100%;
-        height: auto;
-    }
-
+.block-editor__container img {
+    max-width: none;
+    height: 100%; 
 }
 
- */

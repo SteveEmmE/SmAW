@@ -1,12 +1,31 @@
+/*----------------------
+    SmAW Image
+-----------------------*/
+
 @mixin overflow-image($sizes, $el:'')
 {
     @each $label, $size in $sizes {
-        @include mq($from: $size){
+        @include mq($until: $size){
             #{$el}.overflow-#{$label}{
-                top:-100%; left:-100%; right: -100%; bottom:-100%;
-                margin: auto;
-                position: absolute;
+                display: block;
+                opacity: 0;
+                width:100% !important;
+                position:absolute;
+                height: auto;
                 //server che l'img abbia una width in px
+            }
+        }
+    }
+}
+
+@mixin responsive-height-image-container($sizes, $el:''){
+
+    @each $label, $size in $sizes {
+        @include mq($until: $size){
+            #{$el}.overflow-#{$label}{
+                height: fit-content !important;
+                min-height: 300px;
+                width: 90vw;
             }
         }
     }

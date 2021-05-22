@@ -186,6 +186,9 @@ $color__background-table: $blue-20; */
 /*--------------
     Flex Mixing
 ---------------*/
+/*----------------------
+    SmAW Image
+-----------------------*/
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -588,6 +591,9 @@ input[type="search"]::-webkit-search-cancel-button {
 .text-bigger-l {
   font-size: 1.5em; }
 
+.text-uppercase {
+  text-transform: uppercase; }
+
 /*---------------------------
 		Alignments
 ---------------------------*/
@@ -614,12 +620,10 @@ input[type="search"]::-webkit-search-cancel-button {
 ---------------------------*/
 .container {
   max-width: 1300px;
-  display: block;
+  padding-left: 30px;
+  padding-right: 30px;
   margin-left: auto;
   margin-right: auto; }
-
-.container-fluid {
-  max-width: 100%; }
 
 /*---------------------------
 		Others
@@ -653,6 +657,11 @@ input[type="search"]::-webkit-search-cancel-button {
     -webkit-justify-content: space-around;
         -ms-flex-pack: distribute;
             justify-content: space-around; }
+  .d-flex.flex-center {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
   .d-flex.flex-wrap {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
@@ -4827,6 +4836,12 @@ footer .footer__item {
   background-color: #f2f2f2;
   color: #2a2b26; }
 
+.page-separator hr {
+  border-color: #2a2b26;
+  width: 15%;
+  margin-right: auto;
+  margin-left: 0; }
+
 .wp-block-columns {
   /* Classi da aggiungere manualmente */
   /**/ }
@@ -4881,78 +4896,97 @@ footer .footer__item {
   position: absolute;
   display: block; }
 
-[data-title="Smaw Image"],
-.wp-block-smaw-blocks-custom-image {
+.image-container {
   width: 100%;
   overflow: hidden;
-  position: relative;
-  overflow: hidden; }
-  [data-title="Smaw Image"] img,
-  .wp-block-smaw-blocks-custom-image img {
-    display: block;
+  position: relative; }
+  @media (max-width: 33.75em) {
+    .image-container.overflow-sm {
+      height: -webkit-fit-content !important;
+      height: -moz-fit-content !important;
+      height: fit-content !important;
+      min-height: 300px;
+      width: 90vw; } }
+  @media (max-width: 45em) {
+    .image-container.overflow-md {
+      height: -webkit-fit-content !important;
+      height: -moz-fit-content !important;
+      height: fit-content !important;
+      min-height: 300px;
+      width: 90vw; } }
+  @media (max-width: 60em) {
+    .image-container.overflow-lg {
+      height: -webkit-fit-content !important;
+      height: -moz-fit-content !important;
+      height: fit-content !important;
+      min-height: 300px;
+      width: 90vw; } }
+  @media (max-width: 71.25em) {
+    .image-container.overflow-xl {
+      height: -webkit-fit-content !important;
+      height: -moz-fit-content !important;
+      height: fit-content !important;
+      min-height: 300px;
+      width: 90vw; } }
+  @media (max-width: 82.5em) {
+    .image-container.overflow-xxl {
+      height: -webkit-fit-content !important;
+      height: -moz-fit-content !important;
+      height: fit-content !important;
+      min-height: 300px;
+      width: 90vw; } }
+  .image-container img {
+    top: -100%;
+    left: -100%;
+    right: -100%;
+    bottom: -100%;
+    margin: auto;
+    position: absolute;
     opacity: 0;
-    width: 100%;
-    height: auto; }
-    @media (min-width: 33.75em) {
-      [data-title="Smaw Image"] img.overflow-sm,
-      .wp-block-smaw-blocks-custom-image img.overflow-sm {
-        top: -100%;
-        left: -100%;
-        right: -100%;
-        bottom: -100%;
-        margin: auto;
-        position: absolute; } }
-    @media (min-width: 45em) {
-      [data-title="Smaw Image"] img.overflow-md,
-      .wp-block-smaw-blocks-custom-image img.overflow-md {
-        top: -100%;
-        left: -100%;
-        right: -100%;
-        bottom: -100%;
-        margin: auto;
-        position: absolute; } }
-    @media (min-width: 60em) {
-      [data-title="Smaw Image"] img.overflow-lg,
-      .wp-block-smaw-blocks-custom-image img.overflow-lg {
-        top: -100%;
-        left: -100%;
-        right: -100%;
-        bottom: -100%;
-        margin: auto;
-        position: absolute; } }
-    @media (min-width: 71.25em) {
-      [data-title="Smaw Image"] img.overflow-xl,
-      .wp-block-smaw-blocks-custom-image img.overflow-xl {
-        top: -100%;
-        left: -100%;
-        right: -100%;
-        bottom: -100%;
-        margin: auto;
-        position: absolute; } }
-    @media (min-width: 82.5em) {
-      [data-title="Smaw Image"] img.overflow-xxl,
-      .wp-block-smaw-blocks-custom-image img.overflow-xxl {
-        top: -100%;
-        left: -100%;
-        right: -100%;
-        bottom: -100%;
-        margin: auto;
-        position: absolute; } }
-    [data-title="Smaw Image"] img.foreground,
-    .wp-block-smaw-blocks-custom-image img.foreground {
+    -webkit-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out; }
+    @media (max-width: 33.75em) {
+      .image-container img.overflow-sm {
+        display: block;
+        opacity: 0;
+        width: 100% !important;
+        position: absolute;
+        height: auto; } }
+    @media (max-width: 45em) {
+      .image-container img.overflow-md {
+        display: block;
+        opacity: 0;
+        width: 100% !important;
+        position: absolute;
+        height: auto; } }
+    @media (max-width: 60em) {
+      .image-container img.overflow-lg {
+        display: block;
+        opacity: 0;
+        width: 100% !important;
+        position: absolute;
+        height: auto; } }
+    @media (max-width: 71.25em) {
+      .image-container img.overflow-xl {
+        display: block;
+        opacity: 0;
+        width: 100% !important;
+        position: absolute;
+        height: auto; } }
+    @media (max-width: 82.5em) {
+      .image-container img.overflow-xxl {
+        display: block;
+        opacity: 0;
+        width: 100% !important;
+        position: absolute;
+        height: auto; } }
+    .image-container img.foreground {
       opacity: 1; }
 
-/* figure.wp-block-image { 
-    width: 100%; 
+.block-editor__container img {
+  max-width: none;
+  height: 100%; }
 
-    img {
-        width: 100%;
-        height: auto;
-    }
-
-}
-
- */
 /* stylelint-disable */
 .wp-block-buttons {
   display: -webkit-box;

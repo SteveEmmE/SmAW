@@ -11,7 +11,7 @@ const Save = ({attributes}) => {
 
     return (
         <div 
-            className='image-container'
+            className={`image-container ${imagesWidthOverflow}`}
             style={{
                 height: imagesHeight,
             }}  
@@ -22,6 +22,7 @@ const Save = ({attributes}) => {
                     <img 
                         className={`${i==0 ? 'foreground': ''} ${imagesWidthOverflow}`}
                         src={image} 
+                        style={{width: imagesWidth[i]}}
                     />
                 )
             }
