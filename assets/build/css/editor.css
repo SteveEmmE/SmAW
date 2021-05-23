@@ -287,11 +287,11 @@ h5 {
       line-height: 1.43; } }
 
 h6 {
-  font-size: 3rem;
-  line-height: 1.4; }
+  font-size: 2.4rem;
+  line-height: 1.3; }
 
 p {
-  font-size: 2.1rem;
+  font-size: 2rem;
   line-height: 1.8; }
 
 h1,
@@ -529,6 +529,9 @@ input[type="search"]::-webkit-search-cancel-button {
 .has-white-background-color {
   background-color: #ffffff; }
 
+.has-light-gray-background-color {
+  background-color: #b8b7b7; }
+
 /*--------------------------
 		Text Weight
 ---------------------------*/
@@ -593,6 +596,9 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-left: auto;
   margin-right: auto; }
 
+.container-fluid {
+  width: 100%; }
+
 /*---------------------------
 		Others
 ---------------------------*/
@@ -601,6 +607,20 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .visible {
   visibility: visible; }
+
+.overflow-scroll-x {
+  overflow-x: scroll; }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; }
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */ }
 
 /*------------
     Display
@@ -4809,6 +4829,24 @@ footer .footer__item {
   width: 15%;
   margin-right: auto;
   margin-left: 0; }
+
+.category-slider {
+  top: 0; }
+  .category-slider.category-slider-fixed {
+    position: fixed;
+    top: 4rem;
+    left: 0; }
+  .category-slider ul {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content; }
+    .category-slider ul li {
+      display: inline-block; }
+
+section.post-container {
+  max-width: 200px; }
+  section.post-container .post-image {
+    width: 100%; }
 
 /*---------------------------------
 		Colors Variables

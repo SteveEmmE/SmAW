@@ -1,5 +1,6 @@
 @import "header";
 @import "footer";
+@import "./posts/pagination";
 
 .page-separator{
     hr{
@@ -8,5 +9,28 @@
         margin-right: auto;
         margin-left: 0;
     }
+}
 
+.category-slider {
+    top:0;
+    &.category-slider-fixed{
+        position: fixed;
+        top:4rem;
+        left:0;
+    }
+    ul{
+        width:max-content;
+
+        li{
+            display: inline-block;
+        }
+    }
+}
+
+section.post-container{
+    max-width: 200px;
+
+    .post-image{
+        width:100%;
+    }
 }

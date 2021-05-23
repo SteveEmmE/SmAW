@@ -50,6 +50,7 @@
 .has-charleston-green-background-color{background-color: $charleston-green}
 .has-timberwolf-background-color{background-color: $timberwolf}
 .has-white-background-color{background-color: $white}
+.has-light-gray-background-color{background-color: $light-gray;}
 
 /*--------------------------
 		Text Weight
@@ -113,6 +114,10 @@
 	margin-left: auto; margin-right:auto;
 }
 
+.container-fluid{
+	width: 100%;	
+}
+
 
 /*---------------------------
 		Others
@@ -127,6 +132,19 @@
 .visible {
 	visibility: visible;
 }
+
+.overflow-scroll-x{ overflow-x: scroll;}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+  }
 
 
 /*------------

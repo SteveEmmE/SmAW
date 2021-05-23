@@ -38,7 +38,17 @@ class SMAW_THEME {
     protected function setup_hooks(){
         add_action('after_setup_theme', [$this, 'setup_theme_functionalities']);
         add_action('after_setup_theme', [$this, 'image_sizing']);
+        add_filter("the_excerpt", [$this, "trim_custom_excerpt"], 999);
         
+    }
+
+
+    function trim_custom_excerpt($excerpt) {
+        if (has_excerpt()) {
+            $excerpt = wp_trim_words(get_the_excerpt(), apply_filters("excerpt_length", 20));
+        }
+    
+        return $excerpt;
     }
 
 
@@ -91,8 +101,18 @@ class SMAW_THEME {
         //Remove the core block patterns
         remove_theme_support('core-block-patterns');
 
+        
+       
+
 
     }
+
+    //excerp length
+    public function custom_excerpt_length( $length ){
+        return 1;
+    }
+        
+    
 
 
 
