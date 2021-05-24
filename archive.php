@@ -37,7 +37,8 @@
                 <?php get_template_part('template/content-posts');?>
             </div>
             <div class="sidebar flex-basis-30">
-
+                <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("Right Sidebar Area") ) : ?>
+                <?php endif;?>
             </div>
         </div>
         

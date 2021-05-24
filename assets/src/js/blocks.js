@@ -1,5 +1,3 @@
-import '../sass/blocks.scss';
-
 import './gutenberg/blocks-rebuilds/background';
 import './gutenberg/blocks-rebuilds/mp-control';
 import './gutenberg/blocks-rebuilds/sizes-control';

@@ -42,27 +42,16 @@ class Sidebars {
     public function register_sidebars(){
         register_sidebar(
 			[
-				'name'          => esc_html__( 'Sidebar', 'smaw' ),
+				'name'          => esc_html__( 'Right Sidebar Area', 'smaw' ),
 				'id'            => 'sidebar-1',
 				'description'   => '',
-				'before_widget' => '<div id="%1$s" class="widget widget-sidebar %2$s">',
+				'before_widget' => '<div id="%1$s" class="widget widget-sidebar m-2 %2$s">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="widget-title">',
-				'after_title'   => '</h3>',
+				'before_title'  => '<h6 class="widget-title text-bold ">',
+				'after_title'   => '</h6>',
 			]
 		);
 
-		register_sidebar(
-			[
-				'name'          => esc_html__( 'Footer', 'smaw' ),
-				'id'            => 'sidebar-2',
-				'description'   => '',
-				'before_widget' => '<div id="%1$s" class="widget widget-footer cell column %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h4 class="widget-title">',
-				'after_title'   => '</h4>',
-			]
-		);
     }
  
 

@@ -46,20 +46,21 @@ jQuery(window).scroll(function (){
  * Fixed category bar
  */
 
- jQuery(document).ready(function(){
-    if(jQuery(window).scrollTop() >= jQuery('.top-banner').outerHeight()+jQuery('.categories-slider-fixed-trigger').outerHeight())
-        jQuery('.category-slider').addClass('category-slider-fixed');
-    else
-        jQuery('.category-slider').removeClass('category-slider-fixed');
-})
+if(jQuery('.category-slider').length != 0){
+    jQuery(document).ready(function(){
+        if(jQuery(window).scrollTop() >= jQuery('.top-banner').outerHeight()+jQuery('.categories-slider-fixed-trigger').outerHeight())
+            jQuery('.category-slider').addClass('category-slider-fixed');
+        else
+            jQuery('.category-slider').removeClass('category-slider-fixed');
+    })
 
-jQuery(window).scroll(function (){
-    console.log(jQuery(window).scrollTop(), jQuery('.top-banner').outerHeight()+jQuery('.categories-slider-fixed-trigger').outerHeight())
-    if(jQuery(window).scrollTop() >= jQuery('.top-banner').outerHeight()+jQuery('.categories-slider-fixed-trigger').outerHeight())
-        jQuery('.category-slider').addClass('category-slider-fixed');
-    else
-        jQuery('.category-slider').removeClass('category-slider-fixed');
-})
+    jQuery(window).scroll(function (){
+        if(jQuery(window).scrollTop() >= jQuery('.top-banner').outerHeight()+jQuery('.categories-slider-fixed-trigger').outerHeight())
+            jQuery('.category-slider').addClass('category-slider-fixed');
+        else
+            jQuery('.category-slider').removeClass('category-slider-fixed');
+    })
+}
 
 
 /**

@@ -15,6 +15,8 @@ $args = array("hide_empty" => 0);
 
     </div>
 
+
+
     <div class="has-timberwolf-background-color p-relative pt-4">
         <div class="category-slider container-fluid py-1 has-light-gray-background-color p-absolute">
             <div class='container'>
@@ -29,7 +31,21 @@ $args = array("hide_empty" => 0);
                 </div>
             </div>
         </div>
-        <?=get_template_part('template/content-loop');?>
+
+        <div id="page-content" class="d-flex container col-md-responsive"> 
+            <div class="archive flex-basis-70 ">
+                <div class="my-3 p-3 has-white-background-color page-shadow">
+                    <h1 class="text-heavy "> <?= the_title() ?> </h1>
+                    <a href="<?= get_category_link(get_the_category()[0]->term_id)?>" class="d-block my-1"> <i class="fas fa-tags has-charleston-green-color pr-1"></i><?= get_the_category()[0]->name; ?></a>
+                    <?=get_template_part('template/content-loop');?>
+                    <p class="d-inline-block mt-2 text-bold"><?php echo get_the_date(  ); ?></p>
+                </div>
+            </div>
+            <div class="sidebar flex-basis-30 ">
+                <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("Right Sidebar Area") ) : ?>
+                <?php endif;?>
+            </div>
+        </div>
     </div>
     
 

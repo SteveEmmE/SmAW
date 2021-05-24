@@ -1,3 +1,10 @@
 https://github.com/WordPress/gutenberg
 
 https://transfonter.org/
+
+useful plugins:
+ - Force Regenerate Thumbnails (Pedro Elsner)
+ - FakerPress (Gustavo Bordoni)
+ - RichTextExtension (Tetsuaki Hamano)
+ - Breadcrumn (PickPlugins)
+ - Block Guide Lines (Marchetti Design)

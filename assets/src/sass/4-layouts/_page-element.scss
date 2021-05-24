@@ -1,6 +1,7 @@
 @import "header";
 @import "footer";
 @import "./posts/pagination";
+@import "./rpwe";
 
 .page-separator{
     hr{
@@ -27,10 +28,22 @@
     }
 }
 
-section.post-container{
-    max-width: 200px;
+.post-container{
+    max-width: 350px;    
 
-    .post-image{
+    &__image-container{
+        overflow: hidden;
         width:100%;
+        height: 150px;
+
+        img.post-image {
+            width:100%;
+            height:auto;
+        }
+        .img-placeholder{
+            width: 100%;
+            height: 150px;
+        }
     }
+
 }

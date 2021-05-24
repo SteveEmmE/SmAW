@@ -25,6 +25,7 @@
     box-shadow: 0px 0px 0px $charleston-green;
     max-height: 4rem;
     overflow: hidden;
+    z-index: $z-element-1;
 
     .top-menu__item{
         display: inline-block;

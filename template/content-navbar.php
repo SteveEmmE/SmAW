@@ -22,8 +22,6 @@ $header_menus = wp_get_nav_menu_items($header_menu_id);
 </header>
 
 
-<div class="sidebar-filter"></div>
-
 
 <!-- NAVBAR SECTION -->
 <nav class="navbar container-fluid py-1">
