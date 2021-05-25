@@ -1,5 +1,5 @@
 https://github.com/WordPress/gutenberg
-
+https://www.lorenzomoio.it/generatore-di-privacy-policy-gratuito/
 https://transfonter.org/
 
 useful plugins:
@@ -8,3 +8,10 @@ useful plugins:
  - RichTextExtension (Tetsuaki Hamano)
  - Breadcrumn (PickPlugins)
  - Block Guide Lines (Marchetti Design)
+ - Cookie Notice (dFactory)
+ - Yoast SEO (Team Yoast)
+ - Better Search Replace (Delicious Brains)
+
+
+
+ ftp.onlinux-it.setupdns.net 21

@@ -30,7 +30,7 @@ body {
 a { @include links($color__link, $color__link-hover); }
 
 /*------------------------------------*\
-    #SUB & SUP
+    Text Variations
 \*------------------------------------*/
 
 sub,
@@ -42,6 +42,8 @@ sup {
 }
 sup { top: -0.5em; }
 sub { bottom: -0.25em; }
+
+strong { font-weight: $font__bold; }
 
 /*------------------------------------*\
     #HEADINGS

@@ -1,7 +1,6 @@
-/* @import "0-settings/settings";
+@import "0-settings/settings";
 // Blocks.
 
-//@import "7-blocks/button";
 
 @import "essentials";
 @import "1-tools/tools";
@@ -9,12 +8,22 @@
 @import "2-generic/elements";
 @import "2-generic/common-classes";
 
-@import "4-layouts/page-element"; */
+@import "4-layouts/page-element";
 
 @import "7-blocks/layout";
 @import '7-blocks/sizes-control';
 @import '7-blocks/parallax-background';
 @import '7-blocks/image';
 @import '7-blocks/button';
+@import '7-blocks/form';
 
 
+.positioning-control-block-responsive-fix{
+    color:black;
+    @include mq($until: map_get($mq-breakpoints, "md")){
+        top:0 !important;
+    }
+}
+
+
+ 

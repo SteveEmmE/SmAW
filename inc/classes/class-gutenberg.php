@@ -66,7 +66,12 @@ class Gutenberg{
         if(is_admin())
             wp_enqueue_script( 'smaw-block-js', SMAW_BUILD_JS_URI . '/blocks.js', $js_dependencies, $js_version, true );
 
-    
+        $css_dependencies = [
+            'wp-block-library-theme',
+            'wp-block-library'
+        ];
+
+        wp_enqueue_style('smaw-block-css', SMAW_BUILD_CSS_URI . '/blocks.css', [], filemtime(SMAW_BUILD_CSS_PATH . '/blocks.css'), 'all');
 
     }
 
@@ -84,7 +89,7 @@ class Gutenberg{
 
         add_theme_support('disable-custom-font-sizes');
 
-        //add_post_type_support( 'page', 'excerpt' );
+        add_post_type_support( 'page', 'excerpt' );
         
 
         

@@ -4,7 +4,7 @@
     get_template_part('template/content-navbar');
 ?>
 
-    <div class="mt-5">
+    <div class="mt-4">
         <?=get_template_part('template/content-loop');?>
     </div>
     

@@ -83,7 +83,7 @@ if(jQuery('.category-slider').length != 0){
  * Light-Slider
  */
 
-import 'lightslider/dist/js/lightslider';
+import 'lightslider/dist/js/lightslider.js';
 import 'lightslider/dist/css/lightslider.css'
 
 

@@ -12,43 +12,42 @@ const Edit = ({attributes, setAttributes, toggleSelection}) => {
         imagesWidth,
         imagesWidthOverflow,
         allowedSizes,
-        size,
-        gallery
+        size
     } = attributes;
 
 
 
-    function onChangeImagesSrc(media, imageSize=null){
+    function onChangeImagesSrc(media){
 
         let tmpImagesSrc = [];
         let tmpImagesWidth = [];
         let tmpAllowedSizes =[];
         console.log(media);
 
-        let selectedImageSize = imageSize!=null ? imageSize : 'full';
+        
 
         media.forEach((m, i) => {
-            let url = get( m, [ 'sizes', selectedImageSize, 'url' ] ) || get( m, [ 'media_details', 'sizes', selectedImageSize, 'source_url' ] );
+            let url = get( m, [ 'sizes'] ) || get( m, [ 'media_details', 'sizes'] );
             let sizes = get( m, [ 'sizes'] ) || get( m, [ 'media_details', 'sizes'] );
             if(i == 0) tmpAllowedSizes = Object.keys(sizes);
             else tmpAllowedSizes = tmpAllowedSizes.filter(s => Object.keys(sizes).includes(s))
-            let width = get( m, [ 'sizes', selectedImageSize, 'width' ] ) || get( m, [ 'media_details', 'sizes', selectedImageSize, 'width' ] );
+            let width = get( m, [ 'sizes', 'full', 'width' ] ) || get( m, [ 'media_details', 'sizes', 'full', 'width' ] );
 
-            tmpImagesWidth.push(width);
             tmpImagesSrc.push(url);
+            tmpImagesWidth.push(width);
         })  
 
 
         setAttributes({allowedSizes: tmpAllowedSizes});
         setAttributes({imagesSrc: tmpImagesSrc});
         setAttributes({imagesWidth: tmpImagesWidth});
-        setAttributes({gallery: media});
 
     }
 
     const onChangeImagesWidth = [];
     for(let i=0; i<imagesSrc.length; i++){
         onChangeImagesWidth.push((newValue) => {
+            console.log(newValue);
             let tmpImagesWidth = [...imagesWidth];
             tmpImagesWidth[i] = newValue;
             setAttributes({imagesWidth: tmpImagesWidth});
@@ -57,7 +56,12 @@ const Edit = ({attributes, setAttributes, toggleSelection}) => {
 
     function onChangeSize(newSize){
         setAttributes({size: newSize})
-        onChangeImagesSrc(gallery, size);
+        let tmpImagesWidth = [];
+        Array.from(imagesSrc).forEach( (s, i) => {
+            tmpImagesWidth.push(s[newSize].width);
+        })
+        setAttributes({imagesWidth: tmpImagesWidth});
+
     }
 
     return ([
@@ -157,16 +161,23 @@ const Edit = ({attributes, setAttributes, toggleSelection}) => {
                     height: imagesHeight,
                 }}    
             >
-                <img 
-                    src={imagesSrc[0]} 
-                    style={{
-                        opacity:1,
-                        width: imagesWidth[0],
-                        height:'auto'
-                    }}
-                    className={imagesWidthOverflow}
+                {
+                    imagesSrc[0] ?
+                        <img 
+                            src={imagesSrc[0][size].url || imagesSrc[0][size].source_url} 
+                            style={{
+                                opacity:1,
+                                width: imagesWidth[0],
+                                height:'auto'
+                            }}
+                            className={imagesWidthOverflow}
 
-                />
+                        />
+                    :
+                    ''
+
+                }
+                
                
             </div>
         </ResizableBox>

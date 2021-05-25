@@ -5,15 +5,18 @@
 }
 
 .rpwe-block li {
-    margin:2rem;
+    margin-top:2rem;
+    margin-bottom:2rem;
     background-color: $white;
-    box-shadow: 1px 1px 2px $light-gray;;
+    box-shadow: 1px 1px 2px $light-gray;
+    min-height: 72px;
 
 }
 
 .rpwe-block a {
     display: inline !important;
     text-decoration: none;
+
 }
 
 .rpwe-block h3 {
@@ -22,8 +25,10 @@
     margin-bottom: 0 !important;
     margin-top: 0 !important;
     font-weight: 400;
-    font-size: 12px !important;
-    line-height: 1.5em;
+    font-size: 1.7rem !important;
+    line-height: 1.1em;
+    padding-top: .6rem; padding-bottom: .6rem;
+    padding-right: .6rem;
 }
 
 .rpwe-thumb {
@@ -31,6 +36,7 @@
     box-shadow: none !important;
     margin: 0;
     padding: 0 !important;
+    margin-right: 1rem;
 }
 
 .rpwe-summary {
@@ -39,7 +45,7 @@
 
 .rpwe-time {
     color: #bbb;
-    font-size: 11px;
+    font-size: 1.3rem;
 }
 
 .rpwe-comment {

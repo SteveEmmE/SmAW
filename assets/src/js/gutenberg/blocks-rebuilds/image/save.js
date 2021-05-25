@@ -5,7 +5,8 @@ const Save = ({attributes}) => {
         imagesSrc,
         imagesHeight,
         imagesWidth,
-        imagesWidthOverflow
+        imagesWidthOverflow,
+        size
     } = attributes;
 
 
@@ -21,7 +22,7 @@ const Save = ({attributes}) => {
                 imagesSrc.map((image, i) => 
                     <img 
                         className={`${i==0 ? 'foreground': ''} ${imagesWidthOverflow}`}
-                        src={image} 
+                        src={image[size].url || image[size].source_url} 
                         style={{width: imagesWidth[i]}}
                     />
                 )

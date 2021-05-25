@@ -37,8 +37,9 @@ class SMAW_THEME {
      */
     protected function setup_hooks(){
         add_action('after_setup_theme', [$this, 'setup_theme_functionalities']);
-        add_action('after_setup_theme', [$this, 'image_sizing']);
+        add_action('init', [$this, 'image_sizing']);
         add_filter( 'excerpt_length', [$this, 'wpdocs_custom_excerpt_length'], 999 );
+        add_filter( 'image_size_names_choose', [$this, 'my_custom_sizes'] );
         
     }
 
@@ -46,8 +47,14 @@ class SMAW_THEME {
     function wpdocs_custom_excerpt_length( $length ) {
         return 20;
     }
-    
-    
+
+    function my_custom_sizes( $sizes ) {
+        return array_merge( $sizes, array(
+            'smawImage' => 'smawImage',
+            'gallery' => 'gallery'
+        ) );
+    }
+
 
 
 
@@ -105,14 +112,6 @@ class SMAW_THEME {
 
     }
 
-    //excerp length
-    public function custom_excerpt_length( $length ){
-        return 1;
-    }
-        
-    
-
-
 
 
     /**
@@ -120,6 +119,7 @@ class SMAW_THEME {
      */
     public function image_sizing(){
         add_image_size('gallery', 353, 233, true);
+        add_image_size('smawImage', 1000, 1500, true);
     }
 
 

@@ -20,7 +20,7 @@
                         <h6 class="has-medium-font-size mb-1 text-bold "><?php the_title(); ?></h6>
                         <p class=""><?php the_excerpt('');?></p>
                         <div class="mt-1 d-flex flex-between align-center">
-                            <p class="d-inline-block"><?php echo get_the_date( ); ?></p>
+                            <p class="d-inline-block"><span class="text-smaller-s text-bold"><?php echo get_the_date( ); ?></span></p>
                             <a class="d-inline-block" href="<?php the_permalink();?>"><i class="fas fa-arrow-right fa-fw"></i></a>
                         </div>
                     </div>
