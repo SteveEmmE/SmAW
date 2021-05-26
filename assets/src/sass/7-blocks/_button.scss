@@ -19,7 +19,8 @@
 		&.wp-block-button__width-75{ width: 75%; }
 		&.wp-block-button__width-100{ width: 100%; }
 
-		&.is-style-outline>a{
+		&.is-style-outline>a,
+		&.is-style-outline>button{
 			outline-style: solid;
 			outline-width: 3px;
 

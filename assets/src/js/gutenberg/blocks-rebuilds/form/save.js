@@ -31,9 +31,9 @@ const Save = ({attributes}) => {
             
                 <div className="wp-block-buttons is-content-justification-center">
                     <div className="wp-block-button has-custom-width wp-block-button__width-25 is-style-outline">
-                        <a 
+                        <button
                             className="wp-block-button__link has-cinnabar-color has-text-color no-border-radius"
-                            href="javascript:{}" onClick="document.getElementById('enquiry').submit(); console.log('ciao');"    
+                            type='submit'    
                         > 
                             <RichText.Content
                                 tagName="span"
@@ -41,7 +41,7 @@ const Save = ({attributes}) => {
                                 value={linkText}
                                 className="qodef-btn-text"
                             />
-                        </a>
+                        </button>
                     </div>
                 </div>
             </form>
