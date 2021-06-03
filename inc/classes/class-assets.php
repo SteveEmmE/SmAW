@@ -57,6 +57,12 @@ class Assets{
         wp_enqueue_script('jquery', $in_footer = true);
         wp_enqueue_script('smaw-main-js', SMAW_BUILD_JS_URI . '/main.js', ['jquery'], filemtime(SMAW_BUILD_JS_PATH . '/main.js'), true);
 
+        wp_localize_script( 'smaw-main-js', 'ajax_object',
+            array( 
+                'ajax_url' => admin_url( 'admin-ajax.php'),
+                'ajax_nonce' => wp_create_nonce('ajax-nonce')
+            )
+        );
     }
 
 }

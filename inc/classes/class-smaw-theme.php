@@ -24,6 +24,7 @@ class SMAW_THEME {
         Sidebars::get_instance();
         Gutenberg::get_instance();
         Customizer::get_instance();
+        Form::get_instance();
 
         $this->setup_hooks();
     }

@@ -1,4 +1,6 @@
 .wp-block-columns{
+
+    overflow:hidden;
     
     /* Classi da aggiungere manualmente */
     &.are-justified-left{ justify-content: flex-start; }

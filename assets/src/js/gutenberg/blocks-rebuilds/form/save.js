@@ -11,8 +11,8 @@ const Save = ({attributes}) => {
         <div className="enquiry_box" >
             <form id="enquiry">
                 <div className="form-group">
-                        <input type="text" className="form-control" placeholder="NOME E COGNOME*"/>
-                    </div>
+                    <input type="text" name="name" className="form-control" placeholder="NOME E COGNOME*"/>
+                </div>
                 <div className="form-group">
                     <input type="email" name="email"  placeholder="EMAIL *" required/>
                 </div>

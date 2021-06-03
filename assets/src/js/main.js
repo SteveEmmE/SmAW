@@ -98,6 +98,7 @@ Array.from(jQuery('.lightSlider')).forEach(s => {
         item:items,
         loop: true,
         slideMove:1,
+        controls: false,
         easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
         speed:600,
         responsive : responsiveBreakpoints.map(rb => {
@@ -164,6 +165,73 @@ jQuery(document).ready(function(){
     })
     
 })
+
+
+
+/**
+ * Form
+ */
+
+ if(jQuery('#enquiry').length != 0){
+    console.log('ci attacco levento');
+    jQuery('#enquiry').submit( function(e){
+        
+        e.preventDefault();
+        
+        console.log('ciaooooooooooooooo');
+        console.log(ajax_object)
+
+        var endpoint = ajax_object.ajax_url;
+
+        var form = jQuery(this).serialize();
+
+        var formdata = new FormData;
+
+        formdata.append('action', 'enquiry');
+        formdata.append('enquiry', form);
+        formdata.append('nonce', ajax_object.ajax_nonce);
+
+        jQuery.ajax(endpoint, {
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: function(res){
+                console.log(res);
+
+                if(res.success){
+                    console.log('si');
+                    jQuery('#enquiry').fadeOut(1500);
+                    setTimeout(() => {
+                        jQuery('.message').fadeIn(1500)
+                        jQuery('.message p').text("La mail é stata inviata correttamente, ti risponderemo il prima possibile").fadeIn(1500)
+
+                    }
+                    , 1500);
+                }
+                else{
+
+                    console.log('no');
+                    jQuery('#enquiry').fadeOut(1500);
+                    setTimeout(() => {
+                        jQuery('.message').css('background-color', 'rgba(245, 0, 0, 0.3)').css('border', '1px solid #ff0000').fadeIn(1500);
+                        jQuery('.message p').text("C'é stato un errore con l'invio della mail, riprova più tardi o invia direttamente a luca@zlimpianti.it").fadeIn(1500);
+                    }, 1500);
+                }
+
+
+            },
+            error: function(err){
+                console.log(err);
+                jQuery('#enquiry').fadeOut(1500);
+                setTimeout(() => 
+                    jQuery('.message').css('background-color', 'rgba(245, 0, 0, 0.3)', 'border', '1px solid #ff0000').find('p').text("C'é stato un errore con l'invio della mail, riprova più tardi o invia direttamente a luca@zlimpianti.it").fadeIn(1500)
+                , 1500);
+            }
+        })
+
+    })
+}
 
  
 
